@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@cloudinary/react": "^1.14.4",
+    "@cloudinary/url-gen": "^1.22.0",
+    "cloudinary": "^2.9.0",
+    "lucide-react": "^1.8.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
