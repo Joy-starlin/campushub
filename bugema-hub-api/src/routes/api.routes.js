@@ -1,6 +1,7 @@
 const express = require('express');
 const { query } = require('express-validator');
 const apiController = require('../controllers/api.controller');
+const searchController = require('../controllers/search.controller');
 const { generalLimiter } = require('../middleware/rateLimit');
 const { handleValidationErrors } = require('../middleware/validate');
 
@@ -65,6 +66,15 @@ router.get('/universities/:id',
 // Get API statistics
 router.get('/stats',
   apiController.getPublicStats
+);
+
+// Global search across all collections
+router.get('/search',
+  [
+    query('q').notEmpty().withMessage('Search query is required').isLength({ min: 1, max: 100 })
+  ],
+  handleValidationErrors,
+  searchController.globalSearch
 );
 
 module.exports = router;

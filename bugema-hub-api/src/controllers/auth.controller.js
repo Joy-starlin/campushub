@@ -425,6 +425,82 @@ const confirmStudentVerification = async (req, res) => {
   }
 };
 
+const googleLogin = async (req, res) => {
+  try {
+    const { idToken } = req.body;
+
+    // Verify Google ID token
+    const decodedToken = await auth.verifyIdToken(idToken);
+    const { uid, email, name, picture } = decodedToken;
+
+    // Check if user exists in Firestore
+    let user = await getDoc(USERS, uid);
+
+    if (!user) {
+      // Split name if possible
+      const nameParts = (name || '').split(' ');
+      const firstName = nameParts[0] || 'User';
+      const lastName = nameParts.slice(1).join(' ') || '';
+
+      // Create new user document
+      const userData = {
+        uid,
+        email,
+        firstName,
+        lastName,
+        country: 'Uganda', // Default
+        university: 'Bugema University', // Default
+        role: 'member',
+        plan: 'free',
+        isVerified: true, // Google accounts are pre-verified
+        verifiedStudent: false,
+        points: 0,
+        profilePicture: picture || null,
+        bio: null,
+        socialLinks: {},
+        preferences: {
+          emailNotifications: true,
+          smsNotifications: false,
+          pushNotifications: true,
+          eventReminders: true,
+          clubUpdates: true,
+          jobAlerts: true
+        },
+        lastLoginAt: new Date(),
+        authProvider: 'google'
+      };
+
+      user = await createDoc(USERS, userData, uid);
+    } else {
+      // Update last login
+      await updateDoc(USERS, uid, { lastLoginAt: new Date() });
+    }
+
+    // Generate JWT tokens
+    const tokens = generateTokens(user);
+
+    return successResponse(res, {
+      user: {
+        uid: user.uid,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        role: user.role,
+        plan: user.plan,
+        isVerified: user.isVerified,
+        verifiedStudent: user.verifiedStudent,
+        points: user.points,
+        profilePicture: user.profilePicture
+      },
+      accessToken: tokens.accessToken,
+      refreshToken: tokens.refreshToken
+    }, 'Google login successful');
+  } catch (error) {
+    console.error('Google Auth Error:', error);
+    return errorResponse(res, 'Google authentication failed', 401);
+  }
+};
+
 module.exports = {
   register,
   login,
@@ -434,5 +510,7 @@ module.exports = {
   verifyOtp,
   resetPassword,
   verifyStudentEmail,
-  confirmStudentVerification
+  confirmStudentVerification,
+  googleLogin
 };
+

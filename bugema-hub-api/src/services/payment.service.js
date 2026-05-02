@@ -20,21 +20,22 @@ const axios = require('axios');
 
 // Plan configurations
 const PLANS = {
-  member: {
-    name: 'Member',
-    price: 9.99,
-    currency: 'USD',
-    interval: 'month',
-    features: ['Advanced search', 'Priority support', 'Profile customization']
+  student_semester: {
+    name: 'Student Member',
+    price: 5000,
+    currency: 'UGX',
+    interval: 'semester',
+    features: ['Academic resources', 'Event access', 'Basic profile', 'Community forums']
   },
-  premium: {
-    name: 'Premium',
-    price: 19.99,
-    currency: 'USD',
-    interval: 'month',
-    features: ['All member features', 'Unlimited messaging', 'Advanced analytics', 'Priority listings']
+  staff_semester: {
+    name: 'Staff Member',
+    price: 10000,
+    currency: 'UGX',
+    interval: 'semester',
+    features: ['All student features', 'Priority support', 'Verified badge', 'Advanced analytics']
   }
 };
+
 
 // Create Stripe Checkout Session
 const createStripeCheckout = async (userId, plan, userEmail) => {
@@ -378,7 +379,7 @@ const upgradePlan = async (userId, plan, paymentData) => {
       amount: paymentData.amount,
       currency: paymentData.currency,
       currentPeriodStart: new Date().toISOString(),
-      currentPeriodEnd: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days
+      currentPeriodEnd: new Date(Date.now() + 120 * 24 * 60 * 60 * 1000).toISOString(), // 120 days (Semester)
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };
@@ -398,12 +399,15 @@ const upgradePlan = async (userId, plan, paymentData) => {
     }
 
     // Update user role
-    const newRole = plan === 'premium' ? 'premium' : 'member';
+    const newRole = plan.includes('staff') ? 'staff' : 'student';
     await updateDoc(USERS, userId, {
       role: newRole,
+      membership_status: 'premium',
+      membership_expires_at: subscriptionData.currentPeriodEnd,
       subscriptionPlan: plan,
       updatedAt: new Date().toISOString()
     });
+
 
     // Award points for upgrade
     await incrementField(USER_POINTS, userId, 'points', 50);

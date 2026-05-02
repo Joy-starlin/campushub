@@ -105,4 +105,15 @@ router.post('/verify-student/confirm',
   authController.confirmStudentVerification
 );
 
+// Google Auth
+router.post('/google',
+  authLimiter,
+  [
+    body('idToken').notEmpty()
+  ],
+  handleValidationErrors,
+  authController.googleLogin
+);
+
 module.exports = router;
+
