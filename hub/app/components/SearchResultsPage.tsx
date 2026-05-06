@@ -34,77 +34,127 @@ interface SearchResult {
 }
 
 const mockSearchResults: SearchResult[] = [
+  // Events
   {
-    id: '1',
+    id: 'e1',
     type: 'event',
-    title: 'React Workshop',
-    subtitle: 'Computer Science Club',
-    description: 'Learn the fundamentals of React.js including components, state management, and hooks.',
-    url: '/events/1',
-    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=200&fit=crop',
-    metadata: {
-      date: 'March 25, 2024',
-      location: 'Tech Building, Room 201'
-    }
+    title: 'Bugema University Open Day',
+    subtitle: 'Academic • Admissions Office',
+    description: 'Explore our campus, meet faculty, and discover your future career path at Bugema University.',
+    url: '/events',
+    image: '/assets/events/event-main.png',
+    metadata: { date: 'May 15, 2026', location: 'Main Campus Quad' }
   },
   {
-    id: '2',
+    id: 'e2',
+    type: 'event',
+    title: 'Cultural Night: Pearl of Africa',
+    subtitle: 'Cultural • Cultural Society',
+    description: 'Experience the rich heritage of Uganda through traditional music, dance, and authentic cuisine.',
+    url: '/events',
+    image: '/assets/events/event-1.png',
+    metadata: { date: 'May 20, 2026', location: 'Auditorium' }
+  },
+  {
+    id: 'e3',
+    type: 'event',
+    title: 'Grand Alumni Reunion 2026',
+    subtitle: 'Social • Alumni Association',
+    description: 'Welcoming back all Bugema graduates for a weekend of networking and celebration.',
+    url: '/events',
+    image: '/assets/events/event-2.png',
+    metadata: { date: 'June 12, 2026', location: 'Main Hall' }
+  },
+  {
+    id: 'e4',
+    type: 'event',
+    title: 'Tech & Career Expo',
+    subtitle: 'Career • Career Services',
+    description: 'Connect with top industry leaders and discover the latest trends in technology and innovation.',
+    url: '/events',
+    image: '/assets/events/event-3.png',
+    metadata: { date: 'May 25, 2026', location: 'Convention Center' }
+  },
+  // Clubs
+  {
+    id: 'c1',
     type: 'club',
     title: 'Computer Science Club',
     subtitle: 'Technology • 145 members',
-    description: 'Explore the latest in tech, coding workshops, hackathons, and networking with professionals.',
-    url: '/clubs/1',
-    image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=200&fit=crop',
-    metadata: {
-      memberCount: 145
-    }
+    description: 'Explore the latest in tech, coding workshops, hackathons, and networking with industry professionals.',
+    url: '/clubs',
+    image: 'https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=400&h=200&fit=crop',
+    metadata: { memberCount: 145 }
   },
   {
-    id: '3',
-    type: 'person',
-    title: 'Sarah Johnson',
-    subtitle: 'Computer Science • 3rd Year',
-    description: 'Passionate about technology and innovation. President of the Computer Science Club.',
-    url: '/profile/sarahjohnson',
-    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop'
+    id: 'c2',
+    type: 'club',
+    title: 'Basketball Team',
+    subtitle: 'Sports • 24 members',
+    description: 'Join our competitive basketball team. Practices, tournaments, and building teamwork skills.',
+    url: '/clubs',
+    image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=200&fit=crop',
+    metadata: { memberCount: 24 }
   },
   {
-    id: '4',
-    type: 'post',
-    title: 'Looking for study partners',
-    subtitle: 'Posted by Mike Chen • 2 hours ago',
-    description: 'Hey everyone! I\'m looking for study partners for the upcoming algorithms exam. Anyone interested in forming a study group?',
-    url: '/feed/1',
-    metadata: {
-      author: 'Mike Chen',
-      date: '2 hours ago'
-    }
+    id: 'c3',
+    type: 'club',
+    title: 'Drama Society',
+    subtitle: 'Arts • 38 members',
+    description: 'Express yourself through theater. Annual productions, improv nights, and acting workshops.',
+    url: '/clubs',
+    image: 'https://images.unsplash.com/photo-1503095396548-807759245b35?w=400&h=200&fit=crop',
+    metadata: { memberCount: 38 }
+  },
+  // Marketplace
+  {
+    id: 'm1',
+    type: 'marketplace',
+    title: 'Computer Science - 9th Edition',
+    subtitle: 'Textbooks • UGX 45,000',
+    description: 'Introduction to Computer Science textbook in good condition.',
+    url: '/marketplace',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop',
+    metadata: { price: 45000, currency: 'UGX' }
   },
   {
-    id: '5',
+    id: 'm2',
     type: 'marketplace',
     title: 'MacBook Pro 2020',
     subtitle: 'Electronics • UGX 1,200,000',
-    description: 'Excellent condition MacBook Pro with M1 chip, 16GB RAM, 512GB SSD. Barely used, selling because I got a work laptop.',
-    url: '/marketplace/1',
+    description: 'MacBook Pro 2020 with M1 Chip, excellent condition.',
+    url: '/marketplace',
     image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop',
-    metadata: {
-      price: 1200000,
-      currency: 'UGX'
-    }
+    metadata: { price: 1200000, currency: 'UGX' }
   },
   {
-    id: '6',
-    type: 'event',
-    title: 'Spring Festival 2024',
-    subtitle: 'Student Council',
-    description: 'Join us for the biggest campus event of the year! Live music, food stalls, games, and more.',
-    url: '/events/2',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=200&fit=crop',
-    metadata: {
-      date: 'March 30, 2024',
-      location: 'Main Campus Field'
-    }
+    id: 'm3',
+    type: 'marketplace',
+    title: 'Nike Air Max 270',
+    subtitle: 'Fashion • $150',
+    description: 'Nike Air Max 270 shoes, Size 10, good condition.',
+    url: '/marketplace',
+    image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=300&fit=crop',
+    metadata: { price: 150, currency: '$' }
+  },
+  // People
+  {
+    id: 'p1',
+    type: 'person',
+    title: 'Sarah Johnson',
+    subtitle: 'CS President • 4th Year',
+    description: 'Passionate developer and student leader.',
+    url: '/profile',
+    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop'
+  },
+  {
+    id: 'p2',
+    type: 'person',
+    title: 'Mike Chen',
+    subtitle: 'Engineering • 3rd Year',
+    description: 'Algorithms enthusiast and coffee lover.',
+    url: '/profile',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
   }
 ]
 
@@ -138,34 +188,61 @@ export default function SearchResultsPage() {
 
   useEffect(() => {
     const fetchResults = async () => {
-      if (!query) {
-        setResults([])
-        setIsLoading(false)
-        return
-      }
-
       setIsLoading(true)
       setError(null)
 
       try {
-        const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001'
-        const response = await fetch(`${baseUrl}/api/v1/search?q=${encodeURIComponent(query)}`)
-        const data = await response.json()
+        // 1. Client-side search over mock data (Fallback/Simulation)
+        const mockResults = mockSearchResults.filter(item => 
+          item.title.toLowerCase().includes(query.toLowerCase()) || 
+          item.subtitle.toLowerCase().includes(query.toLowerCase()) ||
+          item.description?.toLowerCase().includes(query.toLowerCase())
+        )
 
-        if (data.success) {
-          setResults(data.data.results)
-        } else {
-          setError(data.message || 'Failed to fetch results')
+        // 2. Try to fetch from API
+        try {
+          const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001'
+          const response = await fetch(`${baseUrl}/api/v1/search?q=${encodeURIComponent(query)}`)
+          
+          if (response.ok) {
+            const data = await response.json()
+            if (data.success && data.data.results && data.data.results.length > 0) {
+              // Combine results, prioritizing API results but removing duplicates
+              const apiResults = data.data.results
+              const combined = [...apiResults]
+              
+              mockResults.forEach(m => {
+                if (!combined.some(a => a.title === m.title)) {
+                  combined.push(m)
+                }
+              })
+              
+              setResults(combined)
+            } else {
+              setResults(mockResults)
+            }
+          } else {
+            console.warn('API returned error status, falling back to mock results')
+            setResults(mockResults)
+          }
+        } catch (apiErr) {
+          console.warn('API connection failed, using mock results:', apiErr)
+          setResults(mockResults)
         }
       } catch (err) {
-        console.error('Search error:', err)
-        setError('Connection error. Please check if the backend is running.')
+        console.error('Search unexpected error:', err)
+        setError('An unexpected error occurred during search.')
       } finally {
         setIsLoading(false)
       }
     }
 
-    fetchResults()
+    if (query) {
+      fetchResults()
+    } else {
+      setResults([])
+      setIsLoading(false)
+    }
   }, [query])
 
   const tabs = [

@@ -258,14 +258,21 @@ export default function Navbar() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${isScrolled ? "shadow-md" : ""}`}>
       {/* Top Header */}
-      <div className="border-b border-gray-100">
+      <div className="">
         <div className="px-4 sm:px-6 lg:px-10">
           <div className="flex items-center justify-between h-16 relative">
             {/* Left Corner: Logo & Title */}
             <div className="flex-shrink-0 z-10">
-              <Link href="/" className="flex items-center gap-2.5 group">
-                <div className="w-10 h-10 relative flex items-center justify-center bg-gray-50 rounded-xl overflow-hidden border-2 border-gray-100 group-hover:border-bugema-blue transition-all duration-300 shadow-sm group-hover:shadow-md">
-                  <Image src="/logo.png" alt="Bugema Hub Logo" fill className="object-contain p-1.5" />
+              <Link href="/" className="flex items-center gap-3 group">
+                <div className="relative h-12 w-auto min-w-[3rem] transition-transform duration-300 group-hover:scale-105">
+                  <Image 
+                    src="/logo.png" 
+                    alt="Bugema Hub Logo" 
+                    width={48} 
+                    height={48} 
+                    className="h-full w-auto object-contain" 
+                    priority
+                  />
                 </div>
                 <span className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[34px] font-black text-bugema-blue tracking-[-0.05em] uppercase leading-none select-none">
                   BUGEMA HUB
@@ -475,7 +482,7 @@ export default function Navbar() {
       </div>
 
       {/* Sub Navigation Bar - Desktop Only */}
-      <nav className="hidden lg:block border-b border-gray-100 bg-white relative">
+      <nav className="hidden lg:block bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ul className="flex items-center justify-center h-14 gap-8">
             {mainNavItems.map((item) => {
@@ -594,11 +601,17 @@ export default function Navbar() {
               className="fixed left-0 top-0 bottom-0 w-[80%] max-w-sm bg-white z-50 shadow-2xl lg:hidden flex flex-col"
             >
               <div className="flex items-center justify-between p-4 border-b border-gray-100">
-                <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                  <div className="w-8 h-8 relative flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden border border-gray-100">
-                    <Image src="/logo.png" alt="Bugema Hub Logo" fill className="object-contain p-1" />
+                <Link href="/" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
+                  <div className="relative h-10 w-auto min-w-[2.5rem]">
+                    <Image 
+                      src="/logo.png" 
+                      alt="Bugema Hub Logo" 
+                      width={40} 
+                      height={40} 
+                      className="h-full w-auto object-contain" 
+                    />
                   </div>
-                  <span className="font-black text-lg text-bugema-blue">BUGEMA HUB</span>
+                  <span className="font-black text-xl text-bugema-blue">BUGEMA HUB</span>
                 </Link>
                 <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-400 hover:text-gray-900 bg-gray-50 rounded-full">
                   <X className="w-5 h-5" />

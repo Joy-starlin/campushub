@@ -136,25 +136,6 @@ export function NotificationProvider({ children }: NotificationProviderProps) {
     )
   }
 
-  // Simulate real-time notifications
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Randomly add a new notification (for demo purposes)
-      if (Math.random() > 0.95) {
-        const types: Notification['type'][] = ['event', 'like', 'comment', 'marketplace', 'club_request', 'payment', 'announcement']
-        const randomType = types[Math.floor(Math.random() * types.length)]
-        
-        addNotification({
-          type: randomType,
-          title: `New ${randomType} notification`,
-          message: 'This is a simulated real-time notification',
-          isRead: false
-        })
-      }
-    }, 10000) // Check every 10 seconds
-
-    return () => clearInterval(interval)
-  }, [])
 
   const value = {
     notifications,
