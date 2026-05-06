@@ -54,7 +54,7 @@ export default function CSVExport({ className = '', onExportComplete }: CSVExpor
         year: '3',
         gpa: '3.8',
         joinDate: '2022-09-01',
-        lastActive: '2024-04-25',
+        lastActive: '2026-04-25',
         status: 'active'
       },
       {
@@ -66,16 +66,16 @@ export default function CSVExport({ className = '', onExportComplete }: CSVExpor
         year: '2',
         gpa: '3.9',
         joinDate: '2023-09-01',
-        lastActive: '2024-04-24',
+        lastActive: '2026-04-24',
         status: 'active'
       }
     ],
     events: [
       {
         id: '1',
-        title: 'Career Fair 2024',
+        title: 'Career Fair 2026',
         description: 'Annual career fair with top companies',
-        date: '2024-05-15',
+        date: '2026-05-15',
         time: '10:00',
         location: 'Main Campus',
         organizer: 'Career Services',
@@ -88,7 +88,7 @@ export default function CSVExport({ className = '', onExportComplete }: CSVExpor
         id: '2',
         title: 'Tech Talk: AI in Education',
         description: 'Exploring the role of AI in modern education',
-        date: '2024-05-20',
+        date: '2026-05-20',
         time: '14:00',
         location: 'Lecture Hall A',
         organizer: 'CS Department',
@@ -135,8 +135,8 @@ export default function CSVExport({ className = '', onExportComplete }: CSVExpor
         description: 'Looking for motivated software developer interns',
         requirements: 'JavaScript, React, Node.js',
         salary: 'UGX 500,000',
-        posted: '2024-04-01',
-        deadline: '2024-05-01',
+        posted: '2026-04-01',
+        deadline: '2026-05-01',
         status: 'active'
       },
       {
@@ -149,8 +149,8 @@ export default function CSVExport({ className = '', onExportComplete }: CSVExpor
         description: 'Join our marketing team',
         requirements: 'Marketing, Communication, Social Media',
         salary: 'UGX 800,000',
-        posted: '2024-04-05',
-        deadline: '2024-05-15',
+        posted: '2026-04-05',
+        deadline: '2026-05-15',
         status: 'active'
       }
     ],
@@ -161,7 +161,7 @@ export default function CSVExport({ className = '', onExportComplete }: CSVExpor
         content: 'We are excited to announce the opening of our new library facility...',
         category: 'news',
         author: 'Admin',
-        date: '2024-04-10',
+        date: '2026-04-10',
         likes: 45,
         comments: 12,
         views: 250,
@@ -173,7 +173,7 @@ export default function CSVExport({ className = '', onExportComplete }: CSVExpor
         content: 'Congratulations to our students who excelled in various competitions...',
         category: 'announcements',
         author: 'Dean',
-        date: '2024-04-08',
+        date: '2026-04-08',
         likes: 89,
         comments: 23,
         views: 450,
@@ -605,18 +605,18 @@ export function ExportHistory({ className = '' }: { className?: string }) {
   const [exports] = useState([
     {
       id: '1',
-      filename: 'users_export_2024-04-25.csv',
+      filename: 'users_export_2026-04-25.csv',
       type: 'Users & Members',
       recordCount: 1250,
-      exportedAt: '2024-04-25T10:30:00Z',
+      exportedAt: '2026-04-25T10:30:00Z',
       exportedBy: 'Admin User'
     },
     {
       id: '2',
-      filename: 'events_export_2024-04-24.csv',
+      filename: 'events_export_2026-04-24.csv',
       type: 'Events',
       recordCount: 45,
-      exportedAt: '2024-04-24T15:45:00Z',
+      exportedAt: '2026-04-24T15:45:00Z',
       exportedBy: 'Admin User'
     }
   ])

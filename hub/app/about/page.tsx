@@ -485,9 +485,9 @@ export default function AboutPage() {
                 { year: '2022', title: 'Bugema Hub founded at Bugema University', desc: 'Started as a campus project with 3 student developers' },
                 { year: '2023', title: 'First 1,000 members joined', desc: 'Rapid growth across Bugema University campus' },
                 { year: '2023', title: 'Marketplace and clubs launched', desc: 'Added core features for student engagement' },
-                { year: '2024', title: 'Expanded to 5 universities in Uganda', desc: 'Partnership with major universities in the country' },
-                { year: '2024', title: 'International expansion begins', desc: 'First universities outside Uganda joined the platform' },
-                { year: '2025', title: '10,000+ global members', desc: 'Reached major milestone with global community' }
+                { year: '2026', title: 'Expanded to 5 universities in Uganda', desc: 'Partnership with major universities in the country' },
+                { year: '2026', title: 'International expansion begins', desc: 'First universities outside Uganda joined the platform' },
+                { year: '2026', title: '10,000+ global members', desc: 'Reached major milestone with global community' }
               ].map((milestone, index) => (
                 <motion.div
                   key={milestone.year}

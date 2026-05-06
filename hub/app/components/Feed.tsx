@@ -43,7 +43,7 @@ const mockPosts: Post[] = [
       avatar: undefined
     },
     category: 'Event',
-    title: 'Spring Festival 2024 - Join Us!',
+    title: 'Spring Festival 2026 - Join Us!',
     description: 'Get ready for the biggest event of the year! The Spring Festival will feature live music, food trucks, games, and amazing prizes. Don\'t miss out on this incredible celebration of our campus community.',
     image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=400&fit=crop',
     createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000),
@@ -97,18 +97,18 @@ const trendingTopics = [
 const upcomingEvents = [
   {
     id: '1',
-    title: 'Spring Festival 2024',
-    date: 'March 15, 2024'
+    title: 'Spring Festival 2026',
+    date: 'March 15, 2026'
   },
   {
     id: '2',
     title: 'Career Fair',
-    date: 'March 20, 2024'
+    date: 'March 20, 2026'
   },
   {
     id: '3',
     title: 'Alumni Networking',
-    date: 'March 25, 2024'
+    date: 'March 25, 2026'
   }
 ]
 

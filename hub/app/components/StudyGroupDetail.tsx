@@ -71,7 +71,7 @@ export default function StudyGroupDetail({
         year: '3rd Year'
       },
       content: 'Hey everyone! I found some great resources for our upcoming exam. Check the shared resources section!',
-      createdAt: '2024-04-23T10:00:00Z',
+      createdAt: '2026-04-23T10:00:00Z',
       replies: [
         {
           id: '1',
@@ -84,7 +84,7 @@ export default function StudyGroupDetail({
             year: '3rd Year'
           },
           content: 'Thanks Alice! These are really helpful.',
-          createdAt: '2024-04-23T10:30:00Z',
+          createdAt: '2026-04-23T10:30:00Z',
           likes: 3,
           isLiked: false
         }
@@ -109,7 +109,7 @@ export default function StudyGroupDetail({
         avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop',
         email: 'alice@example.com'
       },
-      uploadedAt: '2024-04-23T09:00:00Z',
+      uploadedAt: '2026-04-23T09:00:00Z',
       downloads: 12
     }
   ])

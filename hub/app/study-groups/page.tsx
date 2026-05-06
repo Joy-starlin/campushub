@@ -71,8 +71,8 @@ const mockGroups: StudyGroup[] = [
     language: 'English',
     isOpen: true,
     tags: ['weekly', 'assignments', 'exam prep'],
-    createdAt: '2024-04-20T10:00:00Z',
-    nextMeeting: '2024-04-25T14:00:00Z'
+    createdAt: '2026-04-20T10:00:00Z',
+    nextMeeting: '2026-04-25T14:00:00Z'
   },
   {
     id: '2',
@@ -115,8 +115,8 @@ const mockGroups: StudyGroup[] = [
     language: 'English',
     isOpen: true,
     tags: ['projects', 'weekly'],
-    createdAt: '2024-04-22T09:00:00Z',
-    nextMeeting: '2024-04-24T16:00:00Z'
+    createdAt: '2026-04-22T09:00:00Z',
+    nextMeeting: '2026-04-24T16:00:00Z'
   },
   {
     id: '3',
@@ -150,8 +150,8 @@ const mockGroups: StudyGroup[] = [
     language: 'English',
     isOpen: false,
     tags: ['exam prep', 'projects'],
-    createdAt: '2024-04-21T15:00:00Z',
-    nextMeeting: '2024-04-26T10:00:00Z'
+    createdAt: '2026-04-21T15:00:00Z',
+    nextMeeting: '2026-04-26T10:00:00Z'
   }
 ]
 

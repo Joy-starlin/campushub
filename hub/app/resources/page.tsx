@@ -34,14 +34,14 @@ const mockCurrentUser: User = {
 const mockResources: Resource[] = [
   {
     id: '1',
-    title: 'Fall 2024 Academic Calendar',
-    description: 'Complete academic calendar for the Fall 2024 semester including important dates, holidays, and examination periods.',
+    title: 'Fall 2026 Academic Calendar',
+    description: 'Complete academic calendar for the Fall 2026 semester including important dates, holidays, and examination periods.',
     category: 'timetables',
     university: 'Bugema University',
     fileType: 'pdf',
     fileSize: 2048576,
-    fileUrl: '/files/academic-calendar-fall-2024.pdf',
-    cloudinaryPublicId: 'resources/academic-calendar-fall-2024',
+    fileUrl: '/files/academic-calendar-fall-2026.pdf',
+    cloudinaryPublicId: 'resources/academic-calendar-fall-2026',
     uploader: {
       id: 'admin-1',
       name: 'Admin Office',
@@ -51,9 +51,9 @@ const mockResources: Resource[] = [
       role: 'admin',
       isVerified: true
     },
-    uploadDate: '2024-04-20T10:00:00Z',
+    uploadDate: '2026-04-20T10:00:00Z',
     visibility: 'public',
-    tags: ['academic', 'calendar', 'fall-2024', 'holidays'],
+    tags: ['academic', 'calendar', 'fall-2026', 'holidays'],
     downloadCount: 342,
     averageRating: 4.5,
     ratingCount: 28,
@@ -63,14 +63,14 @@ const mockResources: Resource[] = [
   },
   {
     id: '2',
-    title: 'Student Registration Form 2024',
-    description: 'Official student registration form for the 2024 academic year. Please fill out all required fields.',
+    title: 'Student Registration Form 2026',
+    description: 'Official student registration form for the 2026 academic year. Please fill out all required fields.',
     category: 'forms',
     university: 'Bugema University',
     fileType: 'pdf',
     fileSize: 1024000,
-    fileUrl: '/files/registration-form-2024.pdf',
-    cloudinaryPublicId: 'resources/registration-form-2024',
+    fileUrl: '/files/registration-form-2026.pdf',
+    cloudinaryPublicId: 'resources/registration-form-2026',
     uploader: {
       id: 'admin-1',
       name: 'Admin Office',
@@ -80,9 +80,9 @@ const mockResources: Resource[] = [
       role: 'admin',
       isVerified: true
     },
-    uploadDate: '2024-04-18T14:30:00Z',
+    uploadDate: '2026-04-18T14:30:00Z',
     visibility: 'public',
-    tags: ['registration', 'form', '2024', 'student'],
+    tags: ['registration', 'form', '2026', 'student'],
     downloadCount: 567,
     averageRating: 4.2,
     ratingCount: 45,
@@ -109,7 +109,7 @@ const mockResources: Resource[] = [
       role: 'club-leader',
       isVerified: true
     },
-    uploadDate: '2024-04-15T09:15:00Z',
+    uploadDate: '2026-04-15T09:15:00Z',
     visibility: 'public',
     tags: ['computer-science', 'csc101', 'lecture-notes', 'programming'],
     downloadCount: 189,
@@ -138,7 +138,7 @@ const mockResources: Resource[] = [
       role: 'admin',
       isVerified: true
     },
-    uploadDate: '2024-04-12T16:45:00Z',
+    uploadDate: '2026-04-12T16:45:00Z',
     visibility: 'public',
     tags: ['mathematics', 'exam-papers', 'past-papers', 'solutions'],
     downloadCount: 423,
@@ -167,7 +167,7 @@ const mockResources: Resource[] = [
       role: 'club-leader',
       isVerified: true
     },
-    uploadDate: '2024-04-10T11:20:00Z',
+    uploadDate: '2026-04-10T11:20:00Z',
     visibility: 'university-only',
     tags: ['club', 'constitution', 'computer-science', 'bylaws'],
     downloadCount: 87,

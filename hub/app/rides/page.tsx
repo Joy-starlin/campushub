@@ -28,7 +28,7 @@ const mockRides: Ride[] = [
     },
     from: { address: 'Bugema University Main Gate' },
     to: { address: 'Kampala City Center' },
-    date: '2024-04-25',
+    date: '2026-04-25',
     departureTime: '08:00',
     seatsAvailable: 3,
     seatsTaken: 1,
@@ -38,7 +38,7 @@ const mockRides: Ride[] = [
     contactMethod: 'whatsapp',
     contactNumber: '+256 700 123456',
     notes: 'Meet at main gate, no smoking, air conditioning available',
-    createdAt: '2024-04-23T10:00:00Z'
+    createdAt: '2026-04-23T10:00:00Z'
   },
   {
     id: '2',
@@ -51,7 +51,7 @@ const mockRides: Ride[] = [
     },
     from: { address: 'Kampala - Nakawa' },
     to: { address: 'Bugema University' },
-    date: '2024-04-25',
+    date: '2026-04-25',
     departureTime: '17:30',
     seatsAvailable: 0,
     seatsTaken: 0,
@@ -60,7 +60,7 @@ const mockRides: Ride[] = [
     contactMethod: 'whatsapp',
     isFlexible: true,
     notes: 'Need space for one small bag, flexible with time',
-    createdAt: '2024-04-23T11:00:00Z'
+    createdAt: '2026-04-23T11:00:00Z'
   },
   {
     id: '3',
@@ -73,7 +73,7 @@ const mockRides: Ride[] = [
     },
     from: { address: 'Bugema University' },
     to: { address: 'Entebbe Airport' },
-    date: '2024-04-26',
+    date: '2026-04-26',
     departureTime: '06:00',
     seatsAvailable: 2,
     seatsTaken: 2,
@@ -81,7 +81,7 @@ const mockRides: Ride[] = [
     vehicleType: 'boda',
     contactMethod: 'in-app',
     notes: 'Early morning ride, experienced rider, helmet provided',
-    createdAt: '2024-04-23T12:00:00Z'
+    createdAt: '2026-04-23T12:00:00Z'
   }
 ]
 

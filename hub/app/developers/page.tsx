@@ -70,9 +70,9 @@ const apiEndpoints: ApiEndpoint[] = [
         data: [
           {
             id: '1',
-            title: 'Career Fair 2024',
+            title: 'Career Fair 2026',
             description: 'Annual career fair with top companies',
-            date: '2024-05-15',
+            date: '2026-05-15',
             time: '10:00',
             location: 'Main Campus',
             university: 'bugema',
@@ -101,9 +101,9 @@ const apiEndpoints: ApiEndpoint[] = [
         success: true,
         data: {
           id: '1',
-          title: 'Career Fair 2024',
+          title: 'Career Fair 2026',
           description: 'Annual career fair with top companies',
-          date: '2024-05-15',
+          date: '2026-05-15',
           time: '10:00',
           location: 'Main Campus',
           university: 'bugema',

@@ -42,7 +42,7 @@ const mockReports: Report[] = [
     reason: 'Inappropriate content',
     description: 'This post contains spam links and inappropriate language that violates community guidelines.',
     status: 'pending',
-    createdAt: '2024-04-23T10:30:00Z'
+    createdAt: '2026-04-23T10:30:00Z'
   },
   {
     id: '2',
@@ -60,7 +60,7 @@ const mockReports: Report[] = [
     reason: 'Fake profile',
     description: 'This profile appears to be fake and using someone else\'s photos.',
     status: 'pending',
-    createdAt: '2024-04-23T09:15:00Z'
+    createdAt: '2026-04-23T09:15:00Z'
   },
   {
     id: '3',
@@ -78,8 +78,8 @@ const mockReports: Report[] = [
     reason: 'Harassment',
     description: 'This comment contains harassing language and personal attacks.',
     status: 'resolved',
-    createdAt: '2024-04-22T14:20:00Z',
-    resolvedAt: '2024-04-22T16:45:00Z',
+    createdAt: '2026-04-22T14:20:00Z',
+    resolvedAt: '2026-04-22T16:45:00Z',
     resolvedBy: 'Admin User'
   }
 ]

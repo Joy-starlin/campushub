@@ -75,8 +75,8 @@ const mockJobs: Job[] = [
       'Health insurance coverage'
     ],
     skills: ['JavaScript', 'TypeScript', 'React', 'Node.js', 'AWS', 'MongoDB'],
-    postedAt: '2024-04-20T10:00:00Z',
-    applicationDeadline: '2024-05-15T23:59:59Z',
+    postedAt: '2026-04-20T10:00:00Z',
+    applicationDeadline: '2026-05-15T23:59:59Z',
     applicationMethod: 'in-platform',
     targetUniversities: [],
     isUniversityExclusive: false,
@@ -127,8 +127,8 @@ const mockJobs: Job[] = [
       'Potential for full-time employment'
     ],
     skills: ['Social Media', 'Content Creation', 'Email Marketing', 'Analytics'],
-    postedAt: '2024-04-22T09:00:00Z',
-    applicationDeadline: '2024-04-30T23:59:59Z',
+    postedAt: '2026-04-22T09:00:00Z',
+    applicationDeadline: '2026-04-30T23:59:59Z',
     applicationMethod: 'in-platform',
     targetUniversities: ['Bugema University'],
     isUniversityExclusive: true,
@@ -181,8 +181,8 @@ const mockJobs: Job[] = [
       'Retirement savings plan'
     ],
     skills: ['Financial Analysis', 'Excel', 'Financial Modeling', 'Reporting', 'Accounting'],
-    postedAt: '2024-04-18T14:00:00Z',
-    applicationDeadline: '2024-05-10T23:59:59Z',
+    postedAt: '2026-04-18T14:00:00Z',
+    applicationDeadline: '2026-05-10T23:59:59Z',
     applicationMethod: 'external',
     externalApplicationUrl: 'https://eafinance.com/careers/financial-analyst',
     targetUniversities: [],

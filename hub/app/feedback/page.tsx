@@ -24,7 +24,7 @@ const mockPublicResponses: PublicResponse[] = [
     category: 'campus-facilities',
     response: 'We have addressed the Wi-Fi connectivity issues in the library. The network has been upgraded and should now provide stable connectivity throughout the building. Please report any continued issues to the IT helpdesk.',
     respondedBy: 'IT Department',
-    respondedAt: '2024-04-20T10:00:00Z',
+    respondedAt: '2026-04-20T10:00:00Z',
     upvotes: 24,
     isUpvoted: false
   },
@@ -33,7 +33,7 @@ const mockPublicResponses: PublicResponse[] = [
     category: 'academic-issues',
     response: 'The examination schedule has been revised to reduce conflicts between courses. Updated schedules are now available on the student portal. We appreciate your feedback in helping us improve the academic experience.',
     respondedBy: 'Academic Affairs',
-    respondedAt: '2024-04-18T14:30:00Z',
+    respondedAt: '2026-04-18T14:30:00Z',
     upvotes: 18,
     isUpvoted: true
   },
@@ -42,7 +42,7 @@ const mockPublicResponses: PublicResponse[] = [
     category: 'safety-concern',
     response: 'Additional lighting has been installed along the main campus pathways. Security patrols have also been increased during evening hours. Your safety is our top priority.',
     respondedBy: 'Campus Security',
-    respondedAt: '2024-04-15T09:15:00Z',
+    respondedAt: '2026-04-15T09:15:00Z',
     upvotes: 32,
     isUpvoted: false
   }
@@ -51,7 +51,7 @@ const mockPublicResponses: PublicResponse[] = [
 const mockSubmissions: FeedbackSubmission[] = [
   {
     id: '1',
-    referenceCode: 'FB-2024-0472',
+    referenceCode: 'FB-2026-0472',
     category: 'campus-facilities',
     title: 'Library Wi-Fi Issues',
     description: 'The Wi-Fi in the library keeps disconnecting, making it difficult to study and access online resources.',
@@ -60,8 +60,8 @@ const mockSubmissions: FeedbackSubmission[] = [
     isUrgent: false,
     anonymousId: 'anon-123',
     status: 'resolved',
-    createdAt: '2024-04-10T10:00:00Z',
-    updatedAt: '2024-04-20T10:00:00Z',
+    createdAt: '2026-04-10T10:00:00Z',
+    updatedAt: '2026-04-20T10:00:00Z',
     adminNotes: 'Network upgrade completed on April 20th'
   }
 ]

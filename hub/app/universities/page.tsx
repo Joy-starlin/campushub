@@ -59,7 +59,7 @@ const mockUniversities: University[] = [
       enableGlobalPromotion: true
     },
     createdAt: '2020-01-15T00:00:00Z',
-    updatedAt: '2024-04-22T00:00:00Z'
+    updatedAt: '2026-04-22T00:00:00Z'
   },
   {
     id: '2',
@@ -100,7 +100,7 @@ const mockUniversities: University[] = [
       enableGlobalPromotion: true
     },
     createdAt: '2020-03-01T00:00:00Z',
-    updatedAt: '2024-04-22T00:00:00Z'
+    updatedAt: '2026-04-22T00:00:00Z'
   },
   {
     id: '3',
@@ -141,7 +141,7 @@ const mockUniversities: University[] = [
       enableGlobalPromotion: true
     },
     createdAt: '2020-06-15T00:00:00Z',
-    updatedAt: '2024-04-22T00:00:00Z'
+    updatedAt: '2026-04-22T00:00:00Z'
   },
   {
     id: '4',
@@ -182,7 +182,7 @@ const mockUniversities: University[] = [
       enableGlobalPromotion: true
     },
     createdAt: '2020-09-01T00:00:00Z',
-    updatedAt: '2024-04-22T00:00:00Z'
+    updatedAt: '2026-04-22T00:00:00Z'
   }
 ]
 
@@ -237,7 +237,7 @@ const mockClubs: UniversityClub[] = []
 const mockAnalytics: UniversityAnalytics = {
   universityId: '1',
   period: 'monthly',
-  date: '2024-04-01',
+  date: '2026-04-01',
   metrics: {
     pageViews: 45678,
     uniqueVisitors: 8934,
@@ -256,7 +256,7 @@ const mockAnalytics: UniversityAnalytics = {
         '2021': 1567,
         '2022': 1890,
         '2023': 2123,
-        '2024': 234
+        '2026': 234
       },
       byFaculty: {
         'Business': 2345,

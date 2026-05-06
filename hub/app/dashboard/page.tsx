@@ -17,21 +17,21 @@ const mockDashboardData = {
     {
       id: '1',
       title: 'React Workshop',
-      date: 'March 25, 2024',
+      date: 'March 25, 2026',
       time: '3:00 PM',
       club: 'Computer Science Club'
     },
     {
       id: '2',
       title: 'Spring Festival',
-      date: 'March 30, 2024',
+      date: 'March 30, 2026',
       time: '6:00 PM',
       club: 'Student Council'
     },
     {
       id: '3',
-      title: 'Hackathon 2024',
-      date: 'April 5, 2024',
+      title: 'Hackathon 2026',
+      date: 'April 5, 2026',
       time: '9:00 AM',
       club: 'Computer Science Club'
     }

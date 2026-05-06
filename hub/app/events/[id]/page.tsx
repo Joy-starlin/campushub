@@ -5,9 +5,9 @@ import EventDetailPage from '../../components/EventDetailPage'
 // Mock event data - in a real app, this would come from an API
 const mockEvent = {
   id: '1',
-  title: 'Spring Festival 2024',
+  title: 'Spring Festival 2026',
   description: 'Join us for the biggest celebration of the year with live music, food, and fun activities!',
-  fullDescription: `Get ready for the most exciting event of the year! The Spring Festival 2024 promises to be an unforgettable celebration of our campus community.
+  fullDescription: `Get ready for the most exciting event of the year! The Spring Festival 2026 promises to be an unforgettable celebration of our campus community.
 
 What to expect:
 🎵 Live music performances from student bands and special guests
@@ -28,7 +28,7 @@ Schedule:
 This is a family-friendly event open to all students, faculty, staff, and their families. Don't miss this opportunity to connect with your campus community and create lasting memories!
 
 Tickets are limited, so make sure to RSVP early. See you there!`,
-  date: new Date('2024-03-15'),
+  date: new Date('2026-03-15'),
   time: '18:00',
   location: 'Main Campus Quad',
   isOnline: false,

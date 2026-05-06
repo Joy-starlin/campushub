@@ -122,10 +122,10 @@ const mockLeaderboardData: LeaderboardEntry[] = [
 ]
 
 const mockUserBadges: Badge[] = [
-  { ...BADGE_CONFIG.firstPost, isUnlocked: true, progress: 1, unlockedAt: '2024-03-15T10:00:00Z' },
-  { ...BADGE_CONFIG.socialButterfly, isUnlocked: true, progress: 5, unlockedAt: '2024-04-01T14:30:00Z' },
-  { ...BADGE_CONFIG.eventGoer, isUnlocked: true, progress: 10, unlockedAt: '2024-04-10T09:15:00Z' },
-  { ...BADGE_CONFIG.verifiedScholar, isUnlocked: true, progress: 1, unlockedAt: '2024-02-20T16:45:00Z' },
+  { ...BADGE_CONFIG.firstPost, isUnlocked: true, progress: 1, unlockedAt: '2026-03-15T10:00:00Z' },
+  { ...BADGE_CONFIG.socialButterfly, isUnlocked: true, progress: 5, unlockedAt: '2026-04-01T14:30:00Z' },
+  { ...BADGE_CONFIG.eventGoer, isUnlocked: true, progress: 10, unlockedAt: '2026-04-10T09:15:00Z' },
+  { ...BADGE_CONFIG.verifiedScholar, isUnlocked: true, progress: 1, unlockedAt: '2026-02-20T16:45:00Z' },
   { ...BADGE_CONFIG.marketplacePro, isUnlocked: false, progress: 3 },
   { ...BADGE_CONFIG.goodSamaritan, isUnlocked: false, progress: 0 },
   { ...BADGE_CONFIG.studyLeader, isUnlocked: false, progress: 7 },

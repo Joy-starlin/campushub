@@ -43,7 +43,7 @@ const mockAlumni: Alumni[] = [
     jobsPosted: [],
     isVerified: true,
     joinedAt: '2020-01-15T00:00:00Z',
-    lastActiveAt: '2024-04-22T00:00:00Z'
+    lastActiveAt: '2026-04-22T00:00:00Z'
   },
   {
     id: '2',
@@ -68,7 +68,7 @@ const mockAlumni: Alumni[] = [
     jobsPosted: [],
     isVerified: true,
     joinedAt: '2020-03-01T00:00:00Z',
-    lastActiveAt: '2024-04-22T00:00:00Z'
+    lastActiveAt: '2026-04-22T00:00:00Z'
   }
 ]
 

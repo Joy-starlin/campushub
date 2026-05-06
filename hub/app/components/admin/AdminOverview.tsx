@@ -115,7 +115,7 @@ const mockRecentSignups: RecentSignup[] = [
     university: 'Bugema University',
     country: 'Uganda',
     plan: 'Premium',
-    joinDate: '2024-04-23'
+    joinDate: '2026-04-23'
   },
   {
     id: '2',
@@ -124,7 +124,7 @@ const mockRecentSignups: RecentSignup[] = [
     university: 'Bugema University',
     country: 'Uganda',
     plan: 'Free',
-    joinDate: '2024-04-23'
+    joinDate: '2026-04-23'
   },
   {
     id: '3',
@@ -133,7 +133,7 @@ const mockRecentSignups: RecentSignup[] = [
     university: 'Makerere University',
     country: 'Uganda',
     plan: 'Premium',
-    joinDate: '2024-04-22'
+    joinDate: '2026-04-22'
   },
   {
     id: '4',
@@ -142,7 +142,7 @@ const mockRecentSignups: RecentSignup[] = [
     university: 'Bugema University',
     country: 'Kenya',
     plan: 'Free',
-    joinDate: '2024-04-22'
+    joinDate: '2026-04-22'
   },
   {
     id: '5',
@@ -151,7 +151,7 @@ const mockRecentSignups: RecentSignup[] = [
     university: 'Uganda Christian University',
     country: 'Uganda',
     plan: 'Premium',
-    joinDate: '2024-04-21'
+    joinDate: '2026-04-21'
   }
 ]
 

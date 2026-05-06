@@ -32,7 +32,7 @@ const mockPayments: Payment[] = [
     amount: 50000,
     currency: 'UGX',
     method: 'mobile_money',
-    date: '2024-04-23T10:30:00Z',
+    date: '2026-04-23T10:30:00Z',
     status: 'completed',
     transactionId: 'TXN001234'
   },
@@ -47,7 +47,7 @@ const mockPayments: Payment[] = [
     amount: 50000,
     currency: 'UGX',
     method: 'card',
-    date: '2024-04-23T09:15:00Z',
+    date: '2026-04-23T09:15:00Z',
     status: 'pending',
     transactionId: 'TXN001235'
   },
@@ -61,7 +61,7 @@ const mockPayments: Payment[] = [
     amount: 100000,
     currency: 'UGX',
     method: 'bank_transfer',
-    date: '2024-04-22T14:20:00Z',
+    date: '2026-04-22T14:20:00Z',
     status: 'failed',
     transactionId: 'TXN001236'
   }

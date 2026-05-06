@@ -9,9 +9,9 @@ import { BadgeType } from '../types/verification'
 
 // Mock Data
 const mockVerifiedBadges: Array<{ type: BadgeType; earnedAt?: string; expiresAt?: string }> = [
-  { type: 'verified-student', earnedAt: '2024-01-15T00:00:00Z' },
-  { type: 'top-contributor', earnedAt: '2024-03-20T00:00:00Z' },
-  { type: 'premium-member', earnedAt: '2024-04-01T00:00:00Z', expiresAt: '2025-04-01T00:00:00Z' }
+  { type: 'verified-student', earnedAt: '2026-01-15T00:00:00Z' },
+  { type: 'top-contributor', earnedAt: '2026-03-20T00:00:00Z' },
+  { type: 'premium-member', earnedAt: '2026-04-01T00:00:00Z', expiresAt: '2027-04-01T00:00:00Z' }
 ]
 
 export default function VerifiedBadgesPage() {

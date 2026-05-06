@@ -55,19 +55,19 @@ Join us to be part of the next generation of tech innovators!`,
     {
       id: '1',
       title: 'Web Development Workshop',
-      date: 'March 20, 2024',
+      date: 'March 20, 2026',
       time: '6:00 PM'
     },
     {
       id: '2',
-      title: 'Hackathon 2024',
-      date: 'April 5-7, 2024',
+      title: 'Hackathon 2026',
+      date: 'April 5-7, 2026',
       time: 'All Day'
     },
     {
       id: '3',
       title: 'Tech Talk: AI in Industry',
-      date: 'March 25, 2024',
+      date: 'March 25, 2026',
       time: '7:00 PM'
     }
   ],

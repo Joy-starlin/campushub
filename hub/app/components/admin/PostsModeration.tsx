@@ -43,7 +43,7 @@ const mockPendingPosts: PendingPost[] = [
       email: 'sarah.j@bugema.edu'
     },
     category: 'Academic',
-    submittedAt: '2024-04-23T10:30:00Z',
+    submittedAt: '2026-04-23T10:30:00Z',
     status: 'pending'
   },
   {
@@ -57,7 +57,7 @@ const mockPendingPosts: PendingPost[] = [
       email: 'mike.c@bugema.edu'
     },
     category: 'Marketplace',
-    submittedAt: '2024-04-23T09:15:00Z',
+    submittedAt: '2026-04-23T09:15:00Z',
     status: 'pending'
   },
   {
@@ -70,7 +70,7 @@ const mockPendingPosts: PendingPost[] = [
       email: 'emily.d@bugema.edu'
     },
     category: 'Lost & Found',
-    submittedAt: '2024-04-23T08:45:00Z',
+    submittedAt: '2026-04-23T08:45:00Z',
     status: 'pending'
   }
 ]

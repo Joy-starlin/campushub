@@ -39,7 +39,7 @@ const mockChannels: Channel[] = [
     type: 'text',
     isPrivate: false,
     createdById: 'admin-1',
-    createdAt: '2024-01-01T00:00:00Z',
+    createdAt: '2026-01-01T00:00:00Z',
     memberCount: 156,
     unreadCount: 3,
     lastMessage: {
@@ -48,7 +48,7 @@ const mockChannels: Channel[] = [
       senderId: 'user-1',
       content: 'Hey everyone! How\'s the semester going?',
       type: 'text',
-      timestamp: '2024-04-22T10:30:00Z',
+      timestamp: '2026-04-22T10:30:00Z',
       isPinned: false,
       reactions: [],
       replyCount: 0
@@ -62,7 +62,7 @@ const mockChannels: Channel[] = [
     type: 'announcement',
     isPrivate: false,
     createdById: 'admin-1',
-    createdAt: '2024-01-01T00:00:00Z',
+    createdAt: '2026-01-01T00:00:00Z',
     memberCount: 156,
     unreadCount: 1,
     pinnedMessage: {
@@ -71,7 +71,7 @@ const mockChannels: Channel[] = [
       senderId: 'admin-1',
       content: 'Welcome to the Bugema Hub Chat System! Please read the community guidelines.',
       type: 'text',
-      timestamp: '2024-04-20T09:00:00Z',
+      timestamp: '2026-04-20T09:00:00Z',
       isPinned: true,
       reactions: [
         { emoji: '👍', userIds: ['user-1', 'user-2'], count: 2 }
@@ -87,7 +87,7 @@ const mockChannels: Channel[] = [
     type: 'text',
     isPrivate: false,
     createdById: 'admin-1',
-    createdAt: '2024-01-01T00:00:00Z',
+    createdAt: '2026-01-01T00:00:00Z',
     memberCount: 89,
     unreadCount: 0,
     lastMessage: {
@@ -96,7 +96,7 @@ const mockChannels: Channel[] = [
       senderId: 'user-2',
       content: 'Don\'t forget about the tech meetup this Friday!',
       type: 'text',
-      timestamp: '2024-04-22T09:15:00Z',
+      timestamp: '2026-04-22T09:15:00Z',
       isPinned: false,
       reactions: [],
       replyCount: 5
@@ -110,7 +110,7 @@ const mockChannels: Channel[] = [
     type: 'text',
     isPrivate: false,
     createdById: 'admin-1',
-    createdAt: '2024-01-01T00:00:00Z',
+    createdAt: '2026-01-01T00:00:00Z',
     memberCount: 124,
     unreadCount: 0
   },
@@ -122,7 +122,7 @@ const mockChannels: Channel[] = [
     type: 'text',
     isPrivate: false,
     createdById: 'admin-1',
-    createdAt: '2024-01-01T00:00:00Z',
+    createdAt: '2026-01-01T00:00:00Z',
     memberCount: 98,
     unreadCount: 0
   }
@@ -135,7 +135,7 @@ const mockMessages: Message[] = [
     senderId: 'user-1',
     content: 'Hey everyone! How\'s the semester going?',
     type: 'text',
-    timestamp: '2024-04-22T10:30:00Z',
+    timestamp: '2026-04-22T10:30:00Z',
     isPinned: false,
     reactions: [
       { emoji: '👍', userIds: ['current-user'], count: 1 },
@@ -149,7 +149,7 @@ const mockMessages: Message[] = [
     senderId: 'current-user',
     content: 'Going pretty well! Just finished my midterms. How about you?',
     type: 'text',
-    timestamp: '2024-04-22T10:32:00Z',
+    timestamp: '2026-04-22T10:32:00Z',
     isPinned: false,
     reactions: [],
     replyCount: 1
@@ -160,7 +160,7 @@ const mockMessages: Message[] = [
     senderId: 'user-2',
     content: 'Same here! Looking forward to the break. Check out this cool resource I found: https://example.com/study-guide',
     type: 'text',
-    timestamp: '2024-04-22T10:35:00Z',
+    timestamp: '2026-04-22T10:35:00Z',
     isPinned: false,
     reactions: [
       { emoji: '🔥', userIds: ['user-1', 'current-user'], count: 2 }
@@ -173,7 +173,7 @@ const mockMessages: Message[] = [
     senderId: 'user-1',
     content: 'Thanks for sharing! This looks really helpful.',
     type: 'text',
-    timestamp: '2024-04-22T10:36:00Z',
+    timestamp: '2026-04-22T10:36:00Z',
     isPinned: false,
     reactions: [],
     replyCount: 0

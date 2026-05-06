@@ -42,8 +42,8 @@ const mockUsers: User[] = [
     plan: 'Premium',
     role: 'member',
     status: 'active',
-    joinDate: '2024-01-15',
-    lastActive: '2024-04-23T14:30:00Z',
+    joinDate: '2026-01-15',
+    lastActive: '2026-04-23T14:30:00Z',
     postsCount: 42,
     clubsJoined: 3
   },
@@ -57,8 +57,8 @@ const mockUsers: User[] = [
     plan: 'Free',
     role: 'member',
     status: 'active',
-    joinDate: '2024-02-20',
-    lastActive: '2024-04-23T10:15:00Z',
+    joinDate: '2026-02-20',
+    lastActive: '2026-04-23T10:15:00Z',
     postsCount: 18,
     clubsJoined: 2
   },
@@ -72,7 +72,7 @@ const mockUsers: User[] = [
     role: 'moderator',
     status: 'active',
     joinDate: '2023-11-10',
-    lastActive: '2024-04-23T16:45:00Z',
+    lastActive: '2026-04-23T16:45:00Z',
     postsCount: 67,
     clubsJoined: 4
   },
@@ -85,8 +85,8 @@ const mockUsers: User[] = [
     plan: 'Free',
     role: 'member',
     status: 'suspended',
-    joinDate: '2024-03-05',
-    lastActive: '2024-04-20T09:20:00Z',
+    joinDate: '2026-03-05',
+    lastActive: '2026-04-20T09:20:00Z',
     postsCount: 8,
     clubsJoined: 1
   },
@@ -99,8 +99,8 @@ const mockUsers: User[] = [
     plan: 'Premium',
     role: 'member',
     status: 'active',
-    joinDate: '2024-01-28',
-    lastActive: '2024-04-23T11:30:00Z',
+    joinDate: '2026-01-28',
+    lastActive: '2026-04-23T11:30:00Z',
     postsCount: 35,
     clubsJoined: 3
   }
