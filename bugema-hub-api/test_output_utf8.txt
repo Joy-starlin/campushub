@@ -1,0 +1,1332 @@
+﻿
+> bugema-hub-api@1.0.0 test
+> jest --runInBand tests/auth.test.js
+
+  console.log
+    ≡ƒº¬ Running in test mode with mock Firebase
+
+      at Object.log (src/config/firebase.js:15:13)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error updating document mock-user-7o9xwx6ox in collection users: Error: Document with ID mock-user-7o9xwx6ox not found in collection users
+        at updateDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:118:13)
+        at login (D:\CampusHub\bugema-hub-api\src\controllers\auth.controller.js:141:5)
+
+    [0m [90m 130 |[39m     [36mreturn[39m [36mawait[39m getDoc(collection[33m,[39m id)[33m;[39m
+     [90m 131 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 132 |[39m     console[33m.[39merror([32m`Error updating document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 133 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to update document: ${error.message}`[39m)[33m;[39m
+     [90m 134 |[39m   }
+     [90m 135 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:132:13)
+      at login (src/controllers/auth.controller.js:141:5)
+
+  console.error
+    Login error: Error: Failed to update document: Document with ID mock-user-7o9xwx6ox not found in collection users
+        at updateDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:133:11)
+        at login (D:\CampusHub\bugema-hub-api\src\controllers\auth.controller.js:141:5)
+
+    [0m [90m 163 |[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m'Login error:'[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mreturn[39m errorResponse(res[33m,[39m [32m'Failed to login user'[39m[33m,[39m [35m500[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[33m;[39m[0m
+
+      at error (src/controllers/auth.controller.js:165:13)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:29:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:29:5)
+
+  console.error
+    Error deleting document mock-user-k05xwph7t in collection users: Error: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:148:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:24:5)
+
+    [0m [90m 163 |[39m     }[33m;[39m
+     [90m 164 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 165 |[39m     console[33m.[39merror([32m`Error deleting document ${id} in collection ${collection}:`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 166 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`Failed to delete document: ${error.message}`[39m)[33m;[39m
+     [90m 167 |[39m   }
+     [90m 168 |[39m }[0m
+
+      at error (src/utils/db.helpers.js:165:13)
+      at cleanupTestData (tests/auth.test.js:41:9)
+      at Object.<anonymous> (tests/auth.test.js:24:5)
+
+  console.error
+    Error cleaning up test data: Error: Failed to delete document: Document with ID mock-user-k05xwph7t not found in collection users
+        at deleteDoc (D:\CampusHub\bugema-hub-api\src\utils\db.helpers.js:166:11)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at cleanupTestData (D:\CampusHub\bugema-hub-api\tests\auth.test.js:41:9)
+        at Object.<anonymous> (D:\CampusHub\bugema-hub-api\tests\auth.test.js:24:5)
+
+    [0m [90m 49 |[39m       }
+     [90m 50 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 51 |[39m       console[33m.[39merror([32m'Error cleaning up test data:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 52 |[39m     }
+     [90m 53 |[39m   }[33m;[39m
+     [90m 54 |[39m[0m
+
+      at error (tests/auth.test.js:51:15)
+      at Object.<anonymous> (tests/auth.test.js:24:5)
+
+node.exe : FAIL 
+tests/auth.test.js (9.647 
+s)
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (FAI  
+  L tests/auth.test.js (   
+ 9.647 s):String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+  Authentication Tests
+    POST 
+/api/v1/auth/register
+      ΓêÜ should register 
+a new user successfully 
+(669 ms)
+      ΓêÜ should return 
+400 for duplicate email 
+(66 ms)
+      ΓêÜ should return 
+400 for missing required 
+fields (31 ms)
+      ΓêÜ should return 
+400 for invalid email 
+format (24 ms)
+      ΓêÜ should return 
+400 for weak password (26 
+ms)
+    POST /api/v1/auth/login
+      ├ù should login 
+successfully with correct 
+credentials (1153 ms)
+      ├ù should return 401 
+for wrong password (17 ms)
+      ├ù should return 404 
+for non-existent user (18 
+ms)
+      ├ù should return 400 
+for missing email (15 ms)
+      ├ù should return 400 
+for missing password (17 
+ms)
+    POST 
+/api/v1/auth/refresh
+      ├ù should refresh 
+tokens with valid refresh 
+token (505 ms)
+      ├ù should return 401 
+for expired refresh token 
+(18 ms)
+      ├ù should return 401 
+for invalid refresh token 
+(18 ms)
+      ├ù should return 400 
+for missing refresh token 
+(16 ms)
+    POST 
+/api/v1/auth/logout
+      ├ù should logout 
+successfully with valid 
+refresh token (538 ms)
+      ├ù should return 401 
+for invalid refresh token 
+(16 ms)
+
+  ΓùÅ Authentication Tests 
+ΓÇ║ POST 
+/api/v1/auth/login ΓÇ║ 
+should login successfully 
+with correct credentials
+
+    expected 200 "OK", got 
+500 "Internal Server Error"
+
+    [0m [90m 209 |[39m  
+       [33m.[39mpost([32
+m'/api/v1/auth/login'[39m)
+     [90m 210 |[39m      
+   
+[33m.[39msend(loginData)
+    
+[31m[1m>[22m[39m[90m 
+211 |[39m         [33m.[
+39mexpect([35m200[39m)[3
+3m;[39m
+     [90m     |[39m      
+    [31m[1m^[22m[39m
+     [90m 212 |[39m
+     [90m 213 |[39m      
+ expect(response[33m.[39m
+body[33m.[39msuccess)[33
+m.[39mtoBe([36mtrue[39m)
+[33m;[39m
+     [90m 214 |[39m      
+ expect(response[33m.[39m
+body[33m.[39mdata[33m.[
+39muser)[33m.[39mtoBeDefi
+ned()[33m;[39m[0m
+
+      at Object.expect 
+(tests/auth.test.js:211:10)
+      ----
+      at 
+Test._assertStatus (node_mo
+dules/supertest/lib/test.js
+:252:14)
+      at node_modules/super
+test/lib/test.js:308:13
+      at 
+Test._assertFunction (node_
+modules/supertest/lib/test.
+js:285:13)
+      at Test.assert (node_
+modules/supertest/lib/test.
+js:164:23)
+      at 
+Server.localAssert (node_mo
+dules/supertest/lib/test.js
+:120:14)
+
+  ΓùÅ Authentication Tests 
+ΓÇ║ POST 
+/api/v1/auth/login ΓÇ║ 
+should return 401 for 
+wrong password
+
+    expected 201 
+"Created", got 409 
+"Conflict"
+
+    [0m [90m 193 |[39m  
+       [33m.[39mpost([32
+m'/api/v1/auth/register'[3
+9m)
+     [90m 194 |[39m      
+   
+[33m.[39msend(userData)
+    
+[31m[1m>[22m[39m[90m 
+195 |[39m         [33m.[
+39mexpect([35m201[39m)[3
+3m;[39m
+     [90m     |[39m      
+    [31m[1m^[22m[39m
+     [90m 196 |[39m
+     [90m 197 |[39m      
+ testUser [33m=[39m respo
+nse[33m.[39mbody[33m.[3
+9mdata[33m.[39muser[33m;
+[39m
+     [90m 198 |[39m      
+ accessToken [33m=[39m re
+sponse[33m.[39mbody[33m.
+[39mdata[33m.[39mtokens
+[33m.[39maccessToken[33m;
+[39m[0m
+
+      at Object.expect 
+(tests/auth.test.js:195:10)
+      ----
+      at 
+Test._assertStatus (node_mo
+dules/supertest/lib/test.js
+:252:14)
+      at node_modules/super
+test/lib/test.js:308:13
+      at 
+Test._assertFunction (node_
+modules/supertest/lib/test.
+js:285:13)
+      at Test.assert (node_
+modules/supertest/lib/test.
+js:164:23)
+      at 
+Server.localAssert (node_mo
+dules/supertest/lib/test.js
+:120:14)
+
+  ΓùÅ Authentication Tests 
+ΓÇ║ POST 
+/api/v1/auth/login ΓÇ║ 
+should return 404 for 
+non-existent user
+
+    expected 201 
+"Created", got 409 
+"Conflict"
+
+    [0m [90m 193 |[39m  
+       [33m.[39mpost([32
+m'/api/v1/auth/register'[3
+9m)
+     [90m 194 |[39m      
+   
+[33m.[39msend(userData)
+    
+[31m[1m>[22m[39m[90m 
+195 |[39m         [33m.[
+39mexpect([35m201[39m)[3
+3m;[39m
+     [90m     |[39m      
+    [31m[1m^[22m[39m
+     [90m 196 |[39m
+     [90m 197 |[39m      
+ testUser [33m=[39m respo
+nse[33m.[39mbody[33m.[3
+9mdata[33m.[39muser[33m;
+[39m
+     [90m 198 |[39m      
+ accessToken [33m=[39m re
+sponse[33m.[39mbody[33m.
+[39mdata[33m.[39mtokens
+[33m.[39maccessToken[33m;
+[39m[0m
+
+      at Object.expect 
+(tests/auth.test.js:195:10)
+      ----
+      at 
+Test._assertStatus (node_mo
+dules/supertest/lib/test.js
+:252:14)
+      at node_modules/super
+test/lib/test.js:308:13
+      at 
+Test._assertFunction (node_
+modules/supertest/lib/test.
+js:285:13)
+      at Test.assert (node_
+modules/supertest/lib/test.
+js:164:23)
+      at 
+Server.localAssert (node_mo
+dules/supertest/lib/test.js
+:120:14)
+
+  ΓùÅ Authentication Tests 
+ΓÇ║ POST 
+/api/v1/auth/login ΓÇ║ 
+should return 400 for 
+missing email
+
+    expected 201 
+"Created", got 409 
+"Conflict"
+
+    [0m [90m 193 |[39m  
+       [33m.[39mpost([32
+m'/api/v1/auth/register'[3
+9m)
+     [90m 194 |[39m      
+   
+[33m.[39msend(userData)
+    
+[31m[1m>[22m[39m[90m 
+195 |[39m         [33m.[
+39mexpect([35m201[39m)[3
+3m;[39m
+     [90m     |[39m      
+    [31m[1m^[22m[39m
+     [90m 196 |[39m
+     [90m 197 |[39m      
+ testUser [33m=[39m respo
+nse[33m.[39mbody[33m.[3
+9mdata[33m.[39muser[33m;
+[39m
+     [90m 198 |[39m      
+ accessToken [33m=[39m re
+sponse[33m.[39mbody[33m.
+[39mdata[33m.[39mtokens
+[33m.[39maccessToken[33m;
+[39m[0m
+
+      at Object.expect 
+(tests/auth.test.js:195:10)
+      ----
+      at 
+Test._assertStatus (node_mo
+dules/supertest/lib/test.js
+:252:14)
+      at node_modules/super
+test/lib/test.js:308:13
+      at 
+Test._assertFunction (node_
+modules/supertest/lib/test.
+js:285:13)
+      at Test.assert (node_
+modules/supertest/lib/test.
+js:164:23)
+      at 
+Server.localAssert (node_mo
+dules/supertest/lib/test.js
+:120:14)
+
+  ΓùÅ Authentication Tests 
+ΓÇ║ POST 
+/api/v1/auth/login ΓÇ║ 
+should return 400 for 
+missing password
+
+    expected 201 
+"Created", got 409 
+"Conflict"
+
+    [0m [90m 193 |[39m  
+       [33m.[39mpost([32
+m'/api/v1/auth/register'[3
+9m)
+     [90m 194 |[39m      
+   
+[33m.[39msend(userData)
+    
+[31m[1m>[22m[39m[90m 
+195 |[39m         [33m.[
+39mexpect([35m201[39m)[3
+3m;[39m
+     [90m     |[39m      
+    [31m[1m^[22m[39m
+     [90m 196 |[39m
+     [90m 197 |[39m      
+ testUser [33m=[39m respo
+nse[33m.[39mbody[33m.[3
+9mdata[33m.[39muser[33m;
+[39m
+     [90m 198 |[39m      
+ accessToken [33m=[39m re
+sponse[33m.[39mbody[33m.
+[39mdata[33m.[39mtokens
+[33m.[39maccessToken[33m;
+[39m[0m
+
+      at Object.expect 
+(tests/auth.test.js:195:10)
+      ----
+      at 
+Test._assertStatus (node_mo
+dules/supertest/lib/test.js
+:252:14)
+      at node_modules/super
+test/lib/test.js:308:13
+      at 
+Test._assertFunction (node_
+modules/supertest/lib/test.
+js:285:13)
+      at Test.assert (node_
+modules/supertest/lib/test.
+js:164:23)
+      at 
+Server.localAssert (node_mo
+dules/supertest/lib/test.js
+:120:14)
+
+  ΓùÅ Authentication Tests 
+ΓÇ║ POST 
+/api/v1/auth/refresh ΓÇ║ 
+should refresh tokens with 
+valid refresh token
+
+    expected 200 "OK", got 
+404 "Not Found"
+
+    [0m [90m 313 |[39m  
+       [33m.[39mpost([32
+m'/api/v1/auth/refresh'[39
+m)
+     [90m 314 |[39m      
+   [33m.[39msend(refreshD
+ata)
+    
+[31m[1m>[22m[39m[90m 
+315 |[39m         [33m.[
+39mexpect([35m200[39m)[3
+3m;[39m
+     [90m     |[39m      
+    [31m[1m^[22m[39m
+     [90m 316 |[39m
+     [90m 317 |[39m      
+ expect(response[33m.[39m
+body[33m.[39msuccess)[33
+m.[39mtoBe([36mtrue[39m)
+[33m;[39m
+     [90m 318 |[39m      
+ expect(response[33m.[39m
+body[33m.[39mdata[33m.[
+39mtokens)[33m.[39mtoBeDe
+fined()[33m;[39m[0m
+
+      at Object.expect 
+(tests/auth.test.js:315:10)
+      ----
+      at 
+Test._assertStatus (node_mo
+dules/supertest/lib/test.js
+:252:14)
+      at node_modules/super
+test/lib/test.js:308:13
+      at 
+Test._assertFunction (node_
+modules/supertest/lib/test.
+js:285:13)
+      at Test.assert (node_
+modules/supertest/lib/test.
+js:164:23)
+      at 
+Server.localAssert (node_mo
+dules/supertest/lib/test.js
+:120:14)
+
+  ΓùÅ Authentication Tests 
+ΓÇ║ POST 
+/api/v1/auth/refresh ΓÇ║ 
+should return 401 for 
+expired refresh token
+
+    expected 201 
+"Created", got 409 
+"Conflict"
+
+    [0m [90m 298 |[39m  
+       [33m.[39mpost([32
+m'/api/v1/auth/register'[3
+9m)
+     [90m 299 |[39m      
+   
+[33m.[39msend(userData)
+    
+[31m[1m>[22m[39m[90m 
+300 |[39m         [33m.[
+39mexpect([35m201[39m)[3
+3m;[39m
+     [90m     |[39m      
+    [31m[1m^[22m[39m
+     [90m 301 |[39m
+     [90m 302 |[39m      
+ testUser [33m=[39m respo
+nse[33m.[39mbody[33m.[3
+9mdata[33m.[39muser[33m;
+[39m
+     [90m 303 |[39m      
+ accessToken [33m=[39m re
+sponse[33m.[39mbody[33m.
+[39mdata[33m.[39mtokens
+[33m.[39maccessToken[33m;
+[39m[0m
+
+      at Object.expect 
+(tests/auth.test.js:300:10)
+      ----
+      at 
+Test._assertStatus (node_mo
+dules/supertest/lib/test.js
+:252:14)
+      at node_modules/super
+test/lib/test.js:308:13
+      at 
+Test._assertFunction (node_
+modules/supertest/lib/test.
+js:285:13)
+      at Test.assert (node_
+modules/supertest/lib/test.
+js:164:23)
+      at 
+Server.localAssert (node_mo
+dules/supertest/lib/test.js
+:120:14)
+
+  ΓùÅ Authentication Tests 
+ΓÇ║ POST 
+/api/v1/auth/refresh ΓÇ║ 
+should return 401 for 
+invalid refresh token
+
+    expected 201 
+"Created", got 409 
+"Conflict"
+
+    [0m [90m 298 |[39m  
+       [33m.[39mpost([32
+m'/api/v1/auth/register'[3
+9m)
+     [90m 299 |[39m      
+   
+[33m.[39msend(userData)
+    
+[31m[1m>[22m[39m[90m 
+300 |[39m         [33m.[
+39mexpect([35m201[39m)[3
+3m;[39m
+     [90m     |[39m      
+    [31m[1m^[22m[39m
+     [90m 301 |[39m
+     [90m 302 |[39m      
+ testUser [33m=[39m respo
+nse[33m.[39mbody[33m.[3
+9mdata[33m.[39muser[33m;
+[39m
+     [90m 303 |[39m      
+ accessToken [33m=[39m re
+sponse[33m.[39mbody[33m.
+[39mdata[33m.[39mtokens
+[33m.[39maccessToken[33m;
+[39m[0m
+
+      at Object.expect 
+(tests/auth.test.js:300:10)
+      ----
+      at 
+Test._assertStatus (node_mo
+dules/supertest/lib/test.js
+:252:14)
+      at node_modules/super
+test/lib/test.js:308:13
+      at 
+Test._assertFunction (node_
+modules/supertest/lib/test.
+js:285:13)
+      at Test.assert (node_
+modules/supertest/lib/test.
+js:164:23)
+      at 
+Server.localAssert (node_mo
+dules/supertest/lib/test.js
+:120:14)
+
+  ΓùÅ Authentication Tests 
+ΓÇ║ POST 
+/api/v1/auth/refresh ΓÇ║ 
+should return 400 for 
+missing refresh token
+
+    expected 201 
+"Created", got 409 
+"Conflict"
+
+    [0m [90m 298 |[39m  
+       [33m.[39mpost([32
+m'/api/v1/auth/register'[3
+9m)
+     [90m 299 |[39m      
+   
+[33m.[39msend(userData)
+    
+[31m[1m>[22m[39m[90m 
+300 |[39m         [33m.[
+39mexpect([35m201[39m)[3
+3m;[39m
+     [90m     |[39m      
+    [31m[1m^[22m[39m
+     [90m 301 |[39m
+     [90m 302 |[39m      
+ testUser [33m=[39m respo
+nse[33m.[39mbody[33m.[3
+9mdata[33m.[39muser[33m;
+[39m
+     [90m 303 |[39m      
+ accessToken [33m=[39m re
+sponse[33m.[39mbody[33m.
+[39mdata[33m.[39mtokens
+[33m.[39maccessToken[33m;
+[39m[0m
+
+      at Object.expect 
+(tests/auth.test.js:300:10)
+      ----
+      at 
+Test._assertStatus (node_mo
+dules/supertest/lib/test.js
+:252:14)
+      at node_modules/super
+test/lib/test.js:308:13
+      at 
+Test._assertFunction (node_
+modules/supertest/lib/test.
+js:285:13)
+      at Test.assert (node_
+modules/supertest/lib/test.
+js:164:23)
+      at 
+Server.localAssert (node_mo
+dules/supertest/lib/test.js
+:120:14)
+
+  ΓùÅ Authentication Tests 
+ΓÇ║ POST 
+/api/v1/auth/logout ΓÇ║ 
+should logout successfully 
+with valid refresh token
+
+    TypeError: Cannot read 
+properties of null 
+(reading 'message')
+
+    [0m [90m 411 |[39m
+     [90m 412 |[39m      
+ expect(response[33m.[39m
+body[33m.[39msuccess)[33
+m.[39mtoBe([36mtrue[39m)
+[33m;[39m
+    
+[31m[1m>[22m[39m[90m 
+413 |[39m       expect(res
+ponse[33m.[39mbody[33m.
+[39mdata[33m.[39mmessage)
+[33m.[39mtoContain([32m'
+Logged out successfully'[3
+9m)[33m;[39m
+     [90m     |[39m      
+                           
+[31m[1m^[22m[39m
+     [90m 414 |[39m
+     [90m 415 |[39m      
+ [90m// Try to use the 
+refresh token again - 
+should fail[39m
+     [90m 416 |[39m      
+ [36mconst[39m 
+refreshResponse 
+[33m=[39m 
+[36mawait[39m 
+request(app)[0m
+
+      at Object.message 
+(tests/auth.test.js:413:33)
+
+  ΓùÅ Authentication Tests 
+ΓÇ║ POST 
+/api/v1/auth/logout ΓÇ║ 
+should return 401 for 
+invalid refresh token
+
+    expected 201 
+"Created", got 409 
+"Conflict"
+
+    [0m [90m 393 |[39m  
+       [33m.[39mpost([32
+m'/api/v1/auth/register'[3
+9m)
+     [90m 394 |[39m      
+   
+[33m.[39msend(userData)
+    
+[31m[1m>[22m[39m[90m 
+395 |[39m         [33m.[
+39mexpect([35m201[39m)[3
+3m;[39m
+     [90m     |[39m      
+    [31m[1m^[22m[39m
+     [90m 396 |[39m
+     [90m 397 |[39m      
+ testUser [33m=[39m respo
+nse[33m.[39mbody[33m.[3
+9mdata[33m.[39muser[33m;
+[39m
+     [90m 398 |[39m      
+ accessToken [33m=[39m re
+sponse[33m.[39mbody[33m.
+[39mdata[33m.[39mtokens
+[33m.[39maccessToken[33m;
+[39m[0m
+
+      at Object.expect 
+(tests/auth.test.js:395:10)
+      ----
+      at 
+Test._assertStatus (node_mo
+dules/supertest/lib/test.js
+:252:14)
+      at node_modules/super
+test/lib/test.js:308:13
+      at 
+Test._assertFunction (node_
+modules/supertest/lib/test.
+js:285:13)
+      at Test.assert (node_
+modules/supertest/lib/test.
+js:164:23)
+      at 
+Server.localAssert (node_mo
+dules/supertest/lib/test.js
+:120:14)
+
+Test Suites: 1 failed, 1 
+total
+Tests:       11 failed, 5 
+passed, 16 total
+Snapshots:   0 total
+Time:        9.887 s, 
+estimated 11 s
+Ran all test suites 
+matching 
+/tests\\auth.test.js/i.

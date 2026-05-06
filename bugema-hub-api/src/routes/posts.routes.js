@@ -2,7 +2,7 @@ const express = require('express');
 const { body, param, query } = require('express-validator');
 const postsController = require('../controllers/posts.controller');
 const { verifyToken, optionalAuth } = require('../middleware/auth');
-const { requireVerified } = require('../middleware/role');
+const { requireVerified, requireMember } = require('../middleware/role');
 const { upload } = require('../middleware/upload');
 const { handleValidationErrors } = require('../middleware/validate');
 
@@ -12,6 +12,7 @@ const router = express.Router();
 router.post('/',
   verifyToken,
   requireVerified,
+  requireMember,
   upload.array('images', 5),
   [
     body('title').isLength({ min: 5, max: 200 }).trim()

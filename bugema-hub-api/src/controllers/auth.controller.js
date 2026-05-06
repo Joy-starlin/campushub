@@ -9,12 +9,17 @@ const { successResponse, errorResponse, createdResponse } = require('../utils/re
 
 const register = async (req, res) => {
   try {
-    const { email, password, firstName, lastName, country, university, course, year, phone } = req.body;
+    const { email, password, firstName, lastName, country, university, course, year, phone, username } = req.body;
 
     // Check if user already exists in Firestore
     const existingUsers = await getCollection(USERS, [['email', '==', email]]);
     if (existingUsers.length > 0) {
-      return errorResponse(res, 'Email is already registered', 409);
+      return errorResponse(res, 'Email already exists', 409, 'EMAIL_EXISTS');
+    }
+
+    // Basic validation for required fields
+    if (!email || !password || !firstName || !lastName || !username) {
+      return errorResponse(res, 'Registration validation failed: Missing required fields', 400, 'VALIDATION_ERROR');
     }
 
     // Hash password
@@ -41,6 +46,7 @@ const register = async (req, res) => {
       email,
       firstName,
       lastName,
+      username,
       country,
       university,
       course,
@@ -90,14 +96,21 @@ const register = async (req, res) => {
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
+        username: user.username,
+        university: user.university,
+        country: user.country,
+        course: user.course,
+        year: user.year,
         role: user.role,
         plan: user.plan,
         isVerified: user.isVerified,
         verifiedStudent: user.verifiedStudent,
         points: user.points
       },
-      accessToken: tokens.accessToken,
-      refreshToken: tokens.refreshToken
+      tokens: {
+        accessToken: tokens.accessToken,
+        refreshToken: tokens.refreshToken
+      }
     }, 'User registered successfully');
 
   } catch (error) {
@@ -142,8 +155,10 @@ const login = async (req, res) => {
         verifiedStudent: user.verifiedStudent,
         points: user.points
       },
-      accessToken: tokens.accessToken,
-      refreshToken: tokens.refreshToken
+      tokens: {
+        accessToken: tokens.accessToken,
+        refreshToken: tokens.refreshToken
+      }
     }, 'Login successful');
 
   } catch (error) {

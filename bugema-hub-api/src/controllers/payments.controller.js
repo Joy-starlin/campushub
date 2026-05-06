@@ -450,6 +450,63 @@ const handlePaymentFailed = async (invoice) => {
   }
 };
 
+/**
+ * Handle Flutterwave Webhook
+ */
+const handleFlutterwaveWebhook = async (req, res) => {
+  try {
+    const secretHash = process.env.FLW_SECRET_HASH;
+    const signature = req.headers['verif-hash'];
+
+    if (!signature || (secretHash && signature !== secretHash)) {
+      // This request isn't from Flutterwave; discard it.
+      return res.status(401).end();
+    }
+
+    const payload = req.body;
+    
+    if (payload.event === 'charge.completed') {
+      const { tx_ref, status, id, amount, currency, customer } = payload.data;
+      
+      if (status === 'successful') {
+        // Find transaction in our DB
+        const transactions = await getCollection(PAYMENTS, [
+          ['referenceId', '==', tx_ref]
+        ]);
+
+        if (transactions.length > 0) {
+          const transaction = transactions[0];
+          
+          if (transaction.status !== 'completed') {
+            // Update transaction status
+            await updateDoc(PAYMENTS, transaction.id, {
+              status: 'completed',
+              flw_id: id,
+              updatedAt: new Date().toISOString()
+            });
+
+            // Upgrade user plan
+            await upgradePlan(transaction.userId, transaction.plan, {
+              paymentMethod: transaction.paymentMethod,
+              paymentId: id.toString(),
+              amount,
+              currency
+            });
+
+            console.log(`Webhhok: Upgraded user ${transaction.userId} via Flutterwave`);
+          }
+        }
+      }
+    }
+
+    res.status(200).end();
+
+  } catch (error) {
+    console.error('Flutterwave Webhook Error:', error);
+    res.status(500).end();
+  }
+};
+
 module.exports = {
   createStripeCheckoutSession,
   handleStripeWebhook,
@@ -460,5 +517,6 @@ module.exports = {
   getPaymentHistory,
   getSubscription,
   cancelUserSubscription,
-  getCurrencyExchangeRate
+  getCurrencyExchangeRate,
+  handleFlutterwaveWebhook
 };

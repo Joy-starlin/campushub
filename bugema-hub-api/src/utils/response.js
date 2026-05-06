@@ -9,7 +9,7 @@ const successResponse = (res, data = null, message = 'Success', statusCode = 200
 };
 
 // Standard error response
-const errorResponse = (res, error, statusCode = 500) => {
+const errorResponse = (res, error, statusCode = 500, code = null) => {
   const response = {
     success: false,
     timestamp: new Date().toISOString()
@@ -17,10 +17,18 @@ const errorResponse = (res, error, statusCode = 500) => {
 
   if (typeof error === 'string') {
     response.error = error;
-  } else if (error.code && error.message) {
+  } else if (error.message) {
     response.error = error.message;
+    if (error.code && !code) code = error.code;
   } else {
     response.error = 'An internal server error occurred';
+  }
+
+  if (code) {
+    response.error = {
+      message: typeof response.error === 'string' ? response.error : response.error.message,
+      code
+    };
   }
 
   return res.status(statusCode).json(response);

@@ -17,6 +17,7 @@ const {
 const { emailService } = require('./email.service');
 const { smsService } = require('./sms.service');
 const axios = require('axios');
+const flutterwaveService = require('./flutterwave.service');
 
 // Plan configurations
 const PLANS = {
@@ -96,6 +97,9 @@ const processMTNPayment = async (phone, amount, currency, plan, userId) => {
       throw new Error('Invalid plan');
     }
 
+    const user = await getDoc(USERS, userId);
+    if (!user) throw new Error('User not found');
+
     // Create transaction record
     const transaction = await createDoc(PAYMENTS, {
       userId,
@@ -110,23 +114,18 @@ const processMTNPayment = async (phone, amount, currency, plan, userId) => {
       createdAt: new Date().toISOString()
     });
 
-    // Call MTN Collections API
-    const mtnResponse = await callMTNAPI({
-      amount: amount.toString(),
+    // Call Flutterwave for MoMo Payment
+    const flwResponse = await flutterwaveService.initiateMobileMoneyPayment({
+      amount,
       currency,
-      externalId: transaction.id,
-      payer: {
-        partyIdType: 'MSISDN',
-        partyId: phone
-      },
-      payeeNote: `Bugema Hub ${planConfig.name} subscription`,
-      payerMessage: 'Payment for Bugema Hub subscription'
+      email: user.email,
+      tx_ref: transaction.referenceId,
+      phone_number: phone,
+      network: 'MTN',
+      fullname: `${user.firstName} ${user.lastName}`
     });
 
-    if (mtnResponse.success) {
-      // Start polling for payment status
-      pollMTNStatus(transaction.id, userId, plan);
-      
+    if (flwResponse.success) {
       return {
         success: true,
         transactionId: transaction.id,
@@ -135,13 +134,13 @@ const processMTNPayment = async (phone, amount, currency, plan, userId) => {
     } else {
       await updateDoc(PAYMENTS, transaction.id, {
         status: 'failed',
-        error: mtnResponse.error,
+        error: flwResponse.error,
         updatedAt: new Date().toISOString()
       });
 
       return {
         success: false,
-        error: mtnResponse.error
+        error: flwResponse.error
       };
     }
   } catch (error) {
@@ -161,6 +160,9 @@ const processAirtelPayment = async (phone, amount, currency, plan, userId) => {
       throw new Error('Invalid plan');
     }
 
+    const user = await getDoc(USERS, userId);
+    if (!user) throw new Error('User not found');
+
     // Create transaction record
     const transaction = await createDoc(PAYMENTS, {
       userId,
@@ -175,35 +177,34 @@ const processAirtelPayment = async (phone, amount, currency, plan, userId) => {
       createdAt: new Date().toISOString()
     });
 
-    // Call Airtel Collections API
-    const airtelResponse = await callAirtelAPI({
-      amount: amount.toString(),
+    // Call Flutterwave for MoMo Payment
+    const flwResponse = await flutterwaveService.initiateMobileMoneyPayment({
+      amount,
       currency,
-      externalId: transaction.id,
-      payer: {
-        partyIdType: 'MSISDN',
-        partyId: phone
-      },
-      payeeNote: `Bugema Hub ${planConfig.name} subscription`,
-      payerMessage: 'Payment for Bugema Hub subscription'
+      email: user.email,
+      tx_ref: transaction.referenceId,
+      phone_number: phone,
+      network: 'AIRTEL',
+      fullname: `${user.firstName} ${user.lastName}`
     });
 
-    if (airtelResponse.success) {
+    if (flwResponse.success) {
       return {
         success: true,
         transactionId: transaction.id,
-        status: 'pending'
+        status: 'pending',
+        flw_ref: flwResponse.data.flw_ref
       };
     } else {
       await updateDoc(PAYMENTS, transaction.id, {
         status: 'failed',
-        error: airtelResponse.error,
+        error: flwResponse.error,
         updatedAt: new Date().toISOString()
       });
 
       return {
         success: false,
-        error: airtelResponse.error
+        error: flwResponse.error
       };
     }
   } catch (error) {
@@ -491,44 +492,6 @@ const generateTransactionId = () => {
   return 'TXN' + Date.now() + Math.random().toString(36).substr(2, 9).toUpperCase();
 };
 
-const callMTNAPI = async (data) => {
-  try {
-    // TODO: Implement actual MTN API call
-    // This is a placeholder implementation
-    console.log('MTN API Call:', data);
-    
-    // Simulate API response
-    return {
-      success: true,
-      transactionId: data.externalId
-    };
-  } catch (error) {
-    return {
-      success: false,
-      error: error.message
-    };
-  }
-};
-
-const callAirtelAPI = async (data) => {
-  try {
-    // TODO: Implement actual Airtel API call
-    // This is a placeholder implementation
-    console.log('Airtel API Call:', data);
-    
-    // Simulate API response
-    return {
-      success: true,
-      transactionId: data.externalId
-    };
-  } catch (error) {
-    return {
-      success: false,
-      error: error.message
-    };
-  }
-};
-
 const pollMTNStatus = async (transactionId, userId, plan) => {
   try {
     const maxAttempts = 24; // 2 minutes with 5-second intervals
@@ -537,41 +500,11 @@ const pollMTNStatus = async (transactionId, userId, plan) => {
     const poll = async () => {
       attempts++;
       
-      // TODO: Call MTN API to check status
-      const status = 'completed'; // Simulate successful payment
-      
-      if (status === 'completed') {
-        await updateDoc(PAYMENTS, transactionId, {
-          status: 'completed',
-          completedAt: new Date().toISOString()
-        });
-
-        await upgradePlan(userId, plan, {
-          paymentMethod: 'mtn_momo',
-          paymentId: transactionId,
-          amount: PLANS[plan].price,
-          currency: PLANS[plan].currency
-        });
-
-        // Send SMS confirmation
-        const user = await getDoc(USERS, userId);
-        if (user && user.phone) {
-          await smsService.sendSMS({
-            to: user.phone,
-            message: `Payment successful! You have been upgraded to ${PLANS[plan].name} plan.`
-          });
-        }
-      } else if (status === 'failed' || attempts >= maxAttempts) {
-        await updateDoc(PAYMENTS, transactionId, {
-          status: 'failed',
-          failedAt: new Date().toISOString()
-        });
-      } else {
-        setTimeout(poll, 5000); // Poll again in 5 seconds
-      }
+      // TODO: Implement actual polling if Flutterwave webhooks are not available
+      // For now we rely on the webhook
     };
 
-    setTimeout(poll, 5000); // Start polling after 5 seconds
+    setTimeout(poll, 5000); 
   } catch (error) {
     console.error('Error polling MTN status:', error);
   }

@@ -15,9 +15,6 @@ const requiredEnvVars = [
   'CLOUDINARY_API_SECRET',
   'EMAIL_HOST',
   'EMAIL_PORT',
-  'AT_API_KEY',
-  'AT_USERNAME',
-  'STRIPE_SECRET_KEY',
   'RATE_LIMIT_WINDOW_MS',
   'RATE_LIMIT_MAX'
 ];
@@ -85,6 +82,12 @@ const AIRTEL_BASE_URL = process.env.AIRTEL_BASE_URL || 'https://openapi.airtel.a
 const AIRTEL_CLIENT_ID = process.env.AIRTEL_CLIENT_ID;
 const AIRTEL_CLIENT_SECRET = process.env.AIRTEL_CLIENT_SECRET;
 
+// Flutterwave Configuration
+const FLW_PUBLIC_KEY = process.env.FLW_PUBLIC_KEY;
+const FLW_SECRET_KEY = process.env.FLW_SECRET_KEY;
+const FLW_ENCRYPTION_KEY = process.env.FLW_ENCRYPTION_KEY;
+const FLW_SECRET_HASH = process.env.FLW_SECRET_HASH;
+
 // Africa's Talking SMS Configuration
 const AT_SMS_FROM = process.env.AT_SMS_FROM || 'BugemaHub';
 
@@ -132,6 +135,7 @@ if (DEBUG) {
   console.log(`   - Email: ${isEmailConfigured ? '✅ Configured' : '❌ Not configured'}`);
   console.log(`   - SMS: ${isSmsConfigured ? '✅ Configured' : '❌ Not configured'}`);
   console.log(`   - Stripe: ${isStripeConfigured ? '✅ Configured' : '❌ Not configured'}`);
+  console.log(`   - Flutterwave: ${!!FLW_SECRET_KEY ? '✅ Configured' : '❌ Not configured'}`);
   console.log(`   - MTN Money: ${isMtnMoneyConfigured ? '✅ Configured' : '❌ Not configured'}`);
   console.log(`   - Airtel Money: ${isAirtelMoneyConfigured ? '✅ Configured' : '❌ Not configured'}`);
 }
@@ -253,6 +257,10 @@ module.exports = {
   AIRTEL_BASE_URL,
   AIRTEL_CLIENT_ID,
   AIRTEL_CLIENT_SECRET,
+  FLW_PUBLIC_KEY,
+  FLW_SECRET_KEY,
+  FLW_ENCRYPTION_KEY,
+  FLW_SECRET_HASH,
   RATE_LIMIT_WINDOW_MS,
   RATE_LIMIT_MAX,
   MAX_FILE_SIZE,

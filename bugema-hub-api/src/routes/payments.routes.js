@@ -44,8 +44,36 @@ router.get('/user/:userId',
   paymentsController.getPaymentHistory
 );
 
+// Request MTN MoMo payment
+router.post('/momo/request',
+  verifyToken,
+  [
+    body('phone').notEmpty().matches(/^2567\d{8}$/).withMessage('Invalid phone number format. Use 2567XXXXXXXX'),
+    body('amount').isNumeric(),
+    body('currency').isIn(['UGX']),
+    body('plan').notEmpty()
+  ],
+  handleValidationErrors,
+  paymentsController.requestMTNPayment
+);
 
+// Get MTN transaction status
+router.get('/momo/status/:transactionId',
+  verifyToken,
+  paymentsController.getMTNTransactionStatus
+);
 
-
+// Request Airtel Money payment
+router.post('/airtel/request',
+  verifyToken,
+  [
+    body('phone').notEmpty().matches(/^2567\d{8}$/).withMessage('Invalid phone number format. Use 2567XXXXXXXX'),
+    body('amount').isNumeric(),
+    body('currency').isIn(['UGX']),
+    body('plan').notEmpty()
+  ],
+  handleValidationErrors,
+  paymentsController.requestAirtelPayment
+);
 
 module.exports = router;

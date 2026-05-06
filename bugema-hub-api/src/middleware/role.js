@@ -123,7 +123,11 @@ const requireMember = (req, res, next) => {
     return errorResponse(res, 'Authentication required', 401);
   }
 
-  // All authenticated users have member access by default
+  // Check if user has a paid plan
+  if (req.user.plan === 'free' || !req.user.plan) {
+    return errorResponse(res, 'Only paid members can access this feature. Please upgrade your plan.', 403);
+  }
+
   next();
 };
 

@@ -1,7 +1,9 @@
 const rateLimit = require('express-rate-limit');
 
 // General rate limiter for all requests
-const generalLimiter = rateLimit({
+const isTest = process.env.NODE_ENV === 'test';
+
+const generalLimiter = isTest ? (req, res, next) => next() : rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 1000, // Limit each IP to 1000 requests per windowMs
   message: {
@@ -13,7 +15,7 @@ const generalLimiter = rateLimit({
 });
 
 // Strict rate limiter for authentication endpoints
-const authLimiter = rateLimit({
+const authLimiter = isTest ? (req, res, next) => next() : rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 5, // Limit each IP to 5 requests per windowMs
   message: {
@@ -25,7 +27,7 @@ const authLimiter = rateLimit({
 });
 
 // Rate limiter for file uploads
-const uploadLimiter = rateLimit({
+const uploadLimiter = isTest ? (req, res, next) => next() : rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
   max: 20, // Limit each IP to 20 uploads per hour
   message: {

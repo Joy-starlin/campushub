@@ -13,28 +13,92 @@ try {
   // Check if we're using test credentials
   if (FIREBASE_PRIVATE_KEY === 'fake-private-key-for-testing') {
     console.log('🧪 Running in test mode with mock Firebase');
-    // Create mock Firebase services for testing
-    db = {
-      collection: () => ({
-        doc: () => ({
-          get: () => Promise.resolve({ exists: false, data: () => ({}) }),
-          set: () => Promise.resolve(),
-          update: () => Promise.resolve(),
-          delete: () => Promise.resolve()
+    
+    // Simple in-memory store for mock
+    const store = {
+      users: new Map()
+    };
+
+    const mockDoc = (collection, id) => ({
+      get: () => {
+        const data = store[collection]?.get(id);
+        return Promise.resolve({ 
+          exists: !!data,
+          id,
+          data: () => data || null 
+        });
+      },
+      set: (data) => {
+        if (!store[collection]) store[collection] = new Map();
+        store[collection].set(id, data);
+        return Promise.resolve();
+      },
+      update: (data) => {
+        const existing = store[collection]?.get(id) || {};
+        store[collection].set(id, { ...existing, ...data });
+        return Promise.resolve();
+      },
+      delete: () => {
+        store[collection]?.delete(id);
+        return Promise.resolve();
+      }
+    });
+
+    const mockQuery = (collection) => {
+      let filteredDocs = Array.from(store[collection]?.values() || []);
+      
+      const query = {
+        where: (field, op, value) => {
+          filteredDocs = filteredDocs.filter(doc => {
+            if (op === '==') return doc[field] === value;
+            if (op === '>=') return doc[field] >= value;
+            if (op === '<=') return doc[field] <= value;
+            return true;
+          });
+          return query;
+        },
+        limit: () => query,
+        orderBy: () => query,
+        startAfter: () => query,
+        get: () => Promise.resolve({ 
+          docs: filteredDocs.map(d => ({ id: d.uid || 'mock-id', data: () => d })),
+          size: filteredDocs.length,
+          forEach: (cb) => filteredDocs.forEach(d => cb({ id: d.uid || 'mock-id', data: () => d }))
         }),
-        get: () => Promise.resolve({ docs: [] }),
-        add: () => Promise.resolve({ id: 'mock-id' }),
-        where: () => ({
-          get: () => Promise.resolve({ docs: [] }),
-          limit: () => ({ get: () => Promise.resolve({ docs: [] }) })
-        })
+        add: (data) => {
+          const id = 'mock-' + Math.random().toString(36).substr(2, 9);
+          if (!store[collection]) store[collection] = new Map();
+          store[collection].set(id, data);
+          return Promise.resolve({
+            id,
+            get: () => Promise.resolve({
+              id,
+              data: () => data
+            })
+          });
+        },
+        doc: (id) => mockDoc(collection, id)
+      };
+      return query;
+    };
+
+    db = {
+      collection: (name) => mockQuery(name),
+      batch: () => ({
+        set: () => {},
+        update: () => {},
+        delete: () => {},
+        commit: () => Promise.resolve()
       })
     };
     auth = {
-      createUser: () => Promise.resolve({ uid: 'mock-user-id' }),
-      getUser: () => Promise.resolve(null),
+      createUser: (data) => {
+        const uid = data.uid || 'mock-user-' + Math.random().toString(36).substr(2, 9);
+        return Promise.resolve({ uid, ...data });
+      },
+      getUser: (uid) => Promise.resolve({ uid, email: 'mock@example.com' }),
       deleteUser: () => Promise.resolve(),
-      verifyIdToken: () => Promise.resolve({ uid: 'mock-user-id' })
+      verifyIdToken: (token) => Promise.resolve({ uid: 'mock-user-id', email: 'test@example.com' })
     };
     storage = {
       bucket: () => ({
