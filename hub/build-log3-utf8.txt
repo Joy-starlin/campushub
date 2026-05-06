@@ -1,0 +1,351 @@
+﻿
+> hub@0.1.0 build
+> next build
+
+node.exe : ΓÜá Warning: 
+Next.js inferred your 
+workspace root, but it may 
+not be correct.
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (ΓÜá  
+   Warning: Ne...not be    
+ correct.:String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+ We detected multiple 
+lockfiles and selected the 
+directory of D:\CampusHub\p
+ackage-lock.json as the 
+root directory.
+ To silence this warning, 
+set `turbopack.root` in 
+your Next.js config, or 
+consider removing one of 
+the lockfiles if it's not 
+needed.
+   See https://nextjs.org/d
+ocs/app/api-reference/confi
+g/next-config-js/turbopack#
+root-directory for more 
+information.
+ Detected additional 
+lockfiles: 
+   * D:\CampusHub\hub\packa
+ge-lock.json
+
+Γû▓ Next.js 16.2.4 (Turbopack)
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build 
+failed with 2 errors:
+./hub/app/components/Alumni
+Profile.tsx:5:1
+Export Linkedin doesn't 
+exist in target module
+  [90m 3 |[0m 
+[36mimport[0m { useState 
+} [36mfrom[0m 
+[32m'react'[0m
+  [90m 4 |[0m 
+[36mimport[0m { motion } 
+[36mfrom[0m 
+[32m'framer-motion'[0m
+[31m[1m>[0m [90m 5 
+|[0m [36mimport[0m { 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 6 
+|[0m   [33mUser[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 7 
+|[0m   [33mCalendar[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 8 
+|[0m   
+[33mBriefcase[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 9 
+|[0m   [33mMapPin[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^[0m
+[31m[1m>[0m [90m10 
+|[0m   [33mMail[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m11 
+|[0m   [33mPhone[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m12 
+|[0m   [33mLinkedin[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 
+|[0m   [33mGlobe[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m14 
+|[0m   [33mAward[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m15 
+|[0m   [33mBookOpen[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m16 
+|[0m   [33mUsers[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m17 
+|[0m   
+[33mMessageSquare[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m18 
+|[0m   [33mUserPlus[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m19 
+|[0m   [33mClock[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m20 
+|[0m   
+[33mCheckCircle[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m21 
+|[0m   [33mEdit[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m22 
+|[0m   [33mSend[0m
+  [90m   |[0m 
+[31m[1m^^^^^^[0m
+[31m[1m>[0m [90m23 
+|[0m } [36mfrom[0m 
+[32m'lucide-react'[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^[0m
+  [90m24 |[0m 
+[36mimport[0m { 
+[33mAlumni[0m, [33mMento
+rshipRequest[0m, [33mAlum
+niAchievement[0m, 
+[33mAlumniPost[0m, 
+[33mAlumniJob[0m } 
+[36mfrom[0m 
+[32m'../ty...[0m
+  [90m25 |[0m 
+[36mimport[0m { 
+[33mResponsiveButton[0m 
+} [36mfrom[0m 
+[32m'./ResponsiveForm'[0m
+  [90m26 |[0m
+
+The export Linkedin was 
+not found in module [projec
+t]/node_modules/lucide-reac
+t/dist/esm/lucide-react.js 
+[app-client] (ecmascript).
+Did you mean to import 
+Link?
+All exports of the module 
+are statically known (It 
+doesn't have dynamic 
+exports). So it's known 
+statically that the 
+requested export doesn't 
+exist.
+
+Import traces:
+  Client Component Browser:
+    ./hub/app/components/Al
+umniProfile.tsx [Client 
+Component Browser]
+    
+./hub/app/alumni/page.tsx 
+[Client Component Browser]
+    
+./hub/app/alumni/page.tsx 
+[Server Component]
+
+  Client Component SSR:
+    ./hub/app/components/Al
+umniProfile.tsx [Client 
+Component SSR]
+    
+./hub/app/alumni/page.tsx 
+[Client Component SSR]
+    
+./hub/app/alumni/page.tsx 
+[Server Component]
+
+
+./hub/app/components/Alumni
+Profile.tsx:5:1
+Export Linkedin doesn't 
+exist in target module
+  [90m 3 |[0m 
+[36mimport[0m { useState 
+} [36mfrom[0m 
+[32m'react'[0m
+  [90m 4 |[0m 
+[36mimport[0m { motion } 
+[36mfrom[0m 
+[32m'framer-motion'[0m
+[31m[1m>[0m [90m 5 
+|[0m [36mimport[0m { 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 6 
+|[0m   [33mUser[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 7 
+|[0m   [33mCalendar[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 8 
+|[0m   
+[33mBriefcase[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 9 
+|[0m   [33mMapPin[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^[0m
+[31m[1m>[0m [90m10 
+|[0m   [33mMail[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m11 
+|[0m   [33mPhone[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m12 
+|[0m   [33mLinkedin[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 
+|[0m   [33mGlobe[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m14 
+|[0m   [33mAward[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m15 
+|[0m   [33mBookOpen[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m16 
+|[0m   [33mUsers[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m17 
+|[0m   
+[33mMessageSquare[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m18 
+|[0m   [33mUserPlus[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m19 
+|[0m   [33mClock[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m20 
+|[0m   
+[33mCheckCircle[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m21 
+|[0m   [33mEdit[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m22 
+|[0m   [33mSend[0m
+  [90m   |[0m 
+[31m[1m^^^^^^[0m
+[31m[1m>[0m [90m23 
+|[0m } [36mfrom[0m 
+[32m'lucide-react'[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^[0m
+  [90m24 |[0m 
+[36mimport[0m { 
+[33mAlumni[0m, [33mMento
+rshipRequest[0m, [33mAlum
+niAchievement[0m, 
+[33mAlumniPost[0m, 
+[33mAlumniJob[0m } 
+[36mfrom[0m 
+[32m'../ty...[0m
+  [90m25 |[0m 
+[36mimport[0m { 
+[33mResponsiveButton[0m 
+} [36mfrom[0m 
+[32m'./ResponsiveForm'[0m
+  [90m26 |[0m
+
+The export Linkedin was 
+not found in module [projec
+t]/node_modules/lucide-reac
+t/dist/esm/lucide-react.js 
+[app-ssr] (ecmascript).
+Did you mean to import 
+Link?
+All exports of the module 
+are statically known (It 
+doesn't have dynamic 
+exports). So it's known 
+statically that the 
+requested export doesn't 
+exist.
+
+Import traces:
+  Client Component Browser:
+    ./hub/app/components/Al
+umniProfile.tsx [Client 
+Component Browser]
+    
+./hub/app/alumni/page.tsx 
+[Client Component Browser]
+    
+./hub/app/alumni/page.tsx 
+[Server Component]
+
+  Client Component SSR:
+    ./hub/app/components/Al
+umniProfile.tsx [Client 
+Component SSR]
+    
+./hub/app/alumni/page.tsx 
+[Client Component SSR]
+    
+./hub/app/alumni/page.tsx 
+[Server Component]
+
+
+    at <unknown> (./hub/app
+/components/AlumniProfile.t
+sx:5:1)
+    at <unknown> (./hub/app
+/components/AlumniProfile.t
+sx:5:1)

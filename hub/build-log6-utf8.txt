@@ -1,0 +1,93 @@
+﻿
+> hub@0.1.0 build
+> next build
+
+node.exe : ΓÜá Warning: 
+Next.js inferred your 
+workspace root, but it may 
+not be correct.
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (ΓÜá  
+   Warning: Ne...not be    
+ correct.:String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+ We detected multiple 
+lockfiles and selected the 
+directory of D:\CampusHub\p
+ackage-lock.json as the 
+root directory.
+ To silence this warning, 
+set `turbopack.root` in 
+your Next.js config, or 
+consider removing one of 
+the lockfiles if it's not 
+needed.
+   See https://nextjs.org/d
+ocs/app/api-reference/confi
+g/next-config-js/turbopack#
+root-directory for more 
+information.
+ Detected additional 
+lockfiles: 
+   * D:\CampusHub\hub\packa
+ge-lock.json
+
+Γû▓ Next.js 16.2.4 (Turbopack)
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 30.2s
+  Running TypeScript ...
+Failed to type check.
+
+.next/dev/types/validator.t
+s:9:42
+Type error: Cannot find 
+name 'Promise'. Do you 
+need to change your target 
+library? Try changing the 
+'lib' compiler option to 
+'es2015' or later.
+
+  [90m 7 |[0m
+  [90m 8 |[0m 
+[36mtype[0m [33mAppPageC
+onfig[0m<[33mRoute[0m 
+[36mextends[0m 
+[33mAppRoutes[0m = 
+[33mAppRoutes[0m> = {
+[31m[1m>[0m [90m 9 
+|[0m   [36mdefault[0m: 
+[33mReact[0m.[33mComponen
+tType[0m<{ params: [33mPr
+omise[0m<[33mParamMap[0m
+[[33mRoute[0m]> } & any> 
+| ((props: { pa...
+  [90m   |[0m            
+                           
+   [31m[1m^[0m
+  [90m10 |[0m   
+generateStaticParams?: 
+(props: { params: [33mPara
+mMap[0m[[33mRoute[0m] 
+}) => 
+[33mPromise[0m<any[]> | 
+any[]
+  [90m11 |[0m   
+generateMetadata?: (
+  [90m12 |[0m     props: 
+{ params: [33mPromise[0m<
+[33mParamMap[0m[[33mRout
+e[0m]> } & any,
+Next.js build worker 
+exited with code: 1 and 
+signal: null

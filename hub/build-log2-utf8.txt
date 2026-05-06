@@ -1,0 +1,1183 @@
+﻿
+> hub@0.1.0 build
+> next build
+
+node.exe : ΓÜá Warning: 
+Next.js inferred your 
+workspace root, but it may 
+not be correct.
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (ΓÜá  
+   Warning: Ne...not be    
+ correct.:String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+ We detected multiple 
+lockfiles and selected the 
+directory of D:\CampusHub\p
+ackage-lock.json as the 
+root directory.
+ To silence this warning, 
+set `turbopack.root` in 
+your Next.js config, or 
+consider removing one of 
+the lockfiles if it's not 
+needed.
+   See https://nextjs.org/d
+ocs/app/api-reference/confi
+g/next-config-js/turbopack#
+root-directory for more 
+information.
+ Detected additional 
+lockfiles: 
+   * D:\CampusHub\hub\packa
+ge-lock.json
+
+Γû▓ Next.js 16.2.4 (Turbopack)
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build 
+failed with 10 errors:
+./hub/app/study-groups/page
+.tsx:18:1
+Module not found: Can't 
+resolve 
+'./ResponsiveContainer'
+  [90m16 |[0m 
+[36mimport[0m 
+[33mStudyGroupDetail[0m 
+[36mfrom[0m [32m'../comp
+onents/StudyGroupDetail'[0
+m
+  [90m17 |[0m 
+[36mimport[0m 
+[33mSmartMatching[0m 
+[36mfrom[0m [32m'../comp
+onents/SmartMatching'[0m
+[31m[1m>[0m [90m18 
+|[0m [36mimport[0m [33m
+ResponsiveContainer[0m 
+[36mfrom[0m [32m'./Respo
+nsiveContainer'[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0m
+  [90m19 |[0m 
+[36mimport[0m toast 
+[36mfrom[0m 
+[32m'react-hot-toast'[0m
+  [90m20 |[0m
+  [90m21 |[0m [90m// 
+Mock data[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./hub/app/study-groups/
+page.tsx [Client Component 
+Browser]
+    ./hub/app/study-groups/
+page.tsx [Server Component]
+
+  Client Component SSR:
+    ./hub/app/study-groups/
+page.tsx [Client Component 
+SSR]
+    ./hub/app/study-groups/
+page.tsx [Server Component]
+
+https://nextjs.org/docs/mes
+sages/module-not-found
+
+
+./hub/app/components/admin/
+AdminOverview.tsx:14:1
+Module not found: Can't 
+resolve 'recharts'
+  [90m12 |[0m   
+[33mCreditCard[0m
+  [90m13 |[0m } 
+[36mfrom[0m 
+[32m'lucide-react'[0m
+[31m[1m>[0m [90m14 
+|[0m [36mimport[0m {
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m15 
+|[0m   [33mLineChart[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m16 
+|[0m   [33mLine[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m17 
+|[0m   [33mXAxis[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m18 
+|[0m   [33mYAxis[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m19 
+|[0m   
+[33mCartesianGrid[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m20 
+|[0m   [33mTooltip[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^[0m
+[31m[1m>[0m [90m21 
+|[0m   [33mResponsiveCont
+ainer[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m22 
+|[0m   [33mBarChart[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m23 
+|[0m   [33mBar[0m
+  [90m   |[0m 
+[31m[1m^^^^^[0m
+[31m[1m>[0m [90m24 
+|[0m } [36mfrom[0m 
+[32m'recharts'[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^[0m
+  [90m25 |[0m
+  [90m26 |[0m 
+[36minterface[0m 
+[33mStatCard[0m {
+  [90m27 |[0m   title: 
+string
+
+
+
+Import trace:
+  Server Component:
+    ./hub/app/components/ad
+min/AdminOverview.tsx
+    
+./hub/app/admin/page.tsx
+
+https://nextjs.org/docs/mes
+sages/module-not-found
+
+
+./hub/app/auth/login/page.t
+sx:10:1
+Export Chrome doesn't 
+exist in target module
+  [90m 8 |[0m 
+[36mimport[0m 
+[33mLink[0m 
+[36mfrom[0m 
+[32m'next/link'[0m
+  [90m 9 |[0m 
+[36mimport[0m { motion } 
+[36mfrom[0m 
+[32m'framer-motion'[0m
+[31m[1m>[0m [90m10 
+|[0m [36mimport[0m { 
+[33mEye[0m, 
+[33mEyeOff[0m, 
+[33mMail[0m, 
+[33mLock[0m, 
+[33mAlertCircle[0m, 
+[33mChrome[0m } 
+[36mfrom[0m 
+[32m'lucide-react'[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^[0m
+  [90m11 |[0m 
+[36mimport[0m { useAuth 
+} [36mfrom[0m [32m'../..
+/contexts/AuthContext'[0m
+  [90m12 |[0m 
+[36mimport[0m toast 
+[36mfrom[0m 
+[32m'react-hot-toast'[0m
+  [90m13 |[0m 
+[36mimport[0m [33mRespon
+siveContainer[0m 
+[36mfrom[0m [32m'../../c
+omponents/ResponsiveContain
+er'[0m
+
+The export Chrome was not 
+found in module [project]/n
+ode_modules/lucide-react/di
+st/esm/lucide-react.js 
+[app-client] (ecmascript).
+Did you mean to import 
+ChartColumnDecreasing?
+All exports of the module 
+are statically known (It 
+doesn't have dynamic 
+exports). So it's known 
+statically that the 
+requested export doesn't 
+exist.
+
+Import traces:
+  Client Component Browser:
+    ./hub/app/auth/login/pa
+ge.tsx [Client Component 
+Browser]
+    ./hub/app/auth/login/pa
+ge.tsx [Server Component]
+
+  Client Component SSR:
+    ./hub/app/auth/login/pa
+ge.tsx [Client Component 
+SSR]
+    ./hub/app/auth/login/pa
+ge.tsx [Server Component]
+
+
+./hub/app/auth/login/page.t
+sx:10:1
+Export Chrome doesn't 
+exist in target module
+  [90m 8 |[0m 
+[36mimport[0m 
+[33mLink[0m 
+[36mfrom[0m 
+[32m'next/link'[0m
+  [90m 9 |[0m 
+[36mimport[0m { motion } 
+[36mfrom[0m 
+[32m'framer-motion'[0m
+[31m[1m>[0m [90m10 
+|[0m [36mimport[0m { 
+[33mEye[0m, 
+[33mEyeOff[0m, 
+[33mMail[0m, 
+[33mLock[0m, 
+[33mAlertCircle[0m, 
+[33mChrome[0m } 
+[36mfrom[0m 
+[32m'lucide-react'[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^[0m
+  [90m11 |[0m 
+[36mimport[0m { useAuth 
+} [36mfrom[0m [32m'../..
+/contexts/AuthContext'[0m
+  [90m12 |[0m 
+[36mimport[0m toast 
+[36mfrom[0m 
+[32m'react-hot-toast'[0m
+  [90m13 |[0m 
+[36mimport[0m [33mRespon
+siveContainer[0m 
+[36mfrom[0m [32m'../../c
+omponents/ResponsiveContain
+er'[0m
+
+The export Chrome was not 
+found in module [project]/n
+ode_modules/lucide-react/di
+st/esm/lucide-react.js 
+[app-ssr] (ecmascript).
+Did you mean to import 
+ChartColumnDecreasing?
+All exports of the module 
+are statically known (It 
+doesn't have dynamic 
+exports). So it's known 
+statically that the 
+requested export doesn't 
+exist.
+
+Import traces:
+  Client Component Browser:
+    ./hub/app/auth/login/pa
+ge.tsx [Client Component 
+Browser]
+    ./hub/app/auth/login/pa
+ge.tsx [Server Component]
+
+  Client Component SSR:
+    ./hub/app/auth/login/pa
+ge.tsx [Client Component 
+SSR]
+    ./hub/app/auth/login/pa
+ge.tsx [Server Component]
+
+
+./hub/app/developers/page.t
+sx:5:1
+Export Github doesn't 
+exist in target module
+  [90m 3 |[0m 
+[36mimport[0m { useState 
+} [36mfrom[0m 
+[32m'react'[0m
+  [90m 4 |[0m 
+[36mimport[0m { motion } 
+[36mfrom[0m 
+[32m'framer-motion'[0m
+[31m[1m>[0m [90m 5 
+|[0m [36mimport[0m { 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 6 
+|[0m   [33mCode[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 7 
+|[0m   [33mCopy[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 8 
+|[0m   
+[33mCheckCircle[0m, 
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 9 
+|[0m   
+[33mAlertCircle[0m, 
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m10 
+|[0m   [33mGlobe[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^[0m
+[31m[1m>[0m [90m11 
+|[0m   [33mKey[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m12 
+|[0m   [33mBook[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m13 
+|[0m   [33mFileText[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m14 
+|[0m   [33mTerminal[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m15 
+|[0m   [33mZap[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^[0m
+[31m[1m>[0m [90m16 
+|[0m   [33mShield[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^[0m
+[31m[1m>[0m [90m17 
+|[0m   [33mClock[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m18 
+|[0m   [33mUsers[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m19 
+|[0m   [33mSend[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m20 
+|[0m   [33mPlay[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m21 
+|[0m   
+[33mChevronDown[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m22 
+|[0m   [33mChevronUp[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m23 
+|[0m   [33mGithub[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^[0m
+[31m[1m>[0m [90m24 
+|[0m   [33mMail[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m25 
+|[0m   [33mPhone[0m
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m26 
+|[0m } [36mfrom[0m 
+[32m'lucide-react'[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^[0m
+  [90m27 |[0m 
+[36mimport[0m toast 
+[36mfrom[0m 
+[32m'react-hot-toast'[0m
+  [90m28 |[0m
+  [90m29 |[0m 
+[36minterface[0m 
+[33mApiEndpoint[0m {
+
+The export Github was not 
+found in module [project]/n
+ode_modules/lucide-react/di
+st/esm/lucide-react.js 
+[app-client] (ecmascript).
+Did you mean to import 
+Gift?
+All exports of the module 
+are statically known (It 
+doesn't have dynamic 
+exports). So it's known 
+statically that the 
+requested export doesn't 
+exist.
+
+Import traces:
+  Client Component Browser:
+    ./hub/app/developers/pa
+ge.tsx [Client Component 
+Browser]
+    ./hub/app/developers/pa
+ge.tsx [Server Component]
+
+  Client Component SSR:
+    ./hub/app/developers/pa
+ge.tsx [Client Component 
+SSR]
+    ./hub/app/developers/pa
+ge.tsx [Server Component]
+
+
+./hub/app/developers/page.t
+sx:5:1
+Export Github doesn't 
+exist in target module
+  [90m 3 |[0m 
+[36mimport[0m { useState 
+} [36mfrom[0m 
+[32m'react'[0m
+  [90m 4 |[0m 
+[36mimport[0m { motion } 
+[36mfrom[0m 
+[32m'framer-motion'[0m
+[31m[1m>[0m [90m 5 
+|[0m [36mimport[0m { 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 6 
+|[0m   [33mCode[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 7 
+|[0m   [33mCopy[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 8 
+|[0m   
+[33mCheckCircle[0m, 
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 9 
+|[0m   
+[33mAlertCircle[0m, 
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m10 
+|[0m   [33mGlobe[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^[0m
+[31m[1m>[0m [90m11 
+|[0m   [33mKey[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m12 
+|[0m   [33mBook[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m13 
+|[0m   [33mFileText[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m14 
+|[0m   [33mTerminal[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m15 
+|[0m   [33mZap[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^[0m
+[31m[1m>[0m [90m16 
+|[0m   [33mShield[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^[0m
+[31m[1m>[0m [90m17 
+|[0m   [33mClock[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m18 
+|[0m   [33mUsers[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m19 
+|[0m   [33mSend[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m20 
+|[0m   [33mPlay[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m21 
+|[0m   
+[33mChevronDown[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m22 
+|[0m   [33mChevronUp[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m23 
+|[0m   [33mGithub[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^[0m
+[31m[1m>[0m [90m24 
+|[0m   [33mMail[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m25 
+|[0m   [33mPhone[0m
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m26 
+|[0m } [36mfrom[0m 
+[32m'lucide-react'[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^[0m
+  [90m27 |[0m 
+[36mimport[0m toast 
+[36mfrom[0m 
+[32m'react-hot-toast'[0m
+  [90m28 |[0m
+  [90m29 |[0m 
+[36minterface[0m 
+[33mApiEndpoint[0m {
+
+The export Github was not 
+found in module [project]/n
+ode_modules/lucide-react/di
+st/esm/lucide-react.js 
+[app-ssr] (ecmascript).
+Did you mean to import 
+Gift?
+All exports of the module 
+are statically known (It 
+doesn't have dynamic 
+exports). So it's known 
+statically that the 
+requested export doesn't 
+exist.
+
+Import traces:
+  Client Component Browser:
+    ./hub/app/developers/pa
+ge.tsx [Client Component 
+Browser]
+    ./hub/app/developers/pa
+ge.tsx [Server Component]
+
+  Client Component SSR:
+    ./hub/app/developers/pa
+ge.tsx [Client Component 
+SSR]
+    ./hub/app/developers/pa
+ge.tsx [Server Component]
+
+
+./hub/app/components/Alumni
+Directory.tsx:5:1
+Export Linkedin doesn't 
+exist in target module
+  [90m 3 |[0m 
+[36mimport[0m { 
+useState, useEffect } 
+[36mfrom[0m 
+[32m'react'[0m
+  [90m 4 |[0m 
+[36mimport[0m { motion } 
+[36mfrom[0m 
+[32m'framer-motion'[0m
+[31m[1m>[0m [90m 5 
+|[0m [36mimport[0m { 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 6 
+|[0m   [33mSearch[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^[0m
+[31m[1m>[0m [90m 7 
+|[0m   [33mFilter[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^[0m
+[31m[1m>[0m [90m 8 
+|[0m   [33mUsers[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 9 
+|[0m   [33mCalendar[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m10 
+|[0m   [33mBriefcase[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m11 
+|[0m   [33mMapPin[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^[0m
+[31m[1m>[0m [90m12 
+|[0m   [33mBuilding[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 
+|[0m   
+[33mGraduationCap[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m14 
+|[0m   [33mLinkedin[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m15 
+|[0m   [33mUserPlus[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m16 
+|[0m   
+[33mCheckCircle[0m
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m17 
+|[0m } [36mfrom[0m 
+[32m'lucide-react'[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^[0m
+  [90m18 |[0m 
+[36mimport[0m { 
+[33mAlumni[0m, 
+[33mAlumniFilter[0m, 
+[33mIndustry[0m } 
+[36mfrom[0m 
+[32m'../types/alumni'[0m
+  [90m19 |[0m 
+[36mimport[0m { 
+[33mResponsiveButton[0m 
+} [36mfrom[0m 
+[32m'./ResponsiveForm'[0m
+  [90m20 |[0m
+
+The export Linkedin was 
+not found in module [projec
+t]/node_modules/lucide-reac
+t/dist/esm/lucide-react.js 
+[app-client] (ecmascript).
+Did you mean to import 
+Link?
+All exports of the module 
+are statically known (It 
+doesn't have dynamic 
+exports). So it's known 
+statically that the 
+requested export doesn't 
+exist.
+
+Import traces:
+  Client Component Browser:
+    ./hub/app/components/Al
+umniDirectory.tsx [Client 
+Component Browser]
+    
+./hub/app/alumni/page.tsx 
+[Client Component Browser]
+    
+./hub/app/alumni/page.tsx 
+[Server Component]
+
+  Client Component SSR:
+    ./hub/app/components/Al
+umniDirectory.tsx [Client 
+Component SSR]
+    
+./hub/app/alumni/page.tsx 
+[Client Component SSR]
+    
+./hub/app/alumni/page.tsx 
+[Server Component]
+
+
+./hub/app/components/Alumni
+Directory.tsx:5:1
+Export Linkedin doesn't 
+exist in target module
+  [90m 3 |[0m 
+[36mimport[0m { 
+useState, useEffect } 
+[36mfrom[0m 
+[32m'react'[0m
+  [90m 4 |[0m 
+[36mimport[0m { motion } 
+[36mfrom[0m 
+[32m'framer-motion'[0m
+[31m[1m>[0m [90m 5 
+|[0m [36mimport[0m { 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 6 
+|[0m   [33mSearch[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^[0m
+[31m[1m>[0m [90m 7 
+|[0m   [33mFilter[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^[0m
+[31m[1m>[0m [90m 8 
+|[0m   [33mUsers[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 9 
+|[0m   [33mCalendar[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m10 
+|[0m   [33mBriefcase[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m11 
+|[0m   [33mMapPin[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^[0m
+[31m[1m>[0m [90m12 
+|[0m   [33mBuilding[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 
+|[0m   
+[33mGraduationCap[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m14 
+|[0m   [33mLinkedin[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m15 
+|[0m   [33mUserPlus[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m16 
+|[0m   
+[33mCheckCircle[0m
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m17 
+|[0m } [36mfrom[0m 
+[32m'lucide-react'[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^[0m
+  [90m18 |[0m 
+[36mimport[0m { 
+[33mAlumni[0m, 
+[33mAlumniFilter[0m, 
+[33mIndustry[0m } 
+[36mfrom[0m 
+[32m'../types/alumni'[0m
+  [90m19 |[0m 
+[36mimport[0m { 
+[33mResponsiveButton[0m 
+} [36mfrom[0m 
+[32m'./ResponsiveForm'[0m
+  [90m20 |[0m
+
+The export Linkedin was 
+not found in module [projec
+t]/node_modules/lucide-reac
+t/dist/esm/lucide-react.js 
+[app-ssr] (ecmascript).
+Did you mean to import 
+Link?
+All exports of the module 
+are statically known (It 
+doesn't have dynamic 
+exports). So it's known 
+statically that the 
+requested export doesn't 
+exist.
+
+Import traces:
+  Client Component Browser:
+    ./hub/app/components/Al
+umniDirectory.tsx [Client 
+Component Browser]
+    
+./hub/app/alumni/page.tsx 
+[Client Component Browser]
+    
+./hub/app/alumni/page.tsx 
+[Server Component]
+
+  Client Component SSR:
+    ./hub/app/components/Al
+umniDirectory.tsx [Client 
+Component SSR]
+    
+./hub/app/alumni/page.tsx 
+[Client Component SSR]
+    
+./hub/app/alumni/page.tsx 
+[Server Component]
+
+
+./hub/app/components/Alumni
+Profile.tsx:5:1
+Export Linkedin doesn't 
+exist in target module
+  [90m 3 |[0m 
+[36mimport[0m { useState 
+} [36mfrom[0m 
+[32m'react'[0m
+  [90m 4 |[0m 
+[36mimport[0m { motion } 
+[36mfrom[0m 
+[32m'framer-motion'[0m
+[31m[1m>[0m [90m 5 
+|[0m [36mimport[0m { 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 6 
+|[0m   [33mUser[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 7 
+|[0m   [33mCalendar[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 8 
+|[0m   
+[33mBriefcase[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 9 
+|[0m   [33mMapPin[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^[0m
+[31m[1m>[0m [90m10 
+|[0m   [33mMail[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m11 
+|[0m   [33mPhone[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m12 
+|[0m   [33mLinkedin[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 
+|[0m   [33mGlobe[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m14 
+|[0m   [33mAward[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m15 
+|[0m   [33mBookOpen[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m16 
+|[0m   [33mUsers[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m17 
+|[0m   
+[33mMessageSquare[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m18 
+|[0m   [33mUserPlus[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m19 
+|[0m   [33mClock[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m20 
+|[0m   
+[33mCheckCircle[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m21 
+|[0m   [33mEdit[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m22 
+|[0m   [33mSend[0m
+  [90m   |[0m 
+[31m[1m^^^^^^[0m
+[31m[1m>[0m [90m23 
+|[0m } [36mfrom[0m 
+[32m'lucide-react'[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^[0m
+  [90m24 |[0m 
+[36mimport[0m { 
+[33mAlumni[0m, [33mMento
+rshipRequest[0m, [33mAlum
+niAchievement[0m, 
+[33mAlumniPost[0m, 
+[33mAlumniJob[0m } 
+[36mfrom[0m 
+[32m'../ty...[0m
+  [90m25 |[0m 
+[36mimport[0m { 
+[33mResponsiveButton[0m 
+} [36mfrom[0m 
+[32m'./ResponsiveForm'[0m
+  [90m26 |[0m
+
+The export Linkedin was 
+not found in module [projec
+t]/node_modules/lucide-reac
+t/dist/esm/lucide-react.js 
+[app-client] (ecmascript).
+Did you mean to import 
+Link?
+All exports of the module 
+are statically known (It 
+doesn't have dynamic 
+exports). So it's known 
+statically that the 
+requested export doesn't 
+exist.
+
+Import traces:
+  Client Component Browser:
+    ./hub/app/components/Al
+umniProfile.tsx [Client 
+Component Browser]
+    
+./hub/app/alumni/page.tsx 
+[Client Component Browser]
+    
+./hub/app/alumni/page.tsx 
+[Server Component]
+
+  Client Component SSR:
+    ./hub/app/components/Al
+umniProfile.tsx [Client 
+Component SSR]
+    
+./hub/app/alumni/page.tsx 
+[Client Component SSR]
+    
+./hub/app/alumni/page.tsx 
+[Server Component]
+
+
+./hub/app/components/Alumni
+Profile.tsx:5:1
+Export Linkedin doesn't 
+exist in target module
+  [90m 3 |[0m 
+[36mimport[0m { useState 
+} [36mfrom[0m 
+[32m'react'[0m
+  [90m 4 |[0m 
+[36mimport[0m { motion } 
+[36mfrom[0m 
+[32m'framer-motion'[0m
+[31m[1m>[0m [90m 5 
+|[0m [36mimport[0m { 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 6 
+|[0m   [33mUser[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m 7 
+|[0m   [33mCalendar[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 8 
+|[0m   
+[33mBriefcase[0m, 
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 9 
+|[0m   [33mMapPin[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^[0m
+[31m[1m>[0m [90m10 
+|[0m   [33mMail[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m11 
+|[0m   [33mPhone[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m12 
+|[0m   [33mLinkedin[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 
+|[0m   [33mGlobe[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m14 
+|[0m   [33mAward[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m15 
+|[0m   [33mBookOpen[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m16 
+|[0m   [33mUsers[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m17 
+|[0m   
+[33mMessageSquare[0m,
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m18 
+|[0m   [33mUserPlus[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m19 
+|[0m   [33mClock[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^[0m
+[31m[1m>[0m [90m20 
+|[0m   
+[33mCheckCircle[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m21 
+|[0m   [33mEdit[0m,
+  [90m   |[0m 
+[31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m22 
+|[0m   [33mSend[0m
+  [90m   |[0m 
+[31m[1m^^^^^^[0m
+[31m[1m>[0m [90m23 
+|[0m } [36mfrom[0m 
+[32m'lucide-react'[0m
+  [90m   |[0m [31m[1m^^
+^^^^^^^^^^^^^^^^^^^[0m
+  [90m24 |[0m 
+[36mimport[0m { 
+[33mAlumni[0m, [33mMento
+rshipRequest[0m, [33mAlum
+niAchievement[0m, 
+[33mAlumniPost[0m, 
+[33mAlumniJob[0m } 
+[36mfrom[0m 
+[32m'../ty...[0m
+  [90m25 |[0m 
+[36mimport[0m { 
+[33mResponsiveButton[0m 
+} [36mfrom[0m 
+[32m'./ResponsiveForm'[0m
+  [90m26 |[0m
+
+The export Linkedin was 
+not found in module [projec
+t]/node_modules/lucide-reac
+t/dist/esm/lucide-react.js 
+[app-ssr] (ecmascript).
+Did you mean to import 
+Link?
+All exports of the module 
+are statically known (It 
+doesn't have dynamic 
+exports). So it's known 
+statically that the 
+requested export doesn't 
+exist.
+
+Import traces:
+  Client Component Browser:
+    ./hub/app/components/Al
+umniProfile.tsx [Client 
+Component Browser]
+    
+./hub/app/alumni/page.tsx 
+[Client Component Browser]
+    
+./hub/app/alumni/page.tsx 
+[Server Component]
+
+  Client Component SSR:
+    ./hub/app/components/Al
+umniProfile.tsx [Client 
+Component SSR]
+    
+./hub/app/alumni/page.tsx 
+[Client Component SSR]
+    
+./hub/app/alumni/page.tsx 
+[Server Component]
+
+
+    at <unknown> (./hub/app
+/study-groups/page.tsx:18:1
+)
+    at <unknown> (https://n
+extjs.org/docs/messages/mod
+ule-not-found)
+    at <unknown> (./hub/app
+/components/admin/AdminOver
+view.tsx:14:1)
+    at <unknown> (https://n
+extjs.org/docs/messages/mod
+ule-not-found)
+    at <unknown> (./hub/app
+/auth/login/page.tsx:10:1)
+    at <unknown> (./hub/app
+/auth/login/page.tsx:10:1)
+    at <unknown> (./hub/app
+/developers/page.tsx:5:1)
+    at <unknown> (./hub/app
+/developers/page.tsx:5:1)
+    at <unknown> (./hub/app
+/components/AlumniDirectory
+.tsx:5:1)
+    at <unknown> (./hub/app
+/components/AlumniDirectory
+.tsx:5:1)
+    at <unknown> (./hub/app
+/components/AlumniProfile.t
+sx:5:1)
+    at <unknown> (./hub/app
+/components/AlumniProfile.t
+sx:5:1)
