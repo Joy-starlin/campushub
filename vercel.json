@@ -1,0 +1,6 @@
+{
+  "installCommand": "cd hub && npm ci",
+  "buildCommand": "cd hub && npm run build",
+  "devCommand": "cd hub && npm run dev",
+  "outputDirectory": "hub/.next"
+}

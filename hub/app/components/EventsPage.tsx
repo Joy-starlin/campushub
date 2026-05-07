@@ -35,20 +35,103 @@ interface Event {
 const mockEvents: Event[] = [
   {
     id: '1',
-    title: 'Bugema University Open Day',
-    description: 'Explore our campus, meet faculty, and discover your future career path at Bugema University.',
-    date: new Date('2026-05-15'),
-    time: '09:00',
+    title: '2026 Graduating Class General Elections',
+    description: 'Vote for your graduating class leaders in the 2026 Bugema University general elections on May 4th.',
+    date: new Date('2026-05-04'),
+    time: '08:00',
     location: 'Main Campus Quad',
     isOnline: false,
-    category: 'Academic',
-    bannerImage: '/assets/events/event-main.png',
-    maxAttendees: 500,
-    currentAttendees: 342,
+    category: 'Social',
+    bannerImage: '/assets/events/elections.jpeg',
+    maxAttendees: 1000,
+    currentAttendees: 642,
     attendees: [
       { id: '1', name: 'Sarah Johnson' },
-      { id: '2', name: 'Mike Chen' },
-      { id: '3', name: 'Emily Davis' }
+      { id: '2', name: 'Mike Chen' }
+    ],
+    organizer: {
+      name: 'Student Guild',
+      role: 'Campus Organization'
+    }
+  },
+  {
+    id: '2',
+    title: '2026 IT Study Trip',
+    description: 'Join us for the 2026 IT study trip featuring educational visits to technology centers and a social outing to White Sand Beach.',
+    date: new Date('2026-05-15'),
+    time: '07:00',
+    location: 'Off-campus',
+    isOnline: false,
+    category: 'Academic',
+    bannerImage: '/assets/events/it-trip.png',
+    maxAttendees: 150,
+    currentAttendees: 89,
+    attendees: [
+      { id: '3', name: 'Emily Davis' },
+      { id: '4', name: 'Alex Kim' }
+    ],
+    organizer: {
+      name: 'IT Department',
+      role: 'Academic Club'
+    }
+  },
+  {
+    id: '3',
+    title: 'BU Nethub Cybersecurity Session',
+    description: 'Participate in our online networking and hacking session to develop essential cybersecurity skills like reconnaissance and exploitation.',
+    date: new Date('2026-05-20'),
+    time: '14:00',
+    location: 'Online via Zoom',
+    isOnline: true,
+    category: 'Career',
+    bannerImage: '/assets/events/nethub.png',
+    maxAttendees: 300,
+    currentAttendees: 156,
+    attendees: [
+      { id: '5', name: 'Jordan Lee' },
+      { id: '6', name: 'Chris Taylor' }
+    ],
+    organizer: {
+      name: 'BU Nethub',
+      role: 'Tech Club'
+    }
+  },
+  {
+    id: '4',
+    title: 'GitHub Copilot Dev Days',
+    description: 'Discover AI-powered developer tools at the GitHub Copilot Dev Days hosted at Bugema University.',
+    date: new Date('2026-05-01'),
+    time: '09:00',
+    location: 'Convention Center',
+    isOnline: false,
+    category: 'Career',
+    bannerImage: '/assets/events/github-dev-days.png',
+    maxAttendees: 500,
+    currentAttendees: 423,
+    attendees: [
+      { id: '7', name: 'Pat Morgan' },
+      { id: '8', name: 'Taylor Swift' }
+    ],
+    organizer: {
+      name: 'Developer Student Circle',
+      role: 'Campus Department'
+    }
+  },
+  {
+    id: '5',
+    title: 'Student Orientation 2026',
+    description: 'Welcome to Bugema University! Join the Student Orientation to transition smoothly into university life.',
+    date: new Date('2026-02-24'),
+    time: '10:00',
+    location: 'Auditorium',
+    isOnline: false,
+    category: 'Social',
+    bannerImage: '/assets/events/orientation.png',
+    maxAttendees: 800,
+    currentAttendees: 750,
+    attendees: [
+      { id: '9', name: 'Sam Wilson' },
+      { id: '10', name: 'Maria Garcia' }
     ],
     organizer: {
       name: 'Admissions Office',
@@ -56,87 +139,24 @@ const mockEvents: Event[] = [
     }
   },
   {
-    id: '2',
-    title: 'Cultural Night: Pearl of Africa',
-    description: 'Experience the rich heritage of Uganda through traditional music, dance, and authentic cuisine.',
-    date: new Date('2026-05-20'),
+    id: '6',
+    title: 'BUCU Fellowship Worship Evening',
+    description: 'Join multiple religious student groups for an inspiring Worship Evening organized by the BUCU Fellowship.',
+    date: new Date('2026-05-01'),
     time: '18:00',
-    location: 'Auditorium',
-    isOnline: false,
-    category: 'Cultural',
-    bannerImage: '/assets/events/event-1.png',
-    maxAttendees: 300,
-    currentAttendees: 189,
-    attendees: [
-      { id: '4', name: 'Alex Kim' },
-      { id: '5', name: 'Jordan Lee' }
-    ],
-    organizer: {
-      name: 'Cultural Society',
-      role: 'Academic Club'
-    }
-  },
-  {
-    id: '3',
-    title: 'Grand Alumni Reunion 2026',
-    description: 'Welcoming back all Bugema graduates for a weekend of networking and celebration.',
-    date: new Date('2026-06-12'),
-    time: '10:00',
     location: 'Main Hall',
     isOnline: false,
-    category: 'Social',
-    bannerImage: '/assets/events/event-2.png',
-    maxAttendees: 1000,
-    currentAttendees: 756,
+    category: 'Cultural',
+    bannerImage: '/assets/events/worship-evening.png',
+    maxAttendees: 600,
+    currentAttendees: 450,
     attendees: [
-      { id: '6', name: 'Chris Taylor' },
-      { id: '7', name: 'Pat Morgan' }
+      { id: '11', name: 'Li Wei' },
+      { id: '12', name: 'James Doe' }
     ],
     organizer: {
-      name: 'Alumni Association',
-      role: 'Sports Organization'
-    }
-  },
-  {
-    id: '4',
-    title: 'Tech & Career Expo',
-    description: 'Connect with top industry leaders and discover the latest trends in technology and innovation.',
-    date: new Date('2026-05-25'),
-    time: '10:00',
-    location: 'Convention Center',
-    isOnline: false,
-    category: 'Career',
-    bannerImage: '/assets/events/event-3.png',
-    maxAttendees: 800,
-    currentAttendees: 423,
-    attendees: [
-      { id: '8', name: 'Taylor Swift' },
-      { id: '9', name: 'Sam Wilson' }
-    ],
-    organizer: {
-      name: 'Career Services',
-      role: 'Campus Department'
-    }
-  },
-  {
-    id: '5',
-    title: 'Inter-University Sports Gala',
-    description: 'Cheer for your team at the annual athletics competition featuring students from across the region.',
-    date: new Date('2026-05-28'),
-    time: '14:30',
-    location: 'Sports Complex',
-    isOnline: false,
-    category: 'Sports',
-    bannerImage: '/assets/events/event-4.png',
-    maxAttendees: 2000,
-    currentAttendees: 1250,
-    attendees: [
-      { id: '10', name: 'Maria Garcia' },
-      { id: '11', name: 'Li Wei' }
-    ],
-    organizer: {
-      name: 'Sports Department',
-      role: 'Cultural Club'
+      name: 'BUCU Fellowship',
+      role: 'Cultural Organization'
     }
   }
 ]
