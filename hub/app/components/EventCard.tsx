@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { format } from 'date-fns'
 import { MapPin, Clock, Users, Check } from 'lucide-react'
 
-interface Event {
+export interface Event {
   id: string
   title: string
   description: string
@@ -17,6 +17,8 @@ interface Event {
   bannerImage?: string
   maxAttendees?: number
   currentAttendees: number
+  requiresBooking?: boolean
+  price?: number
   attendees: Array<{
     id: string
     name: string
@@ -32,6 +34,7 @@ interface EventCardProps {
   event: Event
   onClick: (event: Event) => void
   onRSVP: (eventId: string) => void
+  onBook: (event: Event) => void
 }
 
 const categoryColors = {
@@ -42,7 +45,7 @@ const categoryColors = {
   Career: 'bg-red-100 text-red-800'
 }
 
-export default function EventCard({ event, onClick, onRSVP }: EventCardProps) {
+export default function EventCard({ event, onClick, onRSVP, onBook }: EventCardProps) {
   const [isRSVPed, setIsRSVPed] = useState(false)
   const [attendeesCount, setAttendeesCount] = useState(event.currentAttendees)
 
@@ -166,18 +169,29 @@ export default function EventCard({ event, onClick, onRSVP }: EventCardProps) {
           )}
         </div>
 
-        {/* RSVP Button */}
+        {/* RSVP/Book Button */}
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          onClick={handleRSVP}
+          onClick={(e) => {
+            e.stopPropagation()
+            if (event.requiresBooking) {
+              onBook(event)
+            } else {
+              handleRSVP(e)
+            }
+          }}
           className={`w-full py-2 px-4 rounded-lg font-medium transition-colors ${
             isRSVPed
               ? 'bg-green-600 text-white'
               : 'bg-blue-600 text-white hover:bg-blue-700'
           }`}
         >
-          {isRSVPed ? (
+          {event.requiresBooking ? (
+            <div className="flex items-center justify-center">
+              Book Now {event.price ? `(UGX ${event.price.toLocaleString()})` : ''}
+            </div>
+          ) : isRSVPed ? (
             <div className="flex items-center justify-center">
               <Check className="w-4 h-4 mr-2" />
               Going

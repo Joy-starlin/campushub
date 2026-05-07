@@ -97,14 +97,11 @@ export default function MultiStepSignup({ onClose, initialStep = 1 }: { onClose?
     formState: { errors },
   } = useForm({
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      fullName: "",
       email: "",
       password: "",
       confirmPassword: "",
       university: "Bugema University",
-      course: "",
-      year: "",
       terms: false,
     }
   });
@@ -117,16 +114,20 @@ export default function MultiStepSignup({ onClose, initialStep = 1 }: { onClose?
   const onRegister = async (data: any) => {
     setLoading(true);
     try {
-      const { confirmPassword, terms, ...registerData } = data;
-      const generatedUsername = `${registerData.firstName.toLowerCase()}${registerData.lastName.toLowerCase()}${Math.floor(Math.random() * 1000)}`;
+      const { confirmPassword, terms, fullName, ...registerData } = data;
+      const nameParts = fullName.trim().split(/\s+/);
+      const firstName = nameParts[0] || "";
+      const lastName = nameParts.slice(1).join(" ") || "";
+      const generatedUsername = `${firstName.toLowerCase()}${lastName.toLowerCase()}${Math.floor(Math.random() * 1000)}`;
       
       const res = await apiRequest<any>("/api/v1/auth/register", {
         method: "POST",
         body: JSON.stringify({
           university: "Bugema University",
           username: generatedUsername,
+          firstName,
+          lastName,
           ...registerData,
-          year: parseInt(data.year),
           country: "Uganda"
         }),
       });
@@ -283,73 +284,22 @@ export default function MultiStepSignup({ onClose, initialStep = 1 }: { onClose?
               <div className="space-y-4">
 
                   <div className="space-y-3 pt-1">
-                    <div className="grid grid-cols-2 gap-3">
-                      <div>
-                        <label className="mb-1 block text-xs font-semibold text-gray-700">First name</label>
-                        <div className="relative">
-                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                             <FontAwesomeIcon icon={faUser} className="text-xs" />
-                          </span>
-                          <input 
-                            {...register("firstName", { required: "Required" })}
-                            className="input-field !pl-10 pr-4" 
-                            placeholder="Enter your first name"
-                          />
-                        </div>
-                        {errors.firstName && <p className="error-text text-[10px]">{errors.firstName.message}</p>}
+                    <div>
+                      <label className="mb-1 block text-xs font-semibold text-gray-700">Full name</label>
+                      <div className="relative">
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                           <FontAwesomeIcon icon={faUser} className="text-xs" />
+                        </span>
+                        <input 
+                          {...register("fullName", { required: "Full name is required" })}
+                          className="input-field !pl-10 pr-4" 
+                          placeholder="Enter your full name"
+                        />
                       </div>
-                      <div>
-                        <label className="mb-1 block text-xs font-semibold text-gray-700">Last name</label>
-                        <div className="relative">
-                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                             <FontAwesomeIcon icon={faUser} className="text-xs" />
-                          </span>
-                          <input 
-                            {...register("lastName", { required: "Required" })}
-                            className="input-field !pl-10 pr-4" 
-                            placeholder="Enter your last name"
-                          />
-                        </div>
-                        {errors.lastName && <p className="error-text text-[10px]">{errors.lastName.message}</p>}
-                      </div>
+                      {errors.fullName && <p className="error-text text-[10px]">{errors.fullName.message}</p>}
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3">
-                      <div>
-                        <label className="mb-1 block text-xs font-semibold text-gray-700">Course / Program</label>
-                        <div className="relative">
-                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                             <FontAwesomeIcon icon={faRocket} className="text-xs" />
-                          </span>
-                          <input 
-                            {...register("course", { required: "Required" })}
-                            className="input-field !pl-10 pr-4" 
-                            placeholder="e.g. BBA, CS, Nursing"
-                          />
-                        </div>
-                        {errors.course && <p className="error-text text-[10px]">{errors.course.message}</p>}
-                      </div>
-                      <div>
-                        <label className="mb-1 block text-xs font-semibold text-gray-700">Year of Study</label>
-                        <div className="relative">
-                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                             <FontAwesomeIcon icon={faUser} className="text-xs" />
-                          </span>
-                          <select 
-                            {...register("year", { required: "Required" })}
-                            className="input-field !pl-10 pr-4 appearance-none" 
-                          >
-                            <option value="">Select Year</option>
-                            <option value="1">Year 1</option>
-                            <option value="2">Year 2</option>
-                            <option value="3">Year 3</option>
-                            <option value="4">Year 4</option>
-                            <option value="5">Year 5</option>
-                          </select>
-                        </div>
-                        {errors.year && <p className="error-text text-[10px]">{errors.year.message}</p>}
-                      </div>
-                    </div>
+
 
                     <div>
                       <label className="mb-1 block text-xs font-semibold text-gray-700">Email address</label>

@@ -7,29 +7,8 @@ import EventCard from './EventCard'
 import CalendarView from './CalendarView'
 import EventFilters from './EventFilters'
 import AddEventModal from './AddEventModal'
-
-interface Event {
-  id: string
-  title: string
-  description: string
-  date: Date
-  time: string
-  location: string
-  isOnline: boolean
-  category: 'Academic' | 'Social' | 'Sports' | 'Cultural' | 'Career'
-  bannerImage?: string
-  maxAttendees?: number
-  currentAttendees: number
-  attendees: Array<{
-    id: string
-    name: string
-    avatar?: string
-  }>
-  organizer: {
-    name: string
-    role: string
-  }
-}
+import BookingModal from './BookingModal'
+import { Event } from './EventCard'
 
 // Mock data
 const mockEvents: Event[] = [
@@ -66,6 +45,8 @@ const mockEvents: Event[] = [
     bannerImage: '/assets/events/it-trip.png',
     maxAttendees: 150,
     currentAttendees: 89,
+    requiresBooking: true,
+    price: 45000,
     attendees: [
       { id: '3', name: 'Emily Davis' },
       { id: '4', name: 'Alex Kim' }
@@ -75,27 +56,7 @@ const mockEvents: Event[] = [
       role: 'Academic Club'
     }
   },
-  {
-    id: '3',
-    title: 'BU Nethub Cybersecurity Session',
-    description: 'Participate in our online networking and hacking session to develop essential cybersecurity skills like reconnaissance and exploitation.',
-    date: new Date('2026-05-20'),
-    time: '14:00',
-    location: 'Online via Zoom',
-    isOnline: true,
-    category: 'Career',
-    bannerImage: '/assets/events/nethub.png',
-    maxAttendees: 300,
-    currentAttendees: 156,
-    attendees: [
-      { id: '5', name: 'Jordan Lee' },
-      { id: '6', name: 'Chris Taylor' }
-    ],
-    organizer: {
-      name: 'BU Nethub',
-      role: 'Tech Club'
-    }
-  },
+
   {
     id: '4',
     title: 'GitHub Copilot Dev Days',
@@ -108,6 +69,8 @@ const mockEvents: Event[] = [
     bannerImage: '/assets/events/github-dev-days.png',
     maxAttendees: 500,
     currentAttendees: 423,
+    requiresBooking: true,
+    price: 5000,
     attendees: [
       { id: '7', name: 'Pat Morgan' },
       { id: '8', name: 'Taylor Swift' }
@@ -163,17 +126,18 @@ const mockEvents: Event[] = [
 
 type ViewMode = 'grid' | 'calendar'
 
-export default function EventsPage({ defaultIsOnline = null }: { defaultIsOnline?: boolean | null } = {}) {
+export default function EventsPage() {
   const [viewMode, setViewMode] = useState<ViewMode>('grid')
   const [events, setEvents] = useState<Event[]>(mockEvents)
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
+  const [selectedEventForBooking, setSelectedEventForBooking] = useState<Event | null>(null)
   
   // Filter states
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('')
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
-  const [isOnline, setIsOnline] = useState<boolean | null>(defaultIsOnline)
 
   // Filter events
   const filteredEvents = useMemo(() => {
@@ -197,14 +161,11 @@ export default function EventsPage({ defaultIsOnline = null }: { defaultIsOnline
         return false
       }
 
-      // Online/In-person filter
-      if (isOnline !== null && event.isOnline !== isOnline) {
-        return false
-      }
+
 
       return true
     })
-  }, [events, searchQuery, selectedCategory, startDate, endDate, isOnline])
+  }, [events, searchQuery, selectedCategory, startDate, endDate])
 
   const handleEventClick = (event: Event) => {
     // Navigate to event detail page
@@ -221,6 +182,11 @@ export default function EventsPage({ defaultIsOnline = null }: { defaultIsOnline
 
   const handleRSVP = (eventId: string) => {
     console.log('RSVP to event:', eventId)
+  }
+
+  const handleBook = (event: Event) => {
+    setSelectedEventForBooking(event)
+    setIsBookingModalOpen(true)
   }
 
   const handleCreateEvent = async (data: any) => {
@@ -283,8 +249,6 @@ export default function EventsPage({ defaultIsOnline = null }: { defaultIsOnline
           onStartDateChange={setStartDate}
           endDate={endDate}
           onEndDateChange={setEndDate}
-          isOnline={isOnline}
-          onOnlineChange={setIsOnline}
         />
 
         {/* Content */}
@@ -297,6 +261,7 @@ export default function EventsPage({ defaultIsOnline = null }: { defaultIsOnline
                 event={event}
                 onClick={handleEventClick}
                 onRSVP={handleRSVP}
+                onBook={handleBook}
               />
             ))}
           </div>
@@ -333,6 +298,13 @@ export default function EventsPage({ defaultIsOnline = null }: { defaultIsOnline
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
         onSubmit={handleCreateEvent}
+      />
+
+      {/* Booking Modal */}
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        event={selectedEventForBooking}
       />
     </div>
   )

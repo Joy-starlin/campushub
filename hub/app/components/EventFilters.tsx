@@ -12,8 +12,6 @@ interface EventFiltersProps {
   onStartDateChange: (date: string) => void
   endDate: string
   onEndDateChange: (date: string) => void
-  isOnline: boolean | null
-  onOnlineChange: (isOnline: boolean | null) => void
 }
 
 const categories = [
@@ -33,9 +31,7 @@ export default function EventFilters({
   startDate,
   onStartDateChange,
   endDate,
-  onEndDateChange,
-  isOnline,
-  onOnlineChange
+  onEndDateChange
 }: EventFiltersProps) {
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
@@ -78,44 +74,7 @@ export default function EventFilters({
         </div>
       </div>
 
-      {/* Online/In-Person Toggle */}
-      <div className="mt-4 flex items-center space-x-4">
-        <span className="text-sm font-medium text-gray-700">Event Type:</span>
-        <div className="flex items-center space-x-2">
-          <button
-            onClick={() => onOnlineChange(null)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              isOnline === null
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
-          >
-            All
-          </button>
-          <button
-            onClick={() => onOnlineChange(true)}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              isOnline === true
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
-          >
-            <Globe className="w-4 h-4" />
-            <span>Online</span>
-          </button>
-          <button
-            onClick={() => onOnlineChange(false)}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              isOnline === false
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
-          >
-            <MapPin className="w-4 h-4" />
-            <span>In-Person</span>
-          </button>
-        </div>
-      </div>
+
     </div>
   )
 }

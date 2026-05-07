@@ -95,7 +95,6 @@ export default function ResponsiveNavigation({
       items: [
         { id: 'news-feed', label: 'News Feed', icon: <MessageSquare className="w-5 h-5" />, href: '/news', description: 'Latest updates' },
         { id: 'all-events', label: 'All Events', icon: <Calendar className="w-5 h-5" />, href: '/events', description: 'Browse all events' },
-        { id: 'virtual-events', label: 'Virtual Events', icon: <Globe className="w-5 h-5" />, href: '/virtual-events', description: 'Zoom/Meet events', badge: 3 },
         { id: 'clubs', label: 'Club Directory', icon: <Users className="w-5 h-5" />, href: '/clubs', description: 'All student clubs' },
         { id: 'club-chat', label: 'Club Live Chat', icon: <MessageSquare className="w-5 h-5" />, href: '/club-chat', description: 'Real-time discussions', badge: userStats?.clubs },
         { id: 'study-groups', label: 'Study Groups', icon: <BookOpen className="w-5 h-5" />, href: '/study-groups', description: 'Academic groups', badge: 2 }

@@ -12,12 +12,11 @@ const slides = [
     id: "events",
     title: "Events",
     subtitle: "Never miss what matters",
-    desc: "Discover and RSVP to campus events, virtual sessions, and live countdowns. Stay in the loop every single day.",
+    desc: "Discover and RSVP to campus events and live countdowns. Stay in the loop every single day.",
     image: "/slides/events.jpg",
     placeholder: "from-blue-50 to-blue-100",
     links: [
       { label: "All Events",     href: "/events" },
-      { label: "Virtual Events", href: "/events/virtual" },
       { label: "News Feed",      href: "/events/news" },
     ],
   },
@@ -124,7 +123,7 @@ export default function FeatureSlideshow() {
   };
 
   return (
-    <section className="py-12 bg-white">
+    <section className="py-8 bg-white">
       <div className="container mx-auto px-4">
 
         {/* ── Header ── */}
@@ -133,7 +132,7 @@ export default function FeatureSlideshow() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
           <span className="inline-block text-xs font-black uppercase tracking-[0.2em] text-bugema-accent mb-3">
             What We Offer

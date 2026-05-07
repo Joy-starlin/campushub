@@ -1,10 +1,11 @@
 import AdminLayout from '../../components/admin/AdminLayout'
-import PostsModeration from '../../components/admin/PostsModeration'
+import PostsManagement from '../../components/admin/PostsManagement'
 
 export default function AdminPosts() {
   return (
     <AdminLayout>
-      <PostsModeration />
+      <PostsManagement />
     </AdminLayout>
   )
 }
+

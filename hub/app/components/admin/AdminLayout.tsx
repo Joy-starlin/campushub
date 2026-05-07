@@ -13,9 +13,16 @@ import {
   Menu, 
   X,
   LogOut,
-  Bell
+  Bell,
+  ShoppingBag,
+  Briefcase,
+  SearchCode,
+  Eye,
+  MessageSquare,
+  Globe
 } from 'lucide-react'
 import { useRouter, usePathname } from 'next/navigation'
+import { useAuth } from '../../contexts/AuthContext'
 
 interface AdminLayoutProps {
   children: React.ReactNode
@@ -33,32 +40,31 @@ const navItems: NavItem[] = [
   { id: 'overview', label: 'Overview', icon: LayoutDashboard, href: '/admin' },
   { id: 'users', label: 'Users', icon: Users, href: '/admin/users' },
   { id: 'posts', label: 'Posts', icon: FileText, href: '/admin/posts' },
-  { id: 'clubs', label: 'Clubs', icon: Calendar, href: '/admin/clubs' },
+  { id: 'clubs', label: 'Clubs', icon: Users, href: '/admin/clubs' },
   { id: 'events', label: 'Events', icon: Calendar, href: '/admin/events' },
+  { id: 'marketplace', label: 'Marketplace', icon: ShoppingBag, href: '/admin/marketplace' },
+  { id: 'jobs', label: 'Jobs & Internships', icon: Briefcase, href: '/admin/jobs' },
+  { id: 'lost-found', label: 'Lost & Found', icon: SearchCode, href: '/admin/lost-found' },
   { id: 'payments', label: 'Payments', icon: CreditCard, href: '/admin/payments' },
   { id: 'reports', label: 'Reports', icon: Flag, href: '/admin/reports' },
-  { id: 'settings', label: 'Settings', icon: Settings, href: '/admin/settings' }
+  { id: 'feedback', label: 'Feedback', icon: MessageSquare, href: '/admin/feedback' },
+  { id: 'settings', label: 'Settings', icon: Settings, href: '/admin/settings' },
+  { id: 'view-site', label: 'View Website', icon: Globe, href: '/' }
 ]
 
 export default function AdminLayout({ children }: AdminLayoutProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const router = useRouter()
   const pathname = usePathname()
-
-  // Mock admin user - in real app, this would come from auth context
-  const adminUser = {
-    name: 'Admin User',
-    email: 'admin@bugema.edu',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop'
-  }
+  const { user, signOut } = useAuth()
 
   const handleNavigation = (href: string) => {
     router.push(href)
     setIsSidebarOpen(false)
   }
 
-  const handleLogout = () => {
-    // Handle logout logic
+  const handleLogout = async () => {
+    await signOut()
     router.push('/auth/login')
   }
 
@@ -106,11 +112,11 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               return (
                 <button
                   key={item.id}
-                  onClick={() => handleNavigation(item.href)}
+                  onClick={() => item.id === 'view-site' ? window.open('/', '_blank') : handleNavigation(item.href)}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-                    isActive
-                      ? 'bg-blue-600 text-white'
-                      : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                    isActive && item.id !== 'view-site'
+                       ? 'bg-blue-600 text-white'
+                       : 'text-gray-300 hover:bg-gray-800 hover:text-white'
                   }`}
                 >
                   <Icon className="w-5 h-5" />
@@ -128,17 +134,19 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           {/* User Profile */}
           <div className="p-4 border-t border-gray-800">
             <div className="flex items-center space-x-3 mb-4">
-              <img
-                src={adminUser.avatar}
-                alt={adminUser.name}
-                className="w-10 h-10 rounded-full object-cover"
-              />
+              <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center font-bold text-white overflow-hidden">
+                {user?.photoURL ? (
+                  <img src={user.photoURL} alt={user.displayName || 'Admin'} className="w-full h-full object-cover" />
+                ) : (
+                  (user?.displayName?.[0] || 'A').toUpperCase()
+                )}
+              </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-white truncate">
-                  {adminUser.name}
+                  {user?.displayName || 'Admin User'}
                 </p>
                 <p className="text-xs text-gray-400 truncate">
-                  {adminUser.email}
+                  {user?.email || 'admin@bugema.edu'}
                 </p>
               </div>
             </div>

@@ -3,17 +3,26 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
+  Plus, 
   Search, 
-  Filter, 
-  Eye, 
-  Ban, 
+  Edit2, 
+  Trash2, 
+  Users, 
   Shield, 
-  ChevronDown,
-  Mail,
-  MapPin,
-  Calendar,
-  Users
+  Mail, 
+  MapPin, 
+  CheckCircle2, 
+  XCircle, 
+  AlertCircle,
+  X,
+  Eye,
+  Ban,
+  UserPlus
 } from 'lucide-react'
+import toast from 'react-hot-toast'
+import { apiRequest } from '../../lib/api'
+import { useEffect } from 'react'
+
 
 interface User {
   id: string
@@ -26,9 +35,6 @@ interface User {
   role: 'member' | 'moderator' | 'admin'
   status: 'active' | 'suspended'
   joinDate: string
-  lastActive: string
-  postsCount: number
-  clubsJoined: number
 }
 
 const mockUsers: User[] = [
@@ -36,522 +42,245 @@ const mockUsers: User[] = [
     id: '1',
     name: 'Sarah Johnson',
     email: 'sarah.j@bugema.edu',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop',
     country: 'Uganda',
     university: 'Bugema University',
     plan: 'Premium',
     role: 'member',
     status: 'active',
-    joinDate: '2026-01-15',
-    lastActive: '2026-04-23T14:30:00Z',
-    postsCount: 42,
-    clubsJoined: 3
+    joinDate: '2026-01-15'
   },
   {
     id: '2',
     name: 'Mike Chen',
     email: 'mike.c@bugema.edu',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop',
     country: 'Uganda',
     university: 'Bugema University',
     plan: 'Free',
     role: 'member',
     status: 'active',
-    joinDate: '2026-02-20',
-    lastActive: '2026-04-23T10:15:00Z',
-    postsCount: 18,
-    clubsJoined: 2
-  },
-  {
-    id: '3',
-    name: 'Emily Davis',
-    email: 'emily.d@bugema.edu',
-    country: 'Uganda',
-    university: 'Makerere University',
-    plan: 'Premium',
-    role: 'moderator',
-    status: 'active',
-    joinDate: '2023-11-10',
-    lastActive: '2026-04-23T16:45:00Z',
-    postsCount: 67,
-    clubsJoined: 4
-  },
-  {
-    id: '4',
-    name: 'Alex Kim',
-    email: 'alex.k@bugema.edu',
-    country: 'Kenya',
-    university: 'Bugema University',
-    plan: 'Free',
-    role: 'member',
-    status: 'suspended',
-    joinDate: '2026-03-05',
-    lastActive: '2026-04-20T09:20:00Z',
-    postsCount: 8,
-    clubsJoined: 1
-  },
-  {
-    id: '5',
-    name: 'Jordan Lee',
-    email: 'jordan.l@bugema.edu',
-    country: 'Uganda',
-    university: 'Uganda Christian University',
-    plan: 'Premium',
-    role: 'member',
-    status: 'active',
-    joinDate: '2026-01-28',
-    lastActive: '2026-04-23T11:30:00Z',
-    postsCount: 35,
-    clubsJoined: 3
+    joinDate: '2026-02-20'
   }
 ]
 
 export default function UsersManagement() {
-  const [users, setUsers] = useState<User[]>(mockUsers)
+  const [users, setUsers] = useState<User[]>([])
+  const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCountry, setSelectedCountry] = useState('')
-  const [selectedUniversity, setSelectedUniversity] = useState('')
-  const [selectedPlan, setSelectedPlan] = useState('')
-  const [selectedRole, setSelectedRole] = useState('')
-  const [selectedStatus, setSelectedStatus] = useState('')
-  const [showFilters, setShowFilters] = useState(false)
-  const [selectedUser, setSelectedUser] = useState<User | null>(null)
-  const [showRoleModal, setShowRoleModal] = useState(false)
-  const [newRole, setNewRole] = useState<'member' | 'moderator' | 'admin'>('member')
-  const [isLoading, setIsLoading] = useState(false)
+  const [selectedRole, setSelectedRole] = useState('All')
+  const [selectedStatus, setSelectedStatus] = useState('All')
+  const [isDeleting, setIsDeleting] = useState<string | null>(null)
 
-  const countries = ['All', 'Uganda', 'Kenya', 'Tanzania', 'Rwanda']
-  const universities = ['All', 'Bugema University', 'Makerere University', 'Uganda Christian University']
-  const plans = ['All', 'Free', 'Premium', 'Enterprise']
+  const fetchUsers = async () => {
+    setLoading(true)
+    try {
+      const res = await apiRequest<User[]>('/api/v1/users')
+      setUsers(Array.isArray(res) ? res : [])
+    } catch (err) {
+      console.error(err)
+      toast.error('Failed to load users')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
+
+  
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [editingUser, setEditingUser] = useState<User | null>(null)
+  const [formData, setFormData] = useState<Partial<User>>({
+    name: '',
+    email: '',
+    role: 'member',
+    status: 'active',
+    plan: 'Free'
+  })
+
   const roles = ['All', 'member', 'moderator', 'admin']
   const statuses = ['All', 'active', 'suspended']
+  const plans = ['Free', 'Premium', 'Enterprise']
 
   const filteredUsers = users.filter(user => {
     const matchesSearch = user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          user.email.toLowerCase().includes(searchQuery.toLowerCase())
-    
-    const matchesCountry = selectedCountry === 'All' || user.country === selectedCountry
-    const matchesUniversity = selectedUniversity === 'All' || user.university === selectedUniversity
-    const matchesPlan = selectedPlan === 'All' || user.plan === selectedPlan
     const matchesRole = selectedRole === 'All' || user.role === selectedRole
     const matchesStatus = selectedStatus === 'All' || user.status === selectedStatus
-
-    return matchesSearch && matchesCountry && matchesUniversity && matchesPlan && matchesRole && matchesStatus
+    return matchesSearch && matchesRole && matchesStatus
   })
 
-  const handleViewUser = (user: User) => {
-    setSelectedUser(user)
-    console.log('View user:', user.id)
-    // Here you would navigate to user profile or open modal
+  const openCreateModal = () => {
+    setEditingUser(null)
+    setFormData({ name: '', email: '', role: 'member', status: 'active', plan: 'Free' })
+    setIsModalOpen(true)
   }
 
-  const handleToggleStatus = async (userId: string) => {
-    setIsLoading(true)
+  const openEditModal = (user: User) => {
+    setEditingUser(user)
+    setFormData(user)
+    setIsModalOpen(true)
+  }
+
+  const handleSave = async () => {
+    if (!formData.name || !formData.email) {
+      toast.error('Name and Email are required')
+      return
+    }
+
+    const token = localStorage.getItem('accessToken') || ''
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      setUsers(prev => prev.map(user => 
-        user.id === userId 
-          ? { ...user, status: user.status === 'active' ? 'suspended' : 'active' }
-          : user
-      ))
-      
-      console.log('User status toggled:', userId)
-    } catch (error) {
-      console.error('Failed to toggle user status:', error)
-    } finally {
-      setIsLoading(false)
+      if (editingUser) {
+        await apiRequest(`/api/v1/users/${editingUser.id}`, {
+          method: 'PATCH',
+          token,
+          body: JSON.stringify(formData)
+        })
+        toast.success('User updated successfully')
+      } else {
+        await apiRequest('/api/v1/users', {
+          method: 'POST',
+          token,
+          body: JSON.stringify(formData)
+        })
+        toast.success('User account created')
+      }
+      setIsModalOpen(false)
+      fetchUsers()
+    } catch (error: any) {
+      toast.error(error.message || 'Action failed')
     }
   }
 
-  const handleChangeRole = (user: User) => {
-    setSelectedUser(user)
-    setNewRole(user.role)
-    setShowRoleModal(true)
-  }
-
-  const handleSaveRole = async () => {
-    if (!selectedUser) return
-
-    setIsLoading(true)
+  const handleDelete = async (id: string) => {
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      setUsers(prev => prev.map(user => 
-        user.id === selectedUser.id 
-          ? { ...user, role: newRole }
-          : user
-      ))
-      
-      console.log('User role changed:', selectedUser.id, newRole)
-      setShowRoleModal(false)
-      setSelectedUser(null)
-    } catch (error) {
-      console.error('Failed to change user role:', error)
-    } finally {
-      setIsLoading(false)
+      const token = localStorage.getItem('accessToken') || ''
+      await apiRequest(`/api/v1/users/${id}`, {
+        method: 'DELETE',
+        token
+      })
+      toast.success('User account deleted')
+      setIsDeleting(null)
+      fetchUsers()
+    } catch (error: any) {
+      toast.error('Failed to delete user')
     }
   }
 
-  const getPlanColor = (plan: string) => {
-    const colors = {
-      'Free': 'bg-gray-100 text-gray-800',
-      'Premium': 'bg-green-100 text-green-800',
-      'Enterprise': 'bg-purple-100 text-purple-800'
+
+  const getStatusStyle = (status: User['status']) => {
+    return status === 'active' 
+      ? 'bg-green-100 text-green-700 border-green-200' 
+      : 'bg-red-100 text-red-700 border-red-200'
+  }
+
+  const getRoleStyle = (role: User['role']) => {
+    switch (role) {
+      case 'admin': return 'bg-purple-100 text-purple-700 border-purple-200'
+      case 'moderator': return 'bg-blue-100 text-blue-700 border-blue-200'
+      default: return 'bg-gray-100 text-gray-700 border-gray-200'
     }
-    return colors[plan as keyof typeof colors] || 'bg-gray-100 text-gray-800'
-  }
-
-  const getRoleColor = (role: string) => {
-    const colors = {
-      'member': 'bg-blue-100 text-blue-800',
-      'moderator': 'bg-orange-100 text-orange-800',
-      'admin': 'bg-red-100 text-red-800'
-    }
-    return colors[role as keyof typeof colors] || 'bg-gray-100 text-gray-800'
-  }
-
-  const getStatusColor = (status: string) => {
-    const colors = {
-      'active': 'bg-green-100 text-green-800',
-      'suspended': 'bg-red-100 text-red-800'
-    }
-    return colors[status as keyof typeof colors] || 'bg-gray-100 text-gray-800'
-  }
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString()
-  }
-
-  const formatLastActive = (dateString: string) => {
-    const date = new Date(dateString)
-    const now = new Date()
-    const diffMs = now.getTime() - date.getTime()
-    const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
-    
-    if (diffHours < 1) return 'Just now'
-    if (diffHours < 24) return `${diffHours}h ago`
-    if (diffHours < 48) return 'Yesterday'
-    return formatDate(dateString)
   }
 
   return (
     <div className="p-6 space-y-6">
-      {/* Page Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">Users Management</h1>
-        <p className="text-gray-600">Manage user accounts, roles, and permissions</p>
+       <div className="bg-white border-b border-gray-200 -m-6 mb-6 px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
+        <div className="flex items-center gap-4">
+          <Users className="w-6 h-6 text-bugema-blue" />
+          <h1 className="text-xl font-black text-gray-900 uppercase tracking-tight">Select Users to Change</h1>
+        </div>
+        <button onClick={openCreateModal} className="flex items-center gap-2 bg-bugema-blue text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-all shadow-md active:scale-95">
+          <UserPlus className="w-4 h-4" /> ADD USER
+        </button>
       </div>
 
-      {/* Search and Filters */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-        <div className="flex flex-col lg:flex-row gap-4">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search users by name or email..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-            />
-          </div>
-          
-          <button
-            onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-          >
-            <Filter className="w-4 h-4" />
-            <span>Filters</span>
-            <ChevronDown className={`w-4 h-4 transition-transform ${showFilters ? 'rotate-180' : ''}`} />
-          </button>
+      <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-4">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <input type="text" placeholder="Search by name or email..." className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
         </div>
-
-        {/* Expandable Filters */}
-        <AnimatePresence>
-          {showFilters && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="mt-4 pt-4 border-t border-gray-200 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4"
-            >
-              <select
-                value={selectedCountry}
-                onChange={(e) => setSelectedCountry(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-              >
-                {countries.map(country => (
-                  <option key={country} value={country}>
-                    {country}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                value={selectedUniversity}
-                onChange={(e) => setSelectedUniversity(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-              >
-                {universities.map(university => (
-                  <option key={university} value={university}>
-                    {university}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                value={selectedPlan}
-                onChange={(e) => setSelectedPlan(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-              >
-                {plans.map(plan => (
-                  <option key={plan} value={plan}>
-                    {plan}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                value={selectedRole}
-                onChange={(e) => setSelectedRole(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-              >
-                {roles.map(role => (
-                  <option key={role} value={role}>
-                    {role}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-              >
-                {statuses.map(status => (
-                  <option key={status} value={status}>
-                    {status}
-                  </option>
-                ))}
-              </select>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div className="flex gap-2">
+          <select className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none" value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)}>{roles.map(r => <option key={r} value={r}>{r.toUpperCase()}</option>)}</select>
+          <select className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none" value={selectedStatus} onChange={(e) => setSelectedStatus(e.target.value)}>{statuses.map(s => <option key={s} value={s}>{s.toUpperCase()}</option>)}</select>
+        </div>
       </div>
 
-      {/* Users Table */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900">
-            Users ({filteredUsers.length})
-          </h3>
-        </div>
-        
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  User
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Location
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Plan
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Role
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Status
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Activity
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
-                </th>
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <table className="w-full text-left">
+          <thead className="bg-gray-50 border-b border-gray-100">
+            <tr>
+              <th className="px-6 py-4 text-center w-12"><input type="checkbox" className="rounded" /></th>
+              <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase">User</th>
+              <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase">Role</th>
+              <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase">Status</th>
+              <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-50">
+            {filteredUsers.map((user) => (
+              <tr key={user.id} className="hover:bg-gray-50/50 transition-colors group text-sm">
+                <td className="px-6 py-4 text-center"><input type="checkbox" className="rounded border-gray-300" /></td>
+                <td className="px-6 py-4">
+                  <p className="font-bold text-gray-900 group-hover:text-bugema-blue transition-colors">{user.name}</p>
+                  <p className="text-[10px] text-gray-400 font-bold uppercase">{user.email}</p>
+                </td>
+                <td className="px-6 py-4">
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-widest border ${getRoleStyle(user.role)}`}>{user.role}</span>
+                </td>
+                <td className="px-6 py-4">
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-widest border ${getStatusStyle(user.status)}`}>{user.status}</span>
+                </td>
+                <td className="px-6 py-4">
+                  <div className="flex items-center justify-end gap-2">
+                     <button onClick={() => openEditModal(user)} className="p-1.5 text-gray-400 hover:text-bugema-blue hover:bg-blue-50 rounded-lg transition-colors"><Edit2 className="w-3.5 h-3.5" /></button>
+                     <button onClick={() => setIsDeleting(user.id)} className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"><Trash2 className="w-3.5 h-3.5" /></button>
+                  </div>
+                </td>
               </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {filteredUsers.map((user) => (
-                <motion.tr
-                  key={user.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="hover:bg-gray-50"
-                >
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      {user.avatar ? (
-                        <img
-                          src={user.avatar}
-                          alt={user.name}
-                          className="w-10 h-10 rounded-full object-cover mr-3"
-                        />
-                      ) : (
-                        <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center mr-3">
-                          <Users className="w-5 h-5 text-gray-600" />
-                        </div>
-                      )}
-                      <div>
-                        <div className="text-sm font-medium text-gray-900">
-                          {user.name}
-                        </div>
-                        <div className="text-sm text-gray-500 flex items-center">
-                          <Mail className="w-3 h-3 mr-1" />
-                          {user.email}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{user.university}</div>
-                    <div className="text-sm text-gray-500 flex items-center">
-                      <MapPin className="w-3 h-3 mr-1" />
-                      {user.country}
-                    </div>
-                  </td>
-                  
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getPlanColor(user.plan)}`}>
-                      {user.plan}
-                    </span>
-                  </td>
-                  
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getRoleColor(user.role)}`}>
-                      {user.role}
-                    </span>
-                  </td>
-                  
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(user.status)}`}>
-                      {user.status}
-                    </span>
-                  </td>
-                  
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <div className="space-y-1">
-                      <div className="flex items-center">
-                        <Calendar className="w-3 h-3 mr-1" />
-                        Joined {formatDate(user.joinDate)}
-                      </div>
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 bg-green-400 rounded-full mr-1"></div>
-                        {formatLastActive(user.lastActive)}
-                      </div>
-                      <div className="text-xs">
-                        {user.postsCount} posts • {user.clubsJoined} clubs
-                      </div>
-                    </div>
-                  </td>
-                  
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center space-x-2">
-                      <button
-                        onClick={() => handleViewUser(user)}
-                        className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                        title="View profile"
-                      >
-                        <Eye className="w-4 h-4" />
-                      </button>
-                      
-                      <button
-                        onClick={() => handleChangeRole(user)}
-                        className="p-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors"
-                        title="Change role"
-                      >
-                        <Shield className="w-4 h-4" />
-                      </button>
-                      
-                      <button
-                        onClick={() => handleToggleStatus(user.id)}
-                        disabled={isLoading}
-                        className={`p-2 rounded-lg transition-colors ${
-                          user.status === 'active'
-                            ? 'text-gray-600 hover:text-red-600 hover:bg-red-50'
-                            : 'text-gray-600 hover:text-green-600 hover:bg-green-50'
-                        }`}
-                        title={user.status === 'active' ? 'Suspend user' : 'Unsuspend user'}
-                      >
-                        <Ban className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </td>
-                </motion.tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
 
-      {/* Change Role Modal */}
       <AnimatePresence>
-        {showRoleModal && selectedUser && (
-          <div className="fixed inset-0 z-50 overflow-y-auto">
-            <div className="flex min-h-screen items-center justify-center p-4">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-black bg-opacity-50"
-                onClick={() => setShowRoleModal(false)}
-              />
-              
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                className="relative bg-white rounded-xl shadow-xl max-w-md w-full"
-              >
-                <div className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
-                      <Shield className="w-5 h-5 text-purple-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Change User Role</h3>
-                      <p className="text-sm text-gray-500">{selectedUser.name}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      New Role
-                    </label>
-                    <select
-                      value={newRole}
-                      onChange={(e) => setNewRole(e.target.value as any)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-                    >
-                      <option value="member">Member</option>
-                      <option value="moderator">Moderator</option>
-                      <option value="admin">Admin</option>
-                    </select>
-                  </div>
-                  
-                  <div className="flex space-x-3">
-                    <button
-                      onClick={() => setShowRoleModal(false)}
-                      className="flex-1 py-2 px-4 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      onClick={handleSaveRole}
-                      disabled={isLoading}
-                      className="flex-1 py-2 px-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {isLoading ? 'Saving...' : 'Change Role'}
-                    </button>
-                  </div>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm">
+            <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} className="bg-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[90vh] overflow-hidden flex flex-col">
+              <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50">
+                <h2 className="text-lg font-black text-gray-900 uppercase">{editingUser ? 'Edit User' : 'Add New User'}</h2>
+                <button onClick={() => setIsModalOpen(false)}><X className="w-5 h-5 text-gray-500" /></button>
+              </div>
+              <div className="p-6 space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="col-span-2"><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Full Name</label><input type="text" className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm font-medium" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} /></div>
+                  <div className="col-span-2"><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Email Address</label><input type="email" className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm font-medium" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} /></div>
+                  <div><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Role</label><select className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm" value={formData.role} onChange={e => setFormData({ ...formData, role: e.target.value as any })}>{roles.filter(r => r !== 'All').map(r => <option key={r} value={r}>{r.toUpperCase()}</option>)}</select></div>
+                  <div><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Plan</label><select className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm" value={formData.plan} onChange={e => setFormData({ ...formData, plan: e.target.value as any })}>{plans.map(p => <option key={p} value={p}>{p.toUpperCase()}</option>)}</select></div>
+                  <div><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Status</label><select className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm" value={formData.status} onChange={e => setFormData({ ...formData, status: e.target.value as any })}><option value="active">ACTIVE</option><option value="suspended">SUSPENDED</option></select></div>
                 </div>
-              </motion.div>
-            </div>
+              </div>
+              <div className="px-6 py-4 border-t border-gray-100 flex justify-end gap-3 bg-gray-50">
+                <button onClick={() => setIsModalOpen(false)} className="px-5 py-2 rounded-lg font-bold text-[11px] tracking-widest text-gray-500 hover:bg-gray-200 uppercase">CANCEL</button>
+                <button onClick={handleSave} className="px-5 py-2 rounded-lg font-bold text-[11px] tracking-widest bg-bugema-blue text-white hover:bg-blue-700 shadow-md uppercase">{editingUser ? 'SAVE CHANGES' : 'CREATE USER'}</button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isDeleting && (
+          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm">
+            <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} className="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl">
+              <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6"><Trash2 className="w-8 h-8" /></div>
+              <h3 className="text-lg font-black text-gray-900 mb-2 uppercase text-xs">Confirm Permanent Deletion</h3>
+              <p className="text-gray-500 text-sm mb-8">This will erase the user account and all associated data. This action is irreversible.</p>
+              <div className="flex gap-4">
+                <button onClick={() => setIsDeleting(null)} className="flex-1 px-6 py-2.5 rounded-lg font-bold text-[11px] tracking-widest bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors uppercase">CANCEL</button>
+                <button onClick={() => handleDelete(isDeleting)} className="flex-1 px-6 py-2.5 rounded-lg font-bold text-[11px] tracking-widest bg-red-600 text-white hover:bg-red-700 shadow-md transition-all active:scale-95 uppercase">DELETE</button>
+              </div>
+            </motion.div>
           </div>
         )}
       </AnimatePresence>

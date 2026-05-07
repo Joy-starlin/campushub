@@ -1,0 +1,43 @@
+﻿
+> hub@0.1.0 build
+> next build
+
+node.exe :  ΓÜá Warning: Next.js 
+inferred your workspace root, but it 
+may not be correct.
+At C:\Program Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE $NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecif 
+   ied: ( ΓÜá Warning: N...not be corr  
+  ect.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCom 
+   mandError
+ 
+ We detected multiple lockfiles and 
+selected the directory of 
+D:\BUHub\package-lock.json as the root 
+directory.
+ To silence this warning, set 
+`outputFileTracingRoot` in your Next.js 
+config, or consider removing one of the 
+lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-r
+eference/config/next-config-js/output#ca
+veats for more information.
+ Detected additional lockfiles: 
+   * D:\BUHub\hub\package-lock.json
+
+   Γû▓ Next.js 15.5.15
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 47s
+   Linting and checking validity of types ...
+ Γ¿» ESLint: Cannot find module 'D:\BUHu
+b\hub\node_modules\eslint-config-next\co
+re-web-vitals' imported from 
+D:\BUHub\hub\eslint.config.mjs Did you 
+mean to import 
+"eslint-config-next/core-web-vitals.js"?

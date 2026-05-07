@@ -62,7 +62,6 @@ const mainNavItems = [
     dropdown: [
       { name: "News Feed", href: "/events/news", icon: Rss },
       { name: "All Events", href: "/events", icon: CalendarDays },
-      { name: "Virtual Events", href: "/events/virtual", icon: Video },
       { name: "Countdown", href: "/events/countdown", icon: Sparkles },
     ]
   },
@@ -429,14 +428,6 @@ export default function Navbar() {
                             </Link>
                           </div>
 
-                          {isAdmin && (
-                             <div className="space-y-1 mb-2 border-t border-gray-100 pt-2">
-                               <p className="px-3 py-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">Admin</p>
-                               <Link href="/admin" className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-bugema-blue transition-colors">
-                                 <ShieldAlert className="w-4 h-4" /> Admin Dashboard
-                               </Link>
-                             </div>
-                          )}
                           
                           <div className="border-t border-gray-100 pt-2">
                             <button

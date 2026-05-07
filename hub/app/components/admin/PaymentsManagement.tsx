@@ -1,15 +1,33 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Search, Filter, Download, Calendar, CreditCard, CheckCircle, XCircle, Clock } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { 
+  Search, 
+  Download, 
+  CreditCard, 
+  Calendar, 
+  CheckCircle2, 
+  XCircle, 
+  Clock, 
+  Eye,
+  FileText,
+  DollarSign,
+  Filter,
+  X,
+  TrendingUp,
+  Landmark
+} from 'lucide-react'
+import toast from 'react-hot-toast'
+import { apiRequest } from '../../lib/api'
+import { useEffect } from 'react'
+
 
 interface Payment {
   id: string
   user: {
     name: string
     email: string
-    avatar?: string
   }
   plan: string
   amount: number
@@ -23,11 +41,7 @@ interface Payment {
 const mockPayments: Payment[] = [
   {
     id: '1',
-    user: {
-      name: 'Sarah Johnson',
-      email: 'sarah.j@bugema.edu',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop'
-    },
+    user: { name: 'Sarah Johnson', email: 'sarah.j@bugema.edu' },
     plan: 'Premium',
     amount: 50000,
     currency: 'UGX',
@@ -35,261 +49,122 @@ const mockPayments: Payment[] = [
     date: '2026-04-23T10:30:00Z',
     status: 'completed',
     transactionId: 'TXN001234'
-  },
-  {
-    id: '2',
-    user: {
-      name: 'Mike Chen',
-      email: 'mike.c@bugema.edu',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
-    },
-    plan: 'Premium',
-    amount: 50000,
-    currency: 'UGX',
-    method: 'card',
-    date: '2026-04-23T09:15:00Z',
-    status: 'pending',
-    transactionId: 'TXN001235'
-  },
-  {
-    id: '3',
-    user: {
-      name: 'Emily Davis',
-      email: 'emily.d@bugema.edu'
-    },
-    plan: 'Enterprise',
-    amount: 100000,
-    currency: 'UGX',
-    method: 'bank_transfer',
-    date: '2026-04-22T14:20:00Z',
-    status: 'failed',
-    transactionId: 'TXN001236'
   }
 ]
 
 export default function PaymentsManagement() {
-  const [payments, setPayments] = useState<Payment[]>(mockPayments)
+  const [payments, setPayments] = useState<Payment[]>([])
+  const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedMethod, setSelectedMethod] = useState('')
-  const [selectedStatus, setSelectedStatus] = useState('')
-  const [dateRange, setDateRange] = useState({ start: '', end: '' })
+  const [selectedStatus, setSelectedStatus] = useState('All')
 
-  const paymentMethods = ['All', 'card', 'mobile_money', 'bank_transfer']
-  const paymentStatuses = ['All', 'completed', 'pending', 'failed']
+  const fetchPayments = async () => {
+    setLoading(true)
+    try {
+      const res = await apiRequest<Payment[]>('/api/v1/payments')
+      setPayments(Array.isArray(res) ? res : [])
+    } catch (err) {
+      console.error(err)
+      toast.error('Failed to load payments')
+    } finally {
+      setLoading(false)
+    }
+  }
 
-  const filteredPayments = payments.filter(payment => {
-    const matchesSearch = payment.user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         payment.user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         payment.transactionId.toLowerCase().includes(searchQuery.toLowerCase())
-    
-    const matchesMethod = selectedMethod === 'All' || payment.method === selectedMethod
-    const matchesStatus = selectedStatus === 'All' || payment.status === selectedStatus
+  useEffect(() => {
+    fetchPayments()
+  }, [])
 
-    return matchesSearch && matchesMethod && matchesStatus
+
+  const filteredPayments = payments.filter(p => {
+    const matchesSearch = p.user.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                         p.transactionId.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesStatus = selectedStatus === 'All' || p.status === selectedStatus
+    return matchesSearch && matchesStatus
   })
 
-  const handleExportCSV = () => {
-    // CSV export logic
-    console.log('Exporting to CSV...')
-  }
-
-  const getStatusColor = (status: string) => {
-    const colors = {
-      'completed': 'bg-green-100 text-green-800',
-      'pending': 'bg-yellow-100 text-yellow-800',
-      'failed': 'bg-red-100 text-red-800'
-    }
-    return colors[status as keyof typeof colors] || 'bg-gray-100 text-gray-800'
-  }
-
-  const getStatusIcon = (status: string) => {
+  const getStatusStyle = (status: Payment['status']) => {
     switch (status) {
-      case 'completed':
-        return <CheckCircle className="w-4 h-4" />
-      case 'pending':
-        return <Clock className="w-4 h-4" />
-      case 'failed':
-        return <XCircle className="w-4 h-4" />
-      default:
-        return null
-    }
-  }
-
-  const getMethodIcon = (method: string) => {
-    switch (method) {
-      case 'card':
-        return <CreditCard className="w-4 h-4" />
-      case 'mobile_money':
-        return <div className="w-4 h-4 bg-blue-600 rounded" />
-      case 'bank_transfer':
-        return <div className="w-4 h-4 bg-green-600 rounded" />
-      default:
-        return null
+      case 'completed': return 'bg-green-100 text-green-700 border-green-200'
+      case 'pending': return 'bg-orange-100 text-orange-700 border-orange-200'
+      case 'failed': return 'bg-red-100 text-red-700 border-red-200'
+      default: return 'bg-gray-100 text-gray-700'
     }
   }
 
   return (
     <div className="p-6 space-y-6">
-      {/* Page Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">Payments Management</h1>
-        <p className="text-gray-600">Monitor and manage all payment transactions</p>
+       <div className="bg-white border-b border-gray-200 -m-6 mb-6 px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
+        <div className="flex items-center gap-4">
+          <Landmark className="w-6 h-6 text-bugema-blue" />
+          <h1 className="text-xl font-black text-gray-900 uppercase tracking-tight">Select Payments to Change</h1>
+        </div>
+        <button onClick={() => toast.success('CSV Exporting...')} className="flex items-center gap-2 bg-bugema-blue text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-all shadow-md active:scale-95">
+          <Download className="w-4 h-4" /> EXPORT CSV
+        </button>
       </div>
 
-      {/* Filters */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-        <div className="flex flex-col lg:flex-row gap-4">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search payments..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-            />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { label: 'Today\'s Revenue', value: 'UGX 450k', icon: TrendingUp, color: 'text-green-600', bg: 'bg-green-50' },
+          { label: 'Active Subscriptions', value: '1,240', icon: CreditCard, color: 'text-blue-600', bg: 'bg-blue-50' },
+          { label: 'Pending Payouts', value: 'UGX 1.2M', icon: Clock, color: 'text-orange-600', bg: 'bg-orange-50' },
+        ].map((stat, i) => (
+          <div key={i} className={`${stat.bg} p-4 rounded-xl border border-white flex items-center justify-between shadow-sm`}>
+            <div>
+              <p className="text-[10px] font-bold text-gray-500 uppercase">{stat.label}</p>
+              <p className={`text-xl font-black ${stat.color}`}>{stat.value}</p>
+            </div>
+            <stat.icon className={`w-6 h-6 ${stat.color} opacity-20`} />
           </div>
-          
-          <select
-            value={selectedMethod}
-            onChange={(e) => setSelectedMethod(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-          >
-            {paymentMethods.map(method => (
-              <option key={method} value={method}>
-                {method === 'All' ? 'All Methods' : method.replace('_', ' ').toUpperCase()}
-              </option>
-            ))}
-          </select>
-
-          <select
-            value={selectedStatus}
-            onChange={(e) => setSelectedStatus(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-          >
-            {paymentStatuses.map(status => (
-              <option key={status} value={status}>
-                {status === 'All' ? 'All Statuses' : status.charAt(0).toUpperCase() + status.slice(1)}
-              </option>
-            ))}
-          </select>
-
-          <button
-            onClick={handleExportCSV}
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            <Download className="w-4 h-4" />
-            <span>Export CSV</span>
-          </button>
-        </div>
+        ))}
       </div>
 
-      {/* Payments Table */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900">
-            Transactions ({filteredPayments.length})
-          </h3>
+      <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-4">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <input type="text" placeholder="Search transactions..." className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
         </div>
-        
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  User
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Plan
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Amount
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Method
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Date
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Status
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Transaction ID
-                </th>
+        <select className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none" value={selectedStatus} onChange={(e) => setSelectedStatus(e.target.value)}>
+          <option value="All">All Statuses</option>
+          <option value="completed">COMPLETED</option>
+          <option value="pending">PENDING</option>
+          <option value="failed">FAILED</option>
+        </select>
+      </div>
+
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden text-sm">
+        <table className="w-full text-left">
+          <thead className="bg-gray-50 border-b border-gray-100">
+            <tr>
+              <th className="px-6 py-4 text-center w-12"><input type="checkbox" className="rounded" /></th>
+              <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase">Transaction</th>
+              <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase">Amount</th>
+              <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase text-center">Status</th>
+              <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase text-right">Date</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-50">
+            {filteredPayments.map((p) => (
+              <tr key={p.id} className="hover:bg-gray-50/50 transition-colors group">
+                <td className="px-6 py-4 text-center"><input type="checkbox" className="rounded border-gray-300" /></td>
+                <td className="px-6 py-4">
+                  <p className="font-bold text-gray-900">{p.transactionId}</p>
+                  <p className="text-[10px] text-gray-400 font-bold uppercase">{p.user.name}</p>
+                </td>
+                <td className="px-6 py-4 font-bold text-gray-900">
+                  {p.currency} {p.amount.toLocaleString()}
+                </td>
+                <td className="px-6 py-4 text-center">
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-widest border ${getStatusStyle(p.status)}`}>{p.status}</span>
+                </td>
+                <td className="px-6 py-4 text-right text-gray-500">
+                  {new Date(p.date).toLocaleDateString()}
+                </td>
               </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {filteredPayments.map((payment) => (
-                <motion.tr
-                  key={payment.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="hover:bg-gray-50"
-                >
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      {payment.user.avatar ? (
-                        <img
-                          src={payment.user.avatar}
-                          alt={payment.user.name}
-                          className="w-8 h-8 rounded-full object-cover mr-3"
-                        />
-                      ) : (
-                        <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-3">
-                          <div className="w-4 h-4 bg-gray-600 rounded-full" />
-                        </div>
-                      )}
-                      <div>
-                        <div className="text-sm font-medium text-gray-900">
-                          {payment.user.name}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          {payment.user.email}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    {payment.plan}
-                  </td>
-                  
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {payment.currency} {payment.amount.toLocaleString()}
-                  </td>
-                  
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center space-x-2">
-                      {getMethodIcon(payment.method)}
-                      <span className="text-sm text-gray-900">
-                        {payment.method.replace('_', ' ').toUpperCase()}
-                      </span>
-                    </div>
-                  </td>
-                  
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <div className="flex items-center">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {new Date(payment.date).toLocaleDateString()}
-                    </div>
-                  </td>
-                  
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(payment.status)}`}>
-                      {getStatusIcon(payment.status)}
-                      <span className="ml-1">{payment.status}</span>
-                    </span>
-                  </td>
-                  
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">
-                    {payment.transactionId}
-                  </td>
-                </motion.tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   )
