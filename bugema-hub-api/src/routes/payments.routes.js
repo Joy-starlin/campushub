@@ -80,7 +80,7 @@ router.post('/airtel/request',
 router.post('/flutterwave/request',
   verifyToken,
   [
-    body('phone').notEmpty().matches(/^2567\d{8}$/).withMessage('Invalid phone number format. Use 2567XXXXXXXX'),
+    body('phone').notEmpty().matches(/^256\d{9}$/).withMessage('Invalid phone number format. Use 256XXXXXXXXX (Uganda format)'),
     body('amount').isNumeric(),
     body('currency').isIn(['UGX']),
     body('plan').notEmpty(),

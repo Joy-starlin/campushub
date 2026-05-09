@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const { getDoc } = require('../utils/db.helpers');
 const { USERS, TOKEN_DENYLIST } = require('../utils/collections');
 const { errorResponse } = require('../utils/response');
+const { auth } = require('../config/firebase');
 
 /**
  * Verify JWT token and attach user to request
@@ -26,10 +27,45 @@ const verifyToken = async (req, res, next) => {
     }
     
     // Get user from database
-    const user = await getDoc(USERS, decoded.uid);
+    let user = await getDoc(USERS, decoded.uid);
     
+    // If user not found in Firestore, try to get from Firebase Auth and create basic profile
     if (!user || user.isDeleted) {
-      return errorResponse(res, 'User not found', 401);
+      try {
+        const firebaseUser = await auth.getUser(decoded.uid);
+        const { createDoc } = require('../utils/db.helpers');
+        
+        // Create basic user profile from Firebase Auth data
+        user = await createDoc(USERS, {
+          uid: decoded.uid,
+          email: firebaseUser.email || decoded.email,
+          firstName: firebaseUser.displayName?.split(' ')[0] || '',
+          lastName: firebaseUser.displayName?.split(' ').slice(1).join(' ') || '',
+          displayName: firebaseUser.displayName,
+          profilePicture: firebaseUser.photoURL || null,
+          role: 'member',
+          plan: 'free',
+          isVerified: true, // Firebase accounts are pre-verified
+          verifiedStudent: false,
+          points: 0,
+          university: null,
+          bio: null,
+          socialLinks: {},
+          preferences: {
+            emailNotifications: true,
+            smsNotifications: false,
+            pushNotifications: true,
+            eventReminders: true,
+            clubUpdates: true,
+            jobAlerts: true
+          },
+          lastLoginAt: new Date().toISOString(),
+          createdAt: new Date().toISOString()
+        }, decoded.uid);
+      } catch (firebaseError) {
+        console.error('Firebase Auth lookup failed:', firebaseError);
+        return errorResponse(res, 'User not found', 401);
+      }
     }
 
     // Attach user to request (exclude sensitive data)
@@ -39,11 +75,11 @@ const verifyToken = async (req, res, next) => {
       email: user.email,
       firstName: user.firstName,
       lastName: user.lastName,
-      role: user.role,
-      plan: user.plan,
-      isVerified: user.isVerified,
-      verifiedStudent: user.verifiedStudent,
-      points: user.points,
+      role: user.role || 'member',
+      plan: user.plan || 'free',
+      isVerified: user.isVerified !== false,
+      verifiedStudent: user.verifiedStudent || false,
+      points: user.points || 0,
       university: user.university,
       profilePicture: user.profilePicture,
       preferences: user.preferences
