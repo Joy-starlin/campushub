@@ -223,7 +223,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       
       // Refresh user data
       await refreshUser()
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Update profile error:', error)
       throw new Error('Failed to update profile')
     }
