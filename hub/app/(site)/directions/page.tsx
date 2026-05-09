@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { MapPin, Bus, Car, Train, Navigation, Building2, BookOpen, Coffee, HelpCircle, Phone, ArrowUpRight } from 'lucide-react'
+import { MapPin, Bus, Car, Train, Navigation, Building2, BookOpen, Coffee, HelpCircle, Phone, ArrowUpRight, Download } from 'lucide-react'
 
 export default function DirectionsPage() {
   const landmarks = [
