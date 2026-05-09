@@ -22,6 +22,7 @@ const {
   getExchangeRate,
   PLANS
 } = require('../services/payment.service');
+const flutterwaveService = require('../services/flutterwave.service');
 const { 
   successResponse, 
   errorResponse, 
@@ -215,6 +216,118 @@ const requestAirtelPayment = async (req, res) => {
   } catch (error) {
     console.error('Error requesting Airtel payment:', error);
     return errorResponse(res, 'Failed to initiate Airtel payment', 500);
+  }
+};
+
+/**
+ * Request Flutterwave Mobile Money payment
+ */
+const requestFlutterwavePayment = async (req, res) => {
+  try {
+    const { phone, amount, currency, plan, network } = req.body;
+    const userId = req.user.id;
+
+    if (!phone || !amount || !currency || !plan || !network) {
+      return errorResponse(res, 'Missing required fields', 400);
+    }
+
+    if (!PLANS[plan]) {
+      return errorResponse(res, 'Invalid plan specified', 400);
+    }
+
+    const user = await getDoc(USERS, userId);
+    if (!user) {
+      return notFoundResponse(res, 'User not found');
+    }
+
+    const tx_ref = `BUGEMA-${plan}-${userId}-${Date.now()}`;
+    
+    const paymentData = {
+      amount,
+      currency,
+      email: user.email,
+      tx_ref,
+      phone_number: phone,
+      network,
+      fullname: `${user.firstName} ${user.lastName}`
+    };
+
+    const result = await flutterwaveService.initiateMobileMoneyPayment(paymentData);
+
+    if (!result.success) {
+      return errorResponse(res, result.error || 'Failed to initiate Flutterwave payment', 400);
+    }
+
+    // Create payment record
+    const payment = await createDoc(PAYMENTS, {
+      userId,
+      plan,
+      amount,
+      currency,
+      paymentMethod: 'flutterwave_momo',
+      status: 'pending',
+      transactionId: result.data?.id || tx_ref,
+      tx_ref,
+      network,
+      phone,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    });
+
+    return createdResponse(res, {
+      transactionId: payment.id,
+      tx_ref,
+      status: 'pending',
+      flutterwaveData: result.data
+    }, 'Flutterwave payment initiated');
+
+  } catch (error) {
+    console.error('Error requesting Flutterwave payment:', error);
+    return errorResponse(res, 'Failed to initiate Flutterwave payment', 500);
+  }
+};
+
+/**
+ * Verify Flutterwave transaction
+ */
+const verifyFlutterwaveTransaction = async (req, res) => {
+  try {
+    const { transactionId } = req.params;
+
+    const result = await flutterwaveService.verifyTransaction(transactionId);
+
+    if (!result.success) {
+      return errorResponse(res, result.error || 'Failed to verify transaction', 400);
+    }
+
+    // Update payment record if transaction is successful
+    if (result.data?.status === 'successful') {
+      const payment = await getDoc(PAYMENTS, result.data.tx_ref);
+      if (payment && payment.status === 'pending') {
+        await updateDoc(PAYMENTS, payment.id, {
+          status: 'completed',
+          updatedAt: new Date().toISOString()
+        });
+
+        // Upgrade user plan
+        await upgradePlan(payment.userId, payment.plan, {
+          paymentMethod: 'flutterwave_momo',
+          paymentId: transactionId,
+          amount: payment.amount,
+          currency: payment.currency
+        });
+      }
+    }
+
+    return successResponse(res, {
+      transactionId,
+      status: result.data?.status,
+      data: result.data
+    });
+
+  } catch (error) {
+    console.error('Error verifying Flutterwave transaction:', error);
+    return errorResponse(res, 'Failed to verify transaction', 500);
   }
 };
 
@@ -518,5 +631,6 @@ module.exports = {
   getSubscription,
   cancelUserSubscription,
   getCurrencyExchangeRate,
-  handleFlutterwaveWebhook
+  requestFlutterwavePayment,
+  verifyFlutterwaveTransaction
 };

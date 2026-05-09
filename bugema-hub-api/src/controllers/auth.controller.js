@@ -12,7 +12,13 @@ const register = async (req, res) => {
     const { email, password, firstName, lastName, country, university, course, year, phone, username } = req.body;
 
     // Check if user already exists in Firestore
-    const existingUsers = await getCollection(USERS, [['email', '==', email]]);
+    let existingUsers = [];
+    try {
+      existingUsers = await getCollection(USERS, [['email', '==', email]]);
+    } catch (error) {
+      console.error('Error checking existing users:', error);
+      // Continue with registration if check fails
+    }
     if (existingUsers.length > 0) {
       return errorResponse(res, 'Email already exists', 409, 'EMAIL_EXISTS');
     }

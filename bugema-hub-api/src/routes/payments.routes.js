@@ -76,4 +76,24 @@ router.post('/airtel/request',
   paymentsController.requestAirtelPayment
 );
 
+// Request Flutterwave Mobile Money payment
+router.post('/flutterwave/request',
+  verifyToken,
+  [
+    body('phone').notEmpty().matches(/^2567\d{8}$/).withMessage('Invalid phone number format. Use 2567XXXXXXXX'),
+    body('amount').isNumeric(),
+    body('currency').isIn(['UGX']),
+    body('plan').notEmpty(),
+    body('network').isIn(['MTN', 'AIRTEL']).withMessage('Network must be MTN or AIRTEL')
+  ],
+  handleValidationErrors,
+  paymentsController.requestFlutterwavePayment
+);
+
+// Verify Flutterwave transaction
+router.get('/flutterwave/verify/:transactionId',
+  verifyToken,
+  paymentsController.verifyFlutterwaveTransaction
+);
+
 module.exports = router;
