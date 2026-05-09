@@ -153,8 +153,9 @@ export default function MarketplaceManagement() {
       }
       setIsModalOpen(false)
       fetchItems()
-    } catch (error: any) {
-      toast.error(error.message || 'Action failed')
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Action failed'
+      toast.error(errorMessage || 'Action failed')
     }
   }
 
@@ -168,7 +169,7 @@ export default function MarketplaceManagement() {
       toast.success('Item removed successfully')
       setIsDeleting(null)
       fetchItems()
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast.error('Failed to remove item')
     }
   }
@@ -373,7 +374,7 @@ export default function MarketplaceManagement() {
                     <select 
                       className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm"
                       value={formData.condition}
-                      onChange={e => setFormData({ ...formData, condition: e.target.value as any })}
+                      onChange={e => setFormData({ ...formData, condition: e.target.value as 'new' | 'used' })}
                     >
                       <option value="new">New</option>
                       <option value="used">Used</option>
@@ -384,7 +385,7 @@ export default function MarketplaceManagement() {
                     <select 
                       className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm"
                       value={formData.status}
-                      onChange={e => setFormData({ ...formData, status: e.target.value as any })}
+                      onChange={e => setFormData({ ...formData, status: e.target.value as 'available' | 'sold' | 'pending' })}
                     >
                       {statuses.filter(s => s !== 'All').map(s => <option key={s} value={s}>{s}</option>)}
                     </select>
