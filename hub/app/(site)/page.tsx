@@ -189,6 +189,7 @@ export default function Home() {
                   event={event}
                   onClick={(e) => console.log("Event clicked:", e.id)}
                   onRSVP={(id) => console.log("RSVP for:", id)}
+                  onBook={(id) => console.log("Book for:", id)}
                 />
               ))}
             </div>          </div>
