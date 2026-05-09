@@ -42,22 +42,24 @@ const initialRequests: MentorshipRequest[] = [
     id: 'req1',
     mentorId: '1',
     menteeId: 'me123',
+    mentorshipAreas: ['career'],
     status: 'pending',
     message: 'Hello, I would like to get some advice on your career journey.',
-    requestedAt: '2023-10-01T10:00:00Z',
-    updatedAt: '2023-10-01T10:00:00Z'
+    requestedAt: '2023-10-01T10:00:00Z'
   },
   {
     id: 'req2',
     mentorId: '2',
     menteeId: 'me123',
+    mentorshipAreas: ['entrepreneurship'],
     status: 'accepted',
     message: 'Hi Michael, seeking guidance on starting a tech business.',
     requestedAt: '2023-09-15T14:30:00Z',
-    updatedAt: '2023-09-16T09:00:00Z',
     scheduledSession: {
       id: 'sess1',
       mentorshipRequestId: 'req2',
+      mentorId: '2',
+      menteeId: 'me123',
       title: 'Introductory Mentorship Session',
       description: 'Discussing your startup ideas and overall roadmap',
       scheduledAt: '2023-11-20T10:00:00Z',
@@ -71,13 +73,15 @@ const initialRequests: MentorshipRequest[] = [
     id: 'req3',
     mentorId: '3',
     menteeId: 'me123',
+    mentorshipAreas: ['research'],
     status: 'completed',
     message: 'Looking for advice on AI research methodologies.',
     requestedAt: '2023-08-01T10:00:00Z',
-    updatedAt: '2023-08-15T15:00:00Z',
     scheduledSession: {
       id: 'sess2',
       mentorshipRequestId: 'req3',
+      mentorId: '3',
+      menteeId: 'me123',
       title: 'Research Methodologies Discussion',
       description: 'Review of current trends and publication strategies',
       scheduledAt: '2023-08-10T09:00:00Z',
@@ -98,17 +102,17 @@ export default function MentorshipPage() {
       id: `req${Date.now()}`,
       mentorId,
       menteeId: 'me123',
+      mentorshipAreas: ['career'],
       status: 'pending',
       message: message,
-      requestedAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      requestedAt: new Date().toISOString()
     }
     setRequests([newReq, ...requests])
   }
 
   const handleRespondToRequest = (requestId: string, status: 'accepted' | 'declined', responseMessage?: string) => {
     toast.success(`Request ${status}`)
-    setRequests(requests.map(req => req.id === requestId ? { ...req, status, updatedAt: new Date().toISOString() } : req))
+    setRequests(requests.map(req => req.id === requestId ? { ...req, status, respondedAt: new Date().toISOString() } : req))
   }
 
   const handleScheduleSession = (requestId: string, session: Omit<MentorshipSession, 'id' | 'mentorshipRequestId' | 'createdAt'>) => {
