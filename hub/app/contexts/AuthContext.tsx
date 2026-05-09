@@ -145,9 +145,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password)
       // User will be set by the onAuthStateChanged listener
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Sign in error:', error)
-      throw new Error(getAuthErrorMessage(error.code))
+      const firebaseError = error as { code?: string }
+      throw new Error(getAuthErrorMessage(firebaseError.code || 'unknown'))
     }
   }
 
@@ -155,9 +156,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
       // User will be set by the onAuthStateChanged listener
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Sign up error:', error)
-      throw new Error(getAuthErrorMessage(error.code))
+      const firebaseError = error as { code?: string }
+      throw new Error(getAuthErrorMessage(firebaseError.code || 'unknown'))
     }
   }
 
@@ -165,7 +167,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       await firebaseSignOut(auth)
       setUser(null)
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Sign out error:', error)
       throw new Error('Failed to sign out')
     }
@@ -176,18 +178,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const provider = new GoogleAuthProvider()
       await signInWithPopup(auth, provider)
       // User will be set by the onAuthStateChanged listener
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Google sign in error:', error)
-      throw new Error(getAuthErrorMessage(error.code))
+      const firebaseError = error as { code?: string }
+      throw new Error(getAuthErrorMessage(firebaseError.code || 'unknown'))
     }
   }
 
   const resetPassword = async (email: string) => {
     try {
       await sendPasswordResetEmail(auth, email)
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Reset password error:', error)
-      throw new Error(getAuthErrorMessage(error.code))
+      const firebaseError = error as { code?: string }
+      throw new Error(getAuthErrorMessage(firebaseError.code || 'unknown'))
     }
   }
 
@@ -197,9 +201,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
         throw new Error('No user is currently signed in')
       }
       await updatePassword(auth.currentUser, newPassword)
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Update password error:', error)
-      throw new Error(getAuthErrorMessage(error.code))
+      const firebaseError = error as { code?: string }
+      throw new Error(getAuthErrorMessage(firebaseError.code || 'unknown'))
     }
   }
 

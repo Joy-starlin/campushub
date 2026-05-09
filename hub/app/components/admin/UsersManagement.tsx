@@ -148,8 +148,9 @@ export default function UsersManagement() {
       }
       setIsModalOpen(false)
       fetchUsers()
-    } catch (error: any) {
-      toast.error(error.message || 'Action failed')
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Action failed'
+      toast.error(errorMessage || 'Action failed')
     }
   }
 
@@ -163,7 +164,7 @@ export default function UsersManagement() {
       toast.success('User account deleted')
       setIsDeleting(null)
       fetchUsers()
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast.error('Failed to delete user')
     }
   }
@@ -255,9 +256,9 @@ export default function UsersManagement() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="col-span-2"><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Full Name</label><input type="text" className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm font-medium" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} /></div>
                   <div className="col-span-2"><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Email Address</label><input type="email" className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm font-medium" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} /></div>
-                  <div><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Role</label><select className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm" value={formData.role} onChange={e => setFormData({ ...formData, role: e.target.value as any })}>{roles.filter(r => r !== 'All').map(r => <option key={r} value={r}>{r.toUpperCase()}</option>)}</select></div>
-                  <div><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Plan</label><select className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm" value={formData.plan} onChange={e => setFormData({ ...formData, plan: e.target.value as any })}>{plans.map(p => <option key={p} value={p}>{p.toUpperCase()}</option>)}</select></div>
-                  <div><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Status</label><select className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm" value={formData.status} onChange={e => setFormData({ ...formData, status: e.target.value as any })}><option value="active">ACTIVE</option><option value="suspended">SUSPENDED</option></select></div>
+                  <div><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Role</label><select className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm" value={formData.role} onChange={e => setFormData({ ...formData, role: e.target.value as 'admin' | 'moderator' | 'member' })}>{roles.filter(r => r !== 'All').map(r => <option key={r} value={r}>{r.toUpperCase()}</option>)}</select></div>
+                  <div><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Plan</label><select className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm" value={formData.plan} onChange={e => setFormData({ ...formData, plan: e.target.value as 'Free' | 'Premium' | 'Enterprise' })}>{plans.map(p => <option key={p} value={p}>{p.toUpperCase()}</option>)}</select></div>
+                  <div><label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Status</label><select className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none text-sm" value={formData.status} onChange={e => setFormData({ ...formData, status: e.target.value as 'active' | 'suspended' })}><option value="active">ACTIVE</option><option value="suspended">SUSPENDED</option></select></div>
                 </div>
               </div>
               <div className="px-6 py-4 border-t border-gray-100 flex justify-end gap-3 bg-gray-50">

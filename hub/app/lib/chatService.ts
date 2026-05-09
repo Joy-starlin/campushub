@@ -44,7 +44,7 @@ export class FirebaseChatService {
     const reactionRef = ref(realtimeDb, `channels/${channelId}/messages/${messageId}/reactions/${emoji}`)
     const snapshot = await new Promise((resolve) => onValue(reactionRef, resolve, { onlyOnce: true }))
     
-    const currentReaction = snapshot as any
+    const currentReaction = snapshot as { userIds?: string[] }
     const userIds = currentReaction?.userIds || []
     
     if (!userIds.includes(userId)) {
@@ -60,7 +60,7 @@ export class FirebaseChatService {
     const reactionRef = ref(realtimeDb, `channels/${channelId}/messages/${messageId}/reactions/${emoji}`)
     const snapshot = await new Promise((resolve) => onValue(reactionRef, resolve, { onlyOnce: true }))
     
-    const currentReaction = snapshot as any
+    const currentReaction = snapshot as { userIds?: string[] }
     const userIds = currentReaction?.userIds || []
     
     if (userIds.includes(userId)) {
@@ -329,7 +329,8 @@ export class FirebaseChatService {
       const unreadCounts: Record<string, number> = {}
       
       if (data) {
-        Object.values(data).forEach((unread: any) => {
+        const unreadData = data as Record<string, { channelId: string; count: number }>
+        Object.values(unreadData).forEach((unread) => {
           unreadCounts[unread.channelId] = unread.count
         })
       }
@@ -346,7 +347,7 @@ export class FirebaseChatService {
     // For now, we'll do a basic client-side search
     const messagesRef = ref(realtimeDb, `channels/${channelId}/messages`)
     const snapshot = await new Promise((resolve) => onValue(messagesRef, resolve, { onlyOnce: true }))
-    const data = snapshot as any
+    const data = snapshot as Record<string, Message>
     
     if (!data) return []
     
