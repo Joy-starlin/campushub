@@ -140,7 +140,8 @@ export default function ResponsiveNavigation({
     { id: 'events', label: 'Events', icon: <Calendar className="w-6 h-6" />, href: '/events' },
     { id: 'community', label: 'Community', icon: <Users className="w-6 h-6" />, href: '/community' },
     { id: 'global', label: 'Global', icon: <Globe className="w-6 h-6" />, href: '/global' },
-    { id: 'engage', label: 'Engage', icon: <TrendingUp className="w-6 h-6" />, href: '/engage' }
+    { id: 'engage', label: 'Engage', icon: <TrendingUp className="w-6 h-6" />, href: '/engage' },
+    { id: 'profile', label: 'Profile', icon: <User className="w-6 h-6" />, href: '/profile' }
   ]
 
   // User menu items
@@ -509,77 +510,91 @@ export default function ResponsiveNavigation({
 
           {/* User Controls */}
           <div className="flex items-center space-x-3">
-            {/* Notifications */}
-            <button className="relative p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
-              <Bell className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-              {userStats.notifications > 0 && (
-                <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white text-xs rounded-full flex items-center justify-center font-bold">
-                  {userStats.notifications}
-                </div>
-              )}
-            </button>
-
-            {/* User Menu */}
-            <div className="relative">
-              <button
-                onClick={() => setShowUserMenu(!showUserMenu)}
-                className="flex items-center space-x-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors"
+            {/* Sign In Button (mobile only, shown when not logged in) */}
+            {!currentUser && (
+              <a
+                href="/signin"
+                className="lg:hidden px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
               >
-                {currentUser?.avatar ? (
-                  <img
-                    src={currentUser.avatar}
-                    alt={currentUser.name}
-                    className="w-8 h-8 rounded-full object-cover"
-                  />
-                ) : (
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center">
-                    <User className="w-4 h-4 text-white" />
+                Sign In
+              </a>
+            )}
+
+            {/* Notifications (shown when logged in) */}
+            {currentUser && (
+              <button className="relative p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
+                <Bell className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                {userStats.notifications > 0 && (
+                  <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white text-xs rounded-full flex items-center justify-center font-bold">
+                    {userStats.notifications}
                   </div>
                 )}
-                <span className="hidden lg:block text-base font-medium text-gray-900 dark:text-white">
-                  {currentUser?.name}
-                </span>
-                <ChevronDown className="w-4 h-4 text-gray-600 dark:text-gray-400" />
               </button>
+            )}
 
-              <AnimatePresence>
-                {showUserMenu && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden"
-                  >
-                    <div className="p-2">
-                      {userMenuItems.map((item) => (
-                        <a
-                          key={item.id}
-                          href={item.href}
-                          className="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                        >
-                          <div className="w-8 h-8 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-400">
-                            {item.icon}
-                          </div>
-                          <span className="text-gray-900 dark:text-white font-medium">
-                            {item.label}
-                          </span>
-                        </a>
-                      ))}
-                      <hr className="my-2 border-gray-200 dark:border-gray-700" />
-                      <button className="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors w-full">
-                        <div className="w-8 h-8 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center text-red-600 dark:text-red-400">
-                          <LogOut className="w-4 h-4" />
-                        </div>
-                        <span className="text-red-600 dark:text-red-400 font-medium">
-                          Sign Out
-                        </span>
-                      </button>
+            {/* User Menu (shown when logged in) */}
+            {currentUser && (
+              <div className="relative">
+                <button
+                  onClick={() => setShowUserMenu(!showUserMenu)}
+                  className="flex items-center space-x-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors"
+                >
+                  {currentUser?.avatar ? (
+                    <img
+                      src={currentUser.avatar}
+                      alt={currentUser.name}
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center">
+                      <User className="w-4 h-4 text-white" />
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+                  )}
+                  <span className="hidden lg:block text-base font-medium text-gray-900 dark:text-white">
+                    {currentUser?.name}
+                  </span>
+                  <ChevronDown className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+                </button>
+
+                <AnimatePresence>
+                  {showUserMenu && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden"
+                    >
+                      <div className="p-2">
+                        {userMenuItems.map((item) => (
+                          <a
+                            key={item.id}
+                            href={item.href}
+                            className="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                          >
+                            <div className="w-8 h-8 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-400">
+                              {item.icon}
+                            </div>
+                            <span className="text-gray-900 dark:text-white font-medium">
+                              {item.label}
+                            </span>
+                          </a>
+                        ))}
+                        <hr className="my-2 border-gray-200 dark:border-gray-700" />
+                        <button className="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors w-full">
+                          <div className="w-8 h-8 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center text-red-600 dark:text-red-400">
+                            <LogOut className="w-4 h-4" />
+                          </div>
+                          <span className="text-red-600 dark:text-red-400 font-medium">
+                            Sign Out
+                          </span>
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
           </div>
         </div>
       </div>
