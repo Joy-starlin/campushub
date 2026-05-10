@@ -1,6 +1,0 @@
-{
-  "framework": "nextjs",
-  "buildCommand": "cd hub && npm run build",
-  "installCommand": "cd hub && npm install",
-  "outputDirectory": "hub/.next"
-}
