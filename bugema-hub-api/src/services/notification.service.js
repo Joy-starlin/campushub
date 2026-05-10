@@ -14,12 +14,14 @@ const { emailService } = require('./email.service');
 const { smsService } = require('./sms.service');
 const webPush = require('web-push');
 
-// Configure Web Push
-webPush.setVapidDetails(
-  process.env.VAPID_SUBJECT || 'mailto:admin@bugemahub.com',
-  process.env.VAPID_PUBLIC_KEY,
-  process.env.VAPID_PRIVATE_KEY
-);
+// Configure Web Push (only if VAPID keys are available)
+if (process.env.VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
+  webPush.setVapidDetails(
+    process.env.VAPID_SUBJECT || 'mailto:admin@bugemahub.com',
+    process.env.VAPID_PUBLIC_KEY,
+    process.env.VAPID_PRIVATE_KEY
+  );
+}
 
 // Notification types
 const NOTIFICATION_TYPES = {
