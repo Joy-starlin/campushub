@@ -44,7 +44,7 @@ const JWT_REFRESH_EXPIRES_IN = process.env.JWT_REFRESH_EXPIRES_IN || '30d';
 // Firebase Configuration
 const FIREBASE_PROJECT_ID = process.env.FIREBASE_PROJECT_ID;
 const FIREBASE_CLIENT_EMAIL = process.env.FIREBASE_CLIENT_EMAIL;
-const FIREBASE_PRIVATE_KEY = process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n');
+const FIREBASE_PRIVATE_KEY = process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n').replace(/"/g, '');
 const FIREBASE_DATABASE_URL = process.env.FIREBASE_DATABASE_URL;
 
 // Cloudinary Configuration
