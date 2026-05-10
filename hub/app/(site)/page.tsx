@@ -44,6 +44,8 @@ const mockUpdates: Event[] = [
     bannerImage: '/assets/events/it-trip.png',
     maxAttendees: 150,
     currentAttendees: 89,
+    requiresBooking: true,
+    price: 45000,
     attendees: [{ id: '3', name: 'Emily Davis' }],
     organizer: { name: 'IT Department', role: 'Academic Club' }
   },
@@ -187,9 +189,9 @@ export default function Home() {
                 <EventCard
                   key={event.id}
                   event={event}
-                  onClick={(e) => console.log("Event clicked:", e.id)}
-                  onRSVP={(id) => console.log("RSVP for:", id)}
-                  onBook={(id) => console.log("Book for:", id)}
+                  onClick={(event) => console.log("Event clicked:", event.id)}
+                  onRSVP={(eventId) => console.log("RSVP for:", eventId)}
+                  onBook={(event) => console.log("Book for:", event.id)}
                 />
               ))}
             </div>          </div>

@@ -126,7 +126,11 @@ const mockEvents: Event[] = [
 
 type ViewMode = 'grid' | 'calendar'
 
-export default function EventsPage() {
+interface EventsPageProps {
+  defaultIsOnline?: boolean
+}
+
+export default function EventsPage({ defaultIsOnline = false }: EventsPageProps) {
   const [viewMode, setViewMode] = useState<ViewMode>('grid')
   const [events, setEvents] = useState<Event[]>(mockEvents)
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
@@ -163,9 +167,14 @@ export default function EventsPage() {
 
 
 
+      // Online filter
+      if (defaultIsOnline && !event.isOnline) {
+        return false
+      }
+
       return true
     })
-  }, [events, searchQuery, selectedCategory, startDate, endDate])
+  }, [events, searchQuery, selectedCategory, startDate, endDate, defaultIsOnline])
 
   const handleEventClick = (event: Event) => {
     // Navigate to event detail page

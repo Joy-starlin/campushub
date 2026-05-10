@@ -123,7 +123,7 @@ export default function UniversityHub({
                   {university.name}
                 </h1>
                 {university.isOfficialPartner && (
-                  <CheckCircle className="w-6 h-6 text-blue-400" title="Official Partner" />
+                  <span title="Official Partner"><CheckCircle className="w-6 h-6 text-blue-400" /></span>
                 )}
               </div>
               <p className="text-lg text-blue-100 mb-2">

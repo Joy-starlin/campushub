@@ -392,7 +392,7 @@ export default function UniversityDirectory({
                         {university.name}
                       </h3>
                       {university.isOfficialPartner && (
-                        <CheckCircle className="w-4 h-4 text-blue-500" title="Official Partner" />
+                        <span title="Official Partner"><CheckCircle className="w-4 h-4 text-blue-500" /></span>
                       )}
                     </div>
                     <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
