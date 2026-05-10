@@ -222,8 +222,8 @@ export default function ClubsPage() {
         {/* No Clubs Found */}
         {filteredClubs.length === 0 && (
           <div className="text-center py-12">
-            <div className="text-gray-500 text-lg">No clubs found</div>
-            <div className="text-gray-400 text-sm mt-2">Try adjusting your filters</div>
+            <div className="text-gray-900 text-lg">No clubs found</div>
+            <div className="text-gray-600 text-sm mt-2">Try adjusting your filters</div>
           </div>
         )}
       </div>
