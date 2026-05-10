@@ -72,7 +72,7 @@ export default function Footer() {
     <footer className="bg-[#001A33] text-white pt-12 pb-6">
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
         {/* Top Section - Bentley Style */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           {/* Brand & Address */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
@@ -82,16 +82,16 @@ export default function Footer() {
               <span className="text-2xl font-black tracking-tighter uppercase text-white">BUGEMA HUB</span>
             </div>
             <div className="space-y-3 text-gray-400 text-sm">
-              <p className="flex items-center gap-3"><MapPin className="w-4 h-4 text-blue-400" /> Bugema University Campus, Main Road</p>
-              <p className="flex items-center gap-3"><Mail className="w-4 h-4 text-blue-400" /> support@bugemahub.com</p>
-              <p className="flex items-center gap-3"><Phone className="w-4 h-4 text-blue-400" /> +256 781 000 000</p>
+              <p className="flex items-center gap-3"><MapPin className="w-4 h-4 text-blue-400 flex-shrink-0" /> Bugema University Campus, Main Road</p>
+              <p className="flex items-center gap-3"><Mail className="w-4 h-4 text-blue-400 flex-shrink-0" /> support@bugemahub.com</p>
+              <p className="flex items-center gap-3"><Phone className="w-4 h-4 text-blue-400 flex-shrink-0" /> +256 781 000 000</p>
             </div>
           </div>
 
           {/* Socials */}
           <div className="space-y-6">
             <h3 className="text-sm font-black uppercase tracking-[0.2em] text-white">Follow Us:</h3>
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap gap-4 sm:gap-6">
               {[
                 { icon: faFacebookF, name: "Facebook" },
                 { icon: faTwitter, name: "Twitter" },
@@ -103,7 +103,7 @@ export default function Footer() {
                   <a href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-bugema-blue transition-all border border-white/10 group-hover:scale-110">
                     <FontAwesomeIcon icon={social.icon} className="w-5 h-5 text-white" />
                   </a>
-                  <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider group-hover:text-bugema-blue transition-colors">{social.name}</span>
+                  <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider group-hover:text-bugema-blue transition-colors hidden sm:block">{social.name}</span>
                 </div>
               ))}
             </div>
@@ -112,7 +112,7 @@ export default function Footer() {
           {/* Support Button */}
           <div className="space-y-6">
             <h3 className="text-sm font-black uppercase tracking-[0.2em] text-white">Support Us:</h3>
-            <button className="px-8 py-3 bg-white/10 border border-white/20 rounded-xl font-bold uppercase tracking-widest hover:bg-white/20 transition-colors shadow-xl text-white">
+            <button className="w-full sm:w-auto px-8 py-3 bg-white/10 border border-white/20 rounded-xl font-bold uppercase tracking-widest hover:bg-white/20 transition-colors shadow-xl text-white">
               Make a Gift
             </button>
           </div>
@@ -129,11 +129,11 @@ export default function Footer() {
         <div className="h-px bg-white/10 mb-10" />
 
         {/* Middle Section - Sephora Style Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           {footerLinks.map((group) => (
             <div key={group.title}>
-              <h3 className="text-lg font-bold mb-6 text-white">{group.title}</h3>
-              <ul className="space-y-4">
+              <h3 className="text-lg font-bold mb-4 sm:mb-6 text-white">{group.title}</h3>
+              <ul className="space-y-3 sm:space-y-4">
                 {group.links.map((link) => (
                   <li key={link.name}>
                     <Link href={link.href} className="text-gray-400 hover:text-white transition-colors text-sm">
@@ -153,13 +153,13 @@ export default function Footer() {
           {/* Newsletter */}
           <div className="w-full lg:w-auto">
             <p className="text-sm font-bold mb-4 uppercase tracking-[0.2em] text-white">Subscribe for Bugema Hub News</p>
-            <form className="flex max-w-md shadow-2xl">
+            <form className="flex max-w-full shadow-2xl">
               <input 
                 type="email" 
                 placeholder="Enter Email Address" 
-                className="flex-1 bg-white/5 border border-white/20 rounded-l-xl px-4 py-3 text-sm focus:outline-none focus:border-bugema-blue transition-colors text-white"
+                className="flex-1 min-w-0 bg-white/5 border border-white/20 rounded-l-xl px-4 py-3 text-sm focus:outline-none focus:border-bugema-blue transition-colors text-white"
               />
-              <button className="bg-bugema-blue px-8 py-3 rounded-r-xl font-bold uppercase tracking-widest hover:bg-blue-700 transition-colors text-white">
+              <button className="bg-bugema-blue px-6 sm:px-8 py-3 rounded-r-xl font-bold uppercase tracking-widest hover:bg-blue-700 transition-colors text-white whitespace-nowrap">
                 Subscribe
               </button>
             </form>
@@ -180,7 +180,7 @@ export default function Footer() {
         {/* Copyright Line */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-[11px] text-gray-500 uppercase tracking-[0.2em] font-medium gap-4">
           <p>© 2026 Bugema Hub. All rights reserved.</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center md:justify-end gap-4 sm:gap-6">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
             <Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link>
