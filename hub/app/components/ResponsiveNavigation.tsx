@@ -360,8 +360,9 @@ export default function ResponsiveNavigation({
       {/* Category Strip */}
       <div className="flex overflow-x-auto scrollbar-hide">
         {mobileTabs.map((tab) => (
-          <button
+          <a
             key={tab.id}
+            href={tab.href}
             onClick={() => setActiveMobileTab(tab.id)}
             className={`flex flex-col items-center space-y-2 px-4 py-3 min-w-fit transition-all duration-200 ${
               activeMobileTab === tab.id
@@ -373,7 +374,7 @@ export default function ResponsiveNavigation({
               {tab.icon}
             </div>
             <span className="text-sm font-semibold">{tab.label}</span>
-          </button>
+          </a>
         ))}
       </div>
       
