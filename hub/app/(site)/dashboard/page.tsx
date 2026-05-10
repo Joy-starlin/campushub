@@ -1,3 +1,5 @@
+'use client'
+
 import PersonalDashboard from '../../components/PersonalDashboard'
 
 // Mock dashboard data - in a real app, this would come from an API

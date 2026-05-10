@@ -1,3 +1,5 @@
+'use client'
+
 import SettingsPage from '../../components/SettingsPage'
 
 // Mock settings data - in a real app, this would come from an API
