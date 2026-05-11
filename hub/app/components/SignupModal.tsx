@@ -29,7 +29,7 @@ export default function SignupModal({ isOpen, onClose, initialStep = 1 }: Signup
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative z-10 w-full max-w-md"
+            className="relative z-10 w-full max-w-md mx-4 sm:mx-0"
           >
             <MultiStepSignup onClose={onClose} initialStep={initialStep as 1 | 2 | 3 | 4} />
           </motion.div>

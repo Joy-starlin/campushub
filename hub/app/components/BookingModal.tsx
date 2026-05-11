@@ -56,7 +56,7 @@ export default function BookingModal({ isOpen, onClose, event }: BookingModalPro
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden"
+            className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden mx-4 sm:mx-0"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
